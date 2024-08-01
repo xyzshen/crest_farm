@@ -27,7 +27,7 @@ export default function Home() {
                             <span className="font-[600]">Solution</span>
                         </h3>
                         <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
-                            Customizable risk management solutions in hedging risks associated with digital assets' volatile factorsEmpowering platform by unified interface with multiple exchanges & order management, leverage trading and product shelves Customized algo trading solutions,including smart order router, large orders slicing & VWAPTWAP, etc.
+                            Customizable risk management solutions in hedging risks associated with digital assets volatile factorsEmpowering platform by unified interface with multiple exchanges & order management, leverage trading and product shelves Customized algo trading solutions,including smart order router, large orders slicing & VWAPTWAP, etc.
                         </p>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ export default function Home() {
                                     <span className="font-[500]">Robust trading system</span>
                                 </h3>
                                 <p className="text-[#4d4d4d] text-[20px] mt-[5px] leading-8">
-                                    World-class trading system designed for institutional user in support of high-frequency tradings is optimized for digital asset and.implemented for over thousands hours' trading with no discontinuity
+                                    World-class trading system designed for institutional user in support of high-frequency tradings is optimized for digital asset and.implemented for over thousands hours trading with no discontinuity
                                 </p>
                             </div>
                         </div>

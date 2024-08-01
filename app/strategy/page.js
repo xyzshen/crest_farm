@@ -283,7 +283,7 @@ export default function Strategy() {
                             </div>
                             <div className="text-[#ffffff] mt-[40px]">
                                 <h6 className="text-[40px] font-bold">{isTitle}</h6>
-                                <p className="text-[14px] mt-[14px]">Obtain stable income'through'stablecóin staking and liquidity
+                                <p className="text-[14px] mt-[14px]">Obtain stable income through stablecóin staking and liquidity
                                     proVision
                                     new currency minin
                                     iguidity
