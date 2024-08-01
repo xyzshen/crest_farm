@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="17px" viewBox="0 0 13 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>delete</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="交易所" transform="translate(-1292.000000, -302.000000)" fill="#202020" fill-rule="nonzero">
+            <g id="编组-6" transform="translate(230.000000, 130.000000)">
+                <g id="tbl" transform="translate(40.000000, 105.000000)">
+                    <g id="编组" transform="translate(35.000000, 67.000000)">
+                        <g id="delete" transform="translate(987.000000, 0.000000)">
+                            <path d="M0.925170068,14.6531987 C0.925170068,15.6606061 1.75782313,16.4848485 2.7755102,16.4848485 L10.1768707,16.4848485 C11.1945578,16.4848485 12.0272109,15.6606061 12.0272109,14.6531987 L12.0272109,3.66329966 L0.925170068,3.66329966 L0.925170068,14.6531987 Z M12.952381,0.915824916 L9.71428571,0.915824916 L8.78911565,0 L4.16326531,0 L3.23809524,0.915824916 L0,0.915824916 L0,2.74747475 L12.952381,2.74747475 L12.952381,0.915824916 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

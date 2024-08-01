@@ -1,113 +1,200 @@
 import Image from "next/image";
-
+import ku_coin from "/public/static/images/ku_coin.png";
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    return (
+        <main className="">
+            <div className="px-[50px]">
+                <div className="bg-home-banner bg-cover bg-no-repeat">
+                    <div className="content-area mx-auto h-[657px] flex flex-col justify-center items-center">
+                        <div className="text-center font-[600] text-[#000] text-[70px]">
+                            Growth&nbsp;your&nbsp;crypto&nbsp;asset<br />Build&nbsp;for&nbsp;the&nbsp;top
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="mt-[80px]">
+                <h6 className="text-center text-[52px] font-[600]">What We Serve</h6>
+                {/* 1 */}
+                <div className="px-[125px] mt-[60px] flex justify-between">
+                    <div className="flex justify-center items-center">
+                        <div className="w-[482px] h-[364px]">
+                            <Image src="/static/images/financial.png" width={482} height={364} alt="financial"></Image>
+                        </div>
+                    </div>
+                    <div className="w-[520px] pt-[16px]">
+                        <h3 className="text-[#1a1a1a] text-[35px]">
+                            <span>Financial</span>&nbsp;
+                            <span className="font-[600]">Solution</span>
+                        </h3>
+                        <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
+                            Customizable risk management solutions in hedging risks associated with digital assets' volatile factorsEmpowering platform by unified interface with multiple exchanges & order management, leverage trading and product shelves Customized algo trading solutions,including smart order router, large orders slicing & VWAPTWAP, etc.
+                        </p>
+                    </div>
+                </div>
+                {/* 2 */}
+                <div className="px-[125px] mt-[81px] flex justify-between">
+                    <div className="flex justify-center items-center">
+                        <div className="w-[520px] pt-[16px]">
+                            <h3 className="text-[#1a1a1a] text-[35px]">
+                                <span>Market</span>&nbsp;
+                                <span className="font-[600]">Making</span>
+                            </h3>
+                            <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
+                                We support major exchanges and cover over 100 digital currency pairs We provide liquidity by Provide 24x7liquidity on all levels in terms of depth of order book and maintenance of bid/ask spread.
+                            </p>
+                        </div>
+                    </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+                    <div className="">
+                        <Image src="/static/images/market.png" width={473} height={373} alt="market"></Image>
+                    </div>
+                </div>
+                {/* 3 */}
+                <div className="px-[125px] mt-[81px] flex justify-between">
+                    <div className="flex justify-center items-center">
+                        <div className="h-[373px]">
+                            <Image src="/static/images/asset.png" width={487} height={373} alt="asset"></Image>
+                        </div>
+                    </div>
+                    <div className="w-[520px] pt-[16px]">
+                        <h3 className="text-[#1a1a1a] text-[35px]">
+                            <span>Asset</span>&nbsp;
+                            <span className="font-[600]">Management</span>
+                        </h3>
+                        <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
+                            A1 Asset Manageris a digital asset managementplatform developed by the Alfa1 team to provide holisticdigital asset management services for institutions orhigh net worth customers, by offering:
+                        </p>
+                        <ul className="text-[#4d4d4d] mt-[25px] list-disc ml-4">
+                            <li>
+                                Secure digital asset storage; timely and transparent product information disclosure
+                            </li>
+                            <li>
+                                Products demominated in varieties of currencies :BTC,USDT,EOS ,ETH,BCH,BSV Etc.
+                            </li>
+                            <li>
+                                Investment portfolio by allocation of sophicated algorithtic strategies according to different level of risk appetite and expected returns
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div className="bg-home-grid-point bg-cover bg-no-repeat mt-[80px] h-[1231px]">
+                <div className="px-[125px]">
+                    <h6 className="text-center text-[52px] font-[600] pt-[60px] pb-[46px] px-[130px]">Why Crest</h6>
+                    <div className="flex justify-between">
+                        <div>
+                            <Image
+                                src="/static/icons/tradingStrategies.svg"
+                                alt="tradingStrategies"
+                                width={76}
+                                height={76}
+                                priority
+                            />
+                            <div className="max-w-[520px] mt-[30px]">
+                                <h3 className="text-[#1a1a1a] text-[35px] leading-[70px]">
+                                    <span className="font-[500]">Profound trading strategies</span>
+                                </h3>
+                                <p className="text-[#4d4d4d] text-[20px] mt-[5px] leading-8">
+                                    Profound trading experiences. and multi algorisitic strategies combined·with A.l. model trained on massive market data to capitalize for superior performance in all market
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <Image
+                                src="/static/icons/riskManagement.svg"
+                                alt="riskManagement"
+                                width={76}
+                                height={76}
+                                priority
+                            />
+                            <div className="max-w-[520px] mt-[30px]">
+                                <h3 className="text-[#1a1a1a] text-[35px] leading-[70px]">
+                                    <span className="font-[500]">Stringent risk management</span>
+                                </h3>
+                                <p className="text-[#4d4d4d] text-[20px] mt-[5px] leading-8">
+                                    Risk metrics and control at all levels from product to transactions,from top to·bottom,with layers of risk control on various volatile factors
+                                </p>
+                            </div>
+                        </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+                    </div>
+                    <div className="flex justify-between mt-[50px]">
+                        <div>
+                            <Image
+                                src="/static/icons/tradingSystem.svg"
+                                alt="tradingSystem"
+                                width={76}
+                                height={76}
+                                priority
+                            />
+                            <div className="max-w-[520px] mt-[30px]">
+                                <h3 className="text-[#1a1a1a] text-[35px] leading-[70px]">
+                                    <span className="font-[500]">Robust trading system</span>
+                                </h3>
+                                <p className="text-[#4d4d4d] text-[20px] mt-[5px] leading-8">
+                                    World-class trading system designed for institutional user in support of high-frequency tradings is optimized for digital asset and.implemented for over thousands hours' trading with no discontinuity
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <Image
+                                src="/static/icons/productDesign.svg"
+                                alt="productDesign"
+                                width={76}
+                                height={76}
+                                priority
+                            />
+                            <div className="max-w-[520px] mt-[30px]">
+                                <h3 className="text-[#1a1a1a] text-[35px] leading-[70px]">
+                                    <span className="font-[500]">Professional product design</span>
+                                </h3>
+                                <p className="text-[#4d4d4d] text-[20px] mt-[5px] leading-8">
+                                    Wealth of product design experiences in traditional finance.including the portfolio developed by sophiscated algorithm, application of derivatives, structure of product for the customized needs in digital asset management
+                                </p>
+                            </div>
+                        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+                    </div>
+                </div>
+            </div>
+            <div className="mx-[50px]">
+                <div className="bg-[#1a1a1a] rounded-[40px]  mt-[-270px] h-[480px]">
+                    <h6 className="text-[#fff] text-[52px]  font-[600] text-center pt-[50px]">Our Partners</h6>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+                    <div className="px-[80px] mt-[55px]">
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+                        <div className="grid grid-cols-4 place-content-stretch gap-y-10 gap-x-16">
+
+                            <div className="relative h-[90px] ">
+                                <Image src={ku_coin} layout="fill" alt=""></Image>
+                            </div>
+                            <div className="relative h-[90px] ">
+                                <Image src="/static/images/2.png" layout="fill" alt=""></Image>
+                            </div>
+
+                            <div className="relative h-[90px] ">
+                                <Image src="/static/images/3.png" layout="fill" alt=""></Image>
+                            </div>
+                            <div className="relative h-[90px]">
+                                <Image src="/static/images/4.png" layout="fill" alt=""></Image>
+                            </div>
+                            <div className="relative h-[90px] ">
+                                <Image src="/static/images/5.png" layout="fill" alt=""></Image>
+                            </div>
+                            <div className="relative h-[90px] ">
+                                <Image src="/static/images/6.png" layout="fill" alt=""></Image>
+                            </div>
+
+                            <div className="relative h-[90px] ">
+                                <Image src="/static/images/7.png" layout="fill" alt=""></Image>
+                            </div>
+                            <div className="relative h-[90px] ">
+                                <Image src="/static/images/8.png" layout="fill" alt=""></Image>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
 }
