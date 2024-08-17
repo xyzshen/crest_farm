@@ -86,29 +86,29 @@ export default function Strategy() {
                     </div>
                     <div className="px-[130px]">
                         <div className="w-[555px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px]">
-                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] ${isActiveKey === 1 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 1 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
                                 onClick={() => setActiveKey(1)}>
                                 <span>LRT</span>
                             </div>
-                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] ${isActiveKey === 2 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 2 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
                                 onClick={() => setActiveKey(2)}>
                                 <span>LST</span>
                             </div>
-                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] ${isActiveKey === 3 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 3 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
                                 onClick={() => setActiveKey(3)}>
                                 <span>Liquidity Pool</span>
                             </div>
-                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] ${isActiveKey === 4 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 4 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
                                 onClick={() => setActiveKey(4)}>
                                 <span>Points</span>
                             </div>
-                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] ${isActiveKey === 5 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 5 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
                                 onClick={() => setActiveKey(5)}>
                                 <span>Stables</span>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-[30px] mt-[30px]">
-                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex">
+                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
                                     <span className="text-[24px] text-[#2C4E93]">Stable Coin Mining</span>
                                     <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('Stable Coin Mining')}>More</span>
@@ -139,7 +139,7 @@ export default function Strategy() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex">
+                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
                                     <span className="text-[24px] text-[#2C4E93]">Liquidity Mining Hedging</span>
                                     <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('Liquidity Mining Hedging')}>More</span>
@@ -170,7 +170,7 @@ export default function Strategy() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex">
+                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
                                     <span className="text-[24px] text-[#2C4E93]">GMX-GM Delta Neutral</span>
                                     <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('GMX-GM Delta Neutral')}>More</span>
@@ -201,7 +201,7 @@ export default function Strategy() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex">
+                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
                                     <span className="text-[24px] text-[#2C4E93]">Pair Trading</span>
                                     <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('Pair Trading')}>More</span>
@@ -232,7 +232,7 @@ export default function Strategy() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex">
+                            <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
                                     <span className="text-[24px] text-[#2C4E93]">CTA</span>
                                     <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('CTA')}>More</span>

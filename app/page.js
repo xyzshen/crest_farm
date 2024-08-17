@@ -5,7 +5,7 @@ export default function Home() {
         <main className="">
             <div className="px-[50px]">
                 <div className="bg-home-banner bg-cover bg-no-repeat">
-                    <div className="content-area mx-auto h-[657px] flex flex-col justify-center items-center">
+                    <div className="content-area mx-auto min-h-[657px] h-[657px] flex flex-col justify-center items-center">
                         <div className="text-center font-[600] text-[#000] text-[70px]">
                             Growth&nbsp;your&nbsp;crypto&nbsp;asset<br />Build&nbsp;for&nbsp;the&nbsp;top
                         </div>
@@ -182,15 +182,16 @@ export default function Home() {
                                 <Image src="/static/images/5.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
+                                <Image src="/static/images/8.png" layout="fill" alt=""></Image>
+                            </div>
+                            <div className="relative h-[90px] ">
                                 <Image src="/static/images/6.png" layout="fill" alt=""></Image>
                             </div>
 
                             <div className="relative h-[90px] ">
                                 <Image src="/static/images/7.png" layout="fill" alt=""></Image>
                             </div>
-                            <div className="relative h-[90px] ">
-                                <Image src="/static/images/8.png" layout="fill" alt=""></Image>
-                            </div>
+
                         </div>
                     </div>
                 </div>

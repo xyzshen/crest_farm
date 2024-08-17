@@ -18,7 +18,8 @@ module.exports = {
             },
             boxShadow: {
                 tabs_sub_shadow: "0px 0px 5px 0px rgba(0,0,0,0.2)",
-                strategy_days_shadow: "0px 2px 4px 0px rgba(0,0,0,0.05)"
+                strategy_days_shadow: "0px 2px 4px 0px rgba(0,0,0,0.05)",
+                strategy_chart_shadow: "0px 10px 30px 0px rgba(0,0,0,0.1)"
             },
         },
     },
