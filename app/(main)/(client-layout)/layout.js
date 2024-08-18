@@ -9,10 +9,17 @@ import Link from "next/link";
 import logo from "/public/static/images/logo.png";
 import Shape from "/public/static/icons/shape.svg";
 export default function ClientLayout({ children }) {
-    const user = window && window.sessionStorage.getItem("accountNumber");
+    var user;
+    if (typeof window !== 'undefined') {
+        var user = window && window.sessionStorage.getItem("accountNumber");;
+    }
+
     const [isShowQuit, setIsShowQuit] = useState(false);
     const onQuit = () => {
-        window && window.sessionStorage.removeItem("accountNumber");
+        if (typeof window !== 'undefined') {
+            window && window.sessionStorage.removeItem("accountNumber");
+        }
+
         location.reload();
     }
     return (

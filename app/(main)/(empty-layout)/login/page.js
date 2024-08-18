@@ -12,7 +12,11 @@ export default function Login() {
     const [isShowType, setIsShowType] = useState(1);
     const onFinish = (values) => {
         console.log('Success:', values);
-        window && window.sessionStorage.setItem('accountNumber', values.accountNumber)
+        if (typeof window !== 'undefined') {
+            window && window.sessionStorage.setItem('accountNumber', values.accountNumber)
+        }
+
+
         router.push('/#')
 
     };
