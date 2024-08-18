@@ -6,13 +6,14 @@ import binance from "/public/static/images/binance.png";
 import curve from "/public/static/images/curve.png";
 import okx from "/public/static/images/okx.png";
 import pancokeSwap from "/public/static/images/pancokeSwap.png";
+import './Strategy.css'
 export default function Strategy() {
     const [isActiveKey, setActiveKey] = useState(1);
     const [isShowDetails, setShowDetails] = useState(false);
     const [isTitle, setTitle] = useState('');
     const options = {
         title: {
-            text: '运行45天',
+            text: 'Running for 45 days',
             right: 0,
             top: 0,
             textStyle: {
@@ -110,8 +111,7 @@ export default function Strategy() {
                         <div className="grid grid-cols-2 gap-[30px] mt-[30px]">
                             <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
-                                    <span className="text-[24px] text-[#2C4E93]">Stable Coin Mining</span>
-                                    <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('Stable Coin Mining')}>More</span>
+                                    <span className="text-[24px] text-[#2C4E93] cursor-pointer" onClick={() => onShowDetails('Stable Coin Mining')}>Stable Coin Mining</span>
                                 </h2>
                                 <div className="h-[140px]">
                                     <Chart options={options} />
@@ -294,7 +294,7 @@ export default function Strategy() {
                     <div className="mt-[-45px] px-[130px]">
                         <div className=" h-[160px]  bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[31px] pt-[10px]">
 
-                            <table className="w-full text-left">
+                            <table className="w-full text-left ">
                                 <tr className="leading-10">
                                     <th className="text-[#999999] text-[16px] font-[600]">year</th>
                                     <th className="text-[#999999] text-[16px] font-[600]">Jan</th>
@@ -345,7 +345,7 @@ export default function Strategy() {
                                     Performance
                                 </div>
                                 <div>
-                                    <span className="text-[#2C4E93] text-[20px] font-bold">每月收益率概览</span>
+                                    <span className="text-[#2C4E93] text-[20px] font-bold">Monthly Yield Overview</span>
                                     <span className="text-[#4d4d4d] text-[14px] ml-[15px]">since 2024/06/24</span>
                                 </div>
                             </div>

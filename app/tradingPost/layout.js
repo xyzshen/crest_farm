@@ -1,8 +1,8 @@
 import Image from "next/image";
 export default function TradingPostLayout({ children }) {
     return (
-        <div className="bg-[#f2f2f2] flex pt-[30px] px-[50px] pb-[33px]">
-            <ul className=" w-[200px] h-screen">
+        <div className="bg-[#f2f2f2] flex  pb-[33px]">
+            <ul className=" w-[200px] h-screen bg-white pl-[30px] pt-[22px] text-[14px]">
                 <li className={`flex text-[#999999]`}>
                     <Image
                         src="/static/icons/stage.svg"

@@ -24,7 +24,7 @@ export default function Footer() {
                 <div>
                     <Image src={logo} width={198} height={40} alt="" />
                 </div>
-                <div className="text-[16px] text-[#4d4d4d] font-[400]">©&nbsp;2024&nbsp;Crest&nbsp;Labs&nbsp;Ltd.&nbsp;All&nbsp;rights&nbsp;reserved&nbsp;Discord&nbsp;twitter&nbsp;github&nbsp;Medium </div>
+                <div className="text-[16px] text-[#4d4d4d] font-[400]">©&nbsp;2024&nbsp;Crest&nbsp;Labs&nbsp;Ltd.&nbsp;All&nbsp;rights&nbsp;reserved&nbsp;</div>
                 <div className="flex flex-row">
                     <div className=""
                         onMouseEnter={() => setIsShowDiscord(false)}
