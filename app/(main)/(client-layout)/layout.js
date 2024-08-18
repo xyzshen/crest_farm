@@ -9,10 +9,10 @@ import Link from "next/link";
 import logo from "/public/static/images/logo.png";
 import Shape from "/public/static/icons/shape.svg";
 export default function ClientLayout({ children }) {
-    const user = window.sessionStorage.getItem("accountNumber");
+    const user = window && window.sessionStorage.getItem("accountNumber");
     const [isShowQuit, setIsShowQuit] = useState(false);
     const onQuit = () => {
-        window.sessionStorage.removeItem("accountNumber");
+        window && window.sessionStorage.removeItem("accountNumber");
         location.reload();
     }
     return (

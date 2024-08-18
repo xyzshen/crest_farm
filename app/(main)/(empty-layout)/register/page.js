@@ -14,7 +14,7 @@ export default function Login() {
     const [isShowType, setIsShowType] = useState(1);
     const onFinish = (values) => {
         console.log('Success:', values);
-        window.sessionStorage.setItem('accountNumber', values.accountNumber)
+        window && window.sessionStorage.setItem('accountNumber', values.accountNumber)
         alert('Success!')
     };
     const onFinishFailed = (errorInfo) => {
