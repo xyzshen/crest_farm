@@ -86,7 +86,7 @@ export default function Strategy() {
                         <p className="text-[14px] text-[#4d4d4d] font-normal leading-4 mt-[15px]">Deposit and take over your position to GP</p>
                     </div>
                     <div className="px-[130px]">
-                        <div className="w-[555px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px]">
+                        <div className="w-[555px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 1 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
                                 onClick={() => setActiveKey(1)}>
                                 <span>LRT</span>
@@ -141,8 +141,7 @@ export default function Strategy() {
                             </div>
                             <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
-                                    <span className="text-[24px] text-[#2C4E93]">Liquidity Mining Hedging</span>
-                                    <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('Liquidity Mining Hedging')}>More</span>
+                                    <span className="text-[24px] text-[#2C4E93] cursor-pointer" onClick={() => onShowDetails('Liquidity Mining Hedging')}>Liquidity Mining Hedging</span>
                                 </h2>
                                 <div className="h-[140px]">
                                     <Chart options={options} />
@@ -172,8 +171,7 @@ export default function Strategy() {
                             </div>
                             <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
-                                    <span className="text-[24px] text-[#2C4E93]">GMX-GM Delta Neutral</span>
-                                    <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('GMX-GM Delta Neutral')}>More</span>
+                                    <span className="text-[24px] text-[#2C4E93] cursor-pointer" onClick={() => onShowDetails('GMX-GM Delta Neutral')}>GMX-GM Delta Neutral</span>
                                 </h2>
                                 <div className="h-[140px]">
                                     <Chart options={options} />
@@ -203,8 +201,7 @@ export default function Strategy() {
                             </div>
                             <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
-                                    <span className="text-[24px] text-[#2C4E93]">Pair Trading</span>
-                                    <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('Pair Trading')}>More</span>
+                                    <span className="text-[24px] text-[#2C4E93] cursor-pointer" onClick={() => onShowDetails('Pair Trading')}>Pair Trading</span>
                                 </h2>
                                 <div className="h-[140px]">
                                     <Chart options={options} />
@@ -234,8 +231,7 @@ export default function Strategy() {
                             </div>
                             <div className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                 <h2 className="flex justify-between items-center">
-                                    <span className="text-[24px] text-[#2C4E93]">CTA</span>
-                                    <span className="text-[#1a1a1a] text-[16px] cursor-pointer" onClick={() => onShowDetails('CTA')}>More</span>
+                                    <span className="text-[24px] text-[#2C4E93] cursor-pointer" onClick={() => onShowDetails('CTA')}>CTA</span>
                                 </h2>
                                 <div className="h-[140px]">
                                     <Chart options={options} />

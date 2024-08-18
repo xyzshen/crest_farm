@@ -3,7 +3,7 @@ import ku_coin from "/public/static/images/ku_coin.png";
 export default function Home() {
     return (
         <main className="">
-            <div className="px-[50px]">
+            <div className="">
                 <div className="bg-home-banner bg-cover bg-no-repeat">
                     <div className="content-area mx-auto min-h-[657px] h-[657px] flex flex-col justify-center items-center">
                         <div className="text-center font-[600] text-[#000] text-[70px]">

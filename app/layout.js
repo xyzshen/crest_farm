@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
 
             <body>
-                <header className="px-[50px] bg-black">
+                <header className="px-[50px] bg-white shadow-home_header_shadow h-16 static top-0 z-50">
                     <div className="content-area mx-auto flex h-16 flex-row justify-between">
                         <div className={"flex h-16 items-center"}>
                             <Link href="/#">
@@ -26,15 +26,16 @@ export default function RootLayout({ children }) {
                             </Link>
                         </div>
                         <div className="flex h-16">
-                            <div className="h-16 leading-[64px] cursor-pointer"><span><Link href="/strategy" className="text-[#ffffff]">Strategy</Link></span></div>
-                            <div className="h-16 leading-[64px] cursor-pointer ml-[88px]"><span><Link href="/tradingPost" className="text-[#ffffff]">Protfolio</Link></span></div>
+                            <div className="h-16 leading-[64px] cursor-pointer"><span><Link href="/strategy" className="text-[#1a1a1a]">Strategy</Link></span></div>
+                            <div className="h-16 leading-[64px] cursor-pointer ml-[88px]"><span><Link href="/tradingPost" className="text-[#1a1a1a]">Protfolio</Link></span></div>
                             <div className="h-16 leading-[64px] cursor-pointer ml-[88px]">
-                                <span className="px-[24px] py-[9px] bg-white hover:bg-[#f3f3f3] text-black cursor-pointer rounded-[14px]">Sign In</span>
-                                {/* <span className="px-[24px] py-[9px] bg-white hover:bg-[#f3f3f3] text-[#2C4E93] cursor-pointer rounded-[14px]">{user}</span> */}
+                                <span className="px-[24px] py-[9px] bg-black hover:bg-[#3d3d3d] text-[#fff] cursor-pointer rounded-[14px]">Sign In</span>
+                                {/* <span className="px-[24px] py-[9px] bg-white hover:bg-[#f3f3f3] text-[#1a1a1a] cursor-pointer rounded-[14px]">{user}</span> */}
                             </div>
                         </div>
                     </div>
                 </header>
+
                 {children}
                 <Footer />
             </body>
