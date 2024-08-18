@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="7px" viewBox="0 0 10 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.696973">
+        <g id="交易所" transform="translate(-1364.000000, -29.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="topbar">
+                <g id="编组" transform="translate(1290.000000, 13.000000)">
+                    <g transform="translate(17.000000, 11.000000)" id="Shape">
+                        <path d="M66.814374,5.20443435 C66.6907601,5.06810709 66.5442294,5 66.3749188,5 L57.625047,5 C57.455668,5 57.3092399,5.06810709 57.1855234,5.20443435 C57.0618069,5.34091237 57,5.50226626 57,5.68879752 C57,5.8752911 57.0618069,6.03664499 57.1855234,6.17300994 L61.5604764,10.9939142 C61.6843297,11.1302414 61.8307578,11.1984993 62,11.1984993 C62.1692422,11.1984993 62.3158071,11.1302414 62.439421,10.9939142 L66.814374,6.17297224 C66.9379536,6.03664499 67,5.8752911 67,5.68875983 C67,5.50226626 66.9379536,5.34091237 66.814374,5.20443435 Z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

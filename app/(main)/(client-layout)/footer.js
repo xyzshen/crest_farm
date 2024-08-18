@@ -17,7 +17,6 @@ export default function Footer() {
     const [isShowTelemetry, setIsShowTelemetry] = useState(true);
     const [isShowTwitter, setIsShowTwitter] = useState(true);
     const [isShowGithub, setIsShowGithub] = useState(true);
-    const [isShowGithub1, setIsShowGithub1] = useState(true);
     return (
         <footer className="">
             <div className="px-[50px] flex  items-center justify-between text-center text-[#4d4d4d] h-[136px]">

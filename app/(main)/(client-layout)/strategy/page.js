@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import Image from "next/image";
-import Chart from "../components/Chart.js"
+import Chart from "../../../components/Chart.js"
 import binance from "/public/static/images/binance.png";
 import curve from "/public/static/images/curve.png";
 import okx from "/public/static/images/okx.png";
