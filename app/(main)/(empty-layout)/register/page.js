@@ -4,7 +4,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import Image from "next/image";
 import Link from "next/link";
 import loginLogo from "/public/static/images/login_logo.png";
@@ -14,7 +14,7 @@ export default function Login() {
     const [isShowType, setIsShowType] = useState(1);
     const onFinish = (values) => {
         console.log('Success:', values);
-        sessionStorage.setItem('accountNumber', values.accountNumber)
+        window.sessionStorage.setItem('accountNumber', values.accountNumber)
         alert('Success!')
     };
     const onFinishFailed = (errorInfo) => {
