@@ -28,7 +28,7 @@ export default function Strategy() {
 
         },
         xAxis: {
-
+            type: 'category',
             data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "JuI", "Aug", "Sep", "Oct", "NOV", "Dec"],
         },
         yAxis: {},
@@ -41,8 +41,9 @@ export default function Strategy() {
         },
         series: [
             {
-                type: "line",
-                data: [0, 50, 100],
+                type: "bar",
+                data: [10, 50, 100],
+                barWidth: 18,
             },
         ],
     };
@@ -66,8 +67,9 @@ export default function Strategy() {
         },
         series: [
             {
-                type: "line",
-                data: [0, 50, 100],
+                type: "bar",
+                data: [10, 50, 100],
+                barWidth: 18,
             },
         ],
     }
@@ -82,8 +84,8 @@ export default function Strategy() {
             {
                 !isShowDetails && <div className="bg-home-grid-point bg-cover bg-no-repeat h-[1406px]">
                     <div className="px-[130px] pt-[60px] pb-[70px]">
-                        <h3 className="text-[40px] text-[#333] font-bold leading-[48px]">Crest farm Strategy</h3>
-                        <p className="text-[14px] text-[#4d4d4d] font-normal leading-4 mt-[15px]">Deposit and take over your position to GP</p>
+                        <h3 className="text-[40px] text-[#333] font-bold leading-[48px]">Crest Strategy</h3>
+                        {/* <p className="text-[14px] text-[#4d4d4d] font-normal leading-4 mt-[15px]">Deposit and take over your position to GP</p> */}
                     </div>
                     <div className="px-[130px]">
                         <div className="w-[555px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
@@ -379,17 +381,17 @@ export default function Strategy() {
                         <div className="h-[315px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[30px] pr-[44px] pt-[40px] col-span-4">
                             <h1 className="text-[24px] text-[#333333] font-[600]">Cooperating Party</h1>
                             <div className="grid grid-cols-2 gap-x-[40px] gap-y-[20px] mt-[15px]">
-                                <div className="w-full">
-                                    <Image src={binance} height='90px' width='100%' alt='binance'></Image>
+                                <div className="w-full relative  h-[90px]">
+                                    <Image src={binance} layout="fill" alt='binance'></Image>
                                 </div>
-                                <div>
-                                    <Image src={pancokeSwap} height='90px' alt='pancokeSwap'></Image>
+                                <div className="w-full relative h-[90px]">
+                                    <Image src={pancokeSwap} layout="fill" alt='pancokeSwap'></Image>
                                 </div>
-                                <div>
-                                    <Image src={curve} height='90px' alt='curve'></Image>
+                                <div className="w-full relative h-[90px]">
+                                    <Image src={curve} layout="fill" alt='curve'></Image>
                                 </div>
-                                <div>
-                                    <Image src={okx} height='90px' alt='okx'></Image>
+                                <div className="w-full relative h-[90px]">
+                                    <Image src={okx} layout="fill" alt='okx'></Image>
                                 </div>
                             </div>
                         </div>

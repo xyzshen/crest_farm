@@ -17,7 +17,7 @@ export default function Login() {
         }
 
 
-        router.push('/#')
+        router.push('/strategy')
 
     };
     const onFinishFailed = (errorInfo) => {

@@ -3,8 +3,8 @@ import ku_coin from "/public/static/images/ku_coin.png";
 export default function Home() {
     return (
         <main className="">
-            <div className="">
-                <div className="bg-home-banner bg-cover bg-no-repeat">
+            <div className="min-h-[657px]">
+                <div className="bg-home-banner bg-cover bg-no-repeat min-h-[657px]">
                     <div className="content-area mx-auto min-h-[657px] h-[657px] flex flex-col justify-center items-center">
                         <div className="text-center font-[600] text-[#000] text-[70px]">
                             Growth&nbsp;your&nbsp;crypto&nbsp;asset<br />Build&nbsp;for&nbsp;the&nbsp;top
