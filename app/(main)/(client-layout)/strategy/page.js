@@ -30,8 +30,24 @@ export default function Strategy() {
         xAxis: {
             type: 'category',
             data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "JuI", "Aug", "Sep", "Oct", "NOV", "Dec"],
+            axisLine: {
+                lineStyle: {
+                    color: "#999999"
+                }
+            }
         },
-        yAxis: {},
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}.00 %'
+            },
+            interval: 50,
+            axisLine: {
+                lineStyle: {
+                    color: "#999999"
+                }
+            }
+        },
         grid: {
             left: '0%',
             right: '0%',
@@ -42,8 +58,14 @@ export default function Strategy() {
         series: [
             {
                 type: "bar",
-                data: [10, 50, 100],
+                data: [10, 50, 70, -10, 2.2, 18.5, 3.7, -51],
                 barWidth: 18,
+                itemStyle: {
+                    color: '#5E9EFF',
+                },
+                tooltip: {
+                    formatter: '{b}{c} %'
+                }
             },
         ],
     };
@@ -56,9 +78,26 @@ export default function Strategy() {
 
         },
         xAxis: {
+            type: 'category',
             data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "JuI", "Aug", "Sep", "Oct", "NOV", "Dec"],
+            axisLine: {
+                lineStyle: {
+                    color: "#999999"
+                }
+            }
         },
-        yAxis: {},
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}.00 %'
+            },
+            interval: 50,
+            axisLine: {
+                lineStyle: {
+                    color: "#999999"
+                }
+            }
+        },
         grid: {
             left: '0%',
             right: '0%',
@@ -68,8 +107,14 @@ export default function Strategy() {
         series: [
             {
                 type: "bar",
-                data: [10, 50, 100],
-                barWidth: 18,
+                data: [10, 50, 70, -10, 2.2, 18.5, 3.7, -51],
+                barWidth: 26,
+                itemStyle: {
+                    color: '#5E9EFF',
+                },
+                tooltip: {
+                    formatter: '{b}{c} %'
+                }
             },
         ],
     }

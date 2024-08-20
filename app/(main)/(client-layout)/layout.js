@@ -34,7 +34,7 @@ export default function ClientLayout({ children }) {
                     <div className="flex h-16 justify-center items-center">
                         <div className="h-16 leading-[64px] cursor-pointer"><span><Link href="/strategy" className="text-[#1a1a1a]">Strategy</Link></span></div>
                         {user && <div className="h-16 leading-[64px] cursor-pointer ml-[88px]"><span><Link href="/tradingPost" className="text-[#1a1a1a]">Protfolio</Link></span></div>}
-                        <div className="cursor-pointer ml-[88px]">
+                        <div className="cursor-pointer ml-[88px] relative">
                             {!user ?
                                 <span className="px-[24px] py-[8px] bg-black hover:bg-[#3d3d3d] text-[#fff] cursor-pointer rounded-[14px]">
                                     <Link href={"/login"}>Sign In</Link>
@@ -45,11 +45,11 @@ export default function ClientLayout({ children }) {
 
                                 </span>
                             }
-
+                            {isShowQuit && <div className="absolute right-0 w-[100px] text-center bg-[#3c3c3c] rounded-md text-[#fff] cursor-pointer">
+                                <span onClick={onQuit}>Quit</span>
+                            </div>}
                         </div>
-                        {isShowQuit && <div className="absolute top-[50px] right-20 w-[50px] text-center bg-[#d3d3d3] text-[#fff] cursor-pointer">
-                            <span onClick={onQuit}>Quit</span>
-                        </div>}
+
                     </div>
                 </div>
             </header >
