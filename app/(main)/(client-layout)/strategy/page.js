@@ -530,7 +530,7 @@ export default function Strategy() {
                                 <thead>
                                     <tr className="leading-10">
                                         {tableHeaders.map((item, index) => (
-                                            <th className="text-[#999999] text-[16px] font-[600]">{item.title}</th>
+                                            <th key={index} className="text-[#999999] text-[16px] font-[600]">{item.title}</th>
                                         ))
                                         }
                                     </tr>
@@ -538,9 +538,9 @@ export default function Strategy() {
 
                                 <tbody>
                                     {detailData.map((item, index) => (
-                                        <tr className="leading-10">
-                                            {tableHeaders.map((it, index) => (
-                                                item[it.key] === "N/A" ? <td className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td>{item[it.key]}</td> : <td>{item[it.key]}%</td>
+                                        <tr key={index} className="leading-10">
+                                            {tableHeaders.map((it, i) => (
+                                                item[it.key] === "N/A" ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
                                             ))
                                             }
 
