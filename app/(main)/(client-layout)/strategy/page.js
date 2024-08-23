@@ -17,7 +17,7 @@ const headers = {
     "Access-Control-Max-Age": "3600",
     "withCredentials": true
 }
-const baseUrl = 'http://110.41.87.225';
+const baseUrl = 'https://110.41.87.225';
 const processData = (data) => {
     const result = [];
     const groupedByYear = data.reduce((acc, item) => {
