@@ -73,7 +73,7 @@ export default function Strategy() {
     const [isShowDetails, setShowDetails] = useState(false);
     const [isTitle, setTitle] = useState('');
     const [chartData, setChartData] = useState([]);
-    const [chartData2, setChartData2] = useState({});
+    const [chartData2, setChartData2] = useState(null);
     const [detailData, setDetailData] = useState([]);
     const [initDate, setInitDate] = useState('');
     const options = {
@@ -134,7 +134,7 @@ export default function Strategy() {
             },
         ],
     };
-    const options2 = {
+    let options2 = {
         title: {
 
         },
@@ -144,7 +144,7 @@ export default function Strategy() {
         },
         xAxis: {
             type: 'category',
-            data: [''],
+            data: [],
             axisLine: {
                 lineStyle: {
                     color: "#999999"
@@ -183,58 +183,6 @@ export default function Strategy() {
             },
         ],
     }
-    useEffect(() => {
-        let options2 = {
-            title: {
-
-            },
-            tooltip: {},
-            legend: {
-
-            },
-            xAxis: {
-                type: 'category',
-                data: [''],
-                axisLine: {
-                    lineStyle: {
-                        color: "#999999"
-                    }
-                }
-            },
-            yAxis: {
-                type: 'value',
-                axisLabel: {
-                    formatter: '{value}.00 %'
-                },
-                interval: 50,
-                axisLine: {
-                    lineStyle: {
-                        color: "#999999"
-                    }
-                }
-            },
-            grid: {
-                left: '0%',
-                right: '0%',
-                bottom: '0%',
-                containLabel: true,
-            },
-            series: [
-                {
-                    type: "bar",
-                    data: [],
-                    barWidth: 26,
-                    itemStyle: {
-                        color: '#5E9EFF',
-                    },
-                    tooltip: {
-                        formatter: '{b} {c}%'
-                    }
-                },
-            ],
-        }
-        setChartData2(options2)
-    }, [])
     useEffect(() => {
 
         fetch(`${baseUrl}/crestmgn/strategy/list`, {
@@ -336,10 +284,14 @@ export default function Strategy() {
         dataIndex: 'Annual',
     }
     ]
-    const onShowDetails = (param) => {
-        setTitle(param);
+    const onShowDetails = async (item) => {
+        const newItem = JSON.parse(JSON.stringify(item))
+        setTitle(newItem.strategy);
+        console.log(newItem.options)
+        newItem.options.series[0].barWidth = 26;
+        setChartData2(newItem.options)
         setShowDetails(true);
-        fetch(`${baseUrl}/crestmgn/strategy/get?strategy=${param}`, {
+        await fetch(`${baseUrl}/crestmgn/strategy/get?strategy=${item.strategy}`, {
             method: 'GET',
             headers: headers,
         }).then((res) => res.json())
@@ -348,68 +300,68 @@ export default function Strategy() {
                 setInitDate(moment(initialDate).format('YYYY/MM'));
                 const historyValues = data.data.history
                 setDetailData(processData(historyValues))
-
-
                 // 初始化数据重新赋值
-                let list = data.data;
-                let options2 = {
-                    title: {
+                // let list = data.data;
+                // let list1 = JSON.parse(JSON.stringify(list));
+                // let options2 = {
+                //     title: {
 
-                    },
-                    tooltip: {},
-                    legend: {
+                //     },
+                //     tooltip: {},
+                //     legend: {
 
-                    },
-                    xAxis: {
-                        type: 'category',
-                        data: [],
-                        axisLine: {
-                            lineStyle: {
-                                color: "#999999"
-                            }
-                        }
-                    },
-                    yAxis: {
-                        type: 'value',
-                        axisLabel: {
-                            formatter: '{value}.00 %'
-                        },
-                        interval: 50,
-                        axisLine: {
-                            lineStyle: {
-                                color: "#999999"
-                            }
-                        }
-                    },
-                    grid: {
-                        left: '0%',
-                        right: '0%',
-                        bottom: '0%',
-                        containLabel: true,
-                    },
-                    series: [
-                        {
-                            type: "bar",
-                            data: [],
-                            barWidth: 26,
-                            itemStyle: {
-                                color: '#5E9EFF',
-                            },
-                            tooltip: {
-                                formatter: '{b} {c}%'
-                            }
-                        },
-                    ],
-                }
-                const months = list.history.map((item) => {
-                    return item.month
-                })
-                const values = list.history.map((item) => {
-                    return item.content.month_return
-                })
-                options2.xAxis.data = months;
-                options2.series[0].data = values;
-                setChartData2(options2)
+                //     },
+                //     xAxis: {
+                //         type: 'category',
+                //         data: [],
+                //         axisLine: {
+                //             lineStyle: {
+                //                 color: "#999999"
+                //             }
+                //         }
+                //     },
+                //     yAxis: {
+                //         type: 'value',
+                //         axisLabel: {
+                //             formatter: '{value}.00 %'
+                //         },
+                //         interval: 50,
+                //         axisLine: {
+                //             lineStyle: {
+                //                 color: "#999999"
+                //             }
+                //         }
+                //     },
+                //     grid: {
+                //         left: '0%',
+                //         right: '0%',
+                //         bottom: '0%',
+                //         containLabel: true,
+                //     },
+                //     series: [
+                //         {
+                //             type: "bar",
+                //             data: [],
+                //             barWidth: 26,
+                //             itemStyle: {
+                //                 color: '#5E9EFF',
+                //             },
+                //             tooltip: {
+                //                 formatter: '{b} {c}%'
+                //             }
+                //         },
+                //     ],
+                // }
+                // const months = list1.history.map((item) => {
+                //     return item.month
+                // })
+                // const values = list1.history.map((item) => {
+                //     return item.content.month_return
+                // })
+                // options2.xAxis.data = months;
+                // options2.series[0].data = values;
+                // setChartData2(options2)
+                // console.log('chartData2:', chartData2)
             })
     }
     const formatTarget = (value) => {
@@ -465,7 +417,7 @@ export default function Strategy() {
                             {chartData.map((item, index) => (
                                 <div key={index} className="h-[334px] bg-[#fcfcfc] rounded-[20px] px-[45px] py-[35px] flex-col justify-between flex hover:shadow-strategy_chart_shadow">
                                     <h2 className="flex justify-between items-center">
-                                        <span className="text-[24px] text-[#2C4E93] cursor-pointer" onClick={() => onShowDetails(item.strategy)}>{item.strategy}</span>
+                                        <span className="text-[24px] text-[#2C4E93] cursor-pointer" onClick={() => onShowDetails(item)}>{item.strategy}</span>
                                     </h2>
                                     <div className="h-[140px]">
                                         <Chart options={item.options} />
@@ -563,7 +515,7 @@ export default function Strategy() {
                                 </div>
                             </div>
                             <div className="h-[252px]">
-                                <Chart options={chartData2}></Chart>
+                                {detailData.length && chartData2 && <Chart options={chartData2}></Chart>}
                             </div>
                         </div>
                     </div>
