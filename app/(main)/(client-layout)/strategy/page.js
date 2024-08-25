@@ -33,7 +33,7 @@ const processData = (data) => {
 
     Object.keys(groupedByYear).forEach(year => {
         const yearData = groupedByYear[year];
-        const monthlyReturns = Object.values(yearData).slice(1, -1).filter(val => val !== 'N/A').map(Number);
+        const monthlyReturns = Object.values(yearData).slice(1, 13).filter(val => val !== 'N/A').map(Number);
         if (monthlyReturns.length > 0) {
             yearData.Annual = (monthlyReturns.reduce((sum, val) => sum + val, 0)).toFixed(2);
         } else {
@@ -58,7 +58,6 @@ function transformData(data) {
         acc[year][monthNames[monthIndex]] = item.content.month_return.toFixed(2);
         return acc;
     }, {});
-    debugger
     for (const year in groupedByYear) {
         const months = groupedByYear[year];
         const annualReturn = Object.values(months).slice(1, 13).reduce((sum, value) => sum + parseFloat(value), 0).toFixed(2);
@@ -134,55 +133,6 @@ export default function Strategy() {
             },
         ],
     };
-    let options2 = {
-        title: {
-
-        },
-        tooltip: {},
-        legend: {
-
-        },
-        xAxis: {
-            type: 'category',
-            data: [],
-            axisLine: {
-                lineStyle: {
-                    color: "#999999"
-                }
-            }
-        },
-        yAxis: {
-            type: 'value',
-            axisLabel: {
-                formatter: '{value}.00 %'
-            },
-            interval: 50,
-            axisLine: {
-                lineStyle: {
-                    color: "#999999"
-                }
-            }
-        },
-        grid: {
-            left: '0%',
-            right: '0%',
-            bottom: '0%',
-            containLabel: true,
-        },
-        series: [
-            {
-                type: "bar",
-                data: [],
-                barWidth: 26,
-                itemStyle: {
-                    color: '#5E9EFF',
-                },
-                tooltip: {
-                    formatter: '{b} {c}%'
-                }
-            },
-        ],
-    }
     useEffect(() => {
 
         fetch(`${baseUrl}/crestmgn/strategy/list`, {
@@ -287,7 +237,6 @@ export default function Strategy() {
     const onShowDetails = async (item) => {
         const newItem = JSON.parse(JSON.stringify(item))
         setTitle(newItem.strategy);
-        console.log(newItem.options)
         newItem.options.series[0].barWidth = 26;
         setChartData2(newItem.options)
         setShowDetails(true);
@@ -300,68 +249,6 @@ export default function Strategy() {
                 setInitDate(moment(initialDate).format('YYYY/MM'));
                 const historyValues = data.data.history
                 setDetailData(processData(historyValues))
-                // 初始化数据重新赋值
-                // let list = data.data;
-                // let list1 = JSON.parse(JSON.stringify(list));
-                // let options2 = {
-                //     title: {
-
-                //     },
-                //     tooltip: {},
-                //     legend: {
-
-                //     },
-                //     xAxis: {
-                //         type: 'category',
-                //         data: [],
-                //         axisLine: {
-                //             lineStyle: {
-                //                 color: "#999999"
-                //             }
-                //         }
-                //     },
-                //     yAxis: {
-                //         type: 'value',
-                //         axisLabel: {
-                //             formatter: '{value}.00 %'
-                //         },
-                //         interval: 50,
-                //         axisLine: {
-                //             lineStyle: {
-                //                 color: "#999999"
-                //             }
-                //         }
-                //     },
-                //     grid: {
-                //         left: '0%',
-                //         right: '0%',
-                //         bottom: '0%',
-                //         containLabel: true,
-                //     },
-                //     series: [
-                //         {
-                //             type: "bar",
-                //             data: [],
-                //             barWidth: 26,
-                //             itemStyle: {
-                //                 color: '#5E9EFF',
-                //             },
-                //             tooltip: {
-                //                 formatter: '{b} {c}%'
-                //             }
-                //         },
-                //     ],
-                // }
-                // const months = list1.history.map((item) => {
-                //     return item.month
-                // })
-                // const values = list1.history.map((item) => {
-                //     return item.content.month_return
-                // })
-                // options2.xAxis.data = months;
-                // options2.series[0].data = values;
-                // setChartData2(options2)
-                // console.log('chartData2:', chartData2)
             })
     }
     const formatTarget = (value) => {
