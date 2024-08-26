@@ -238,6 +238,7 @@ export default function Strategy() {
         const newItem = JSON.parse(JSON.stringify(item))
         setTitle(newItem.strategy);
         newItem.options.series[0].barWidth = 26;
+        newItem.options.title = '';
         setChartData2(newItem.options)
         setShowDetails(true);
         await fetch(`${baseUrl}/crestmgn/strategy/get?strategy=${item.strategy}`, {
