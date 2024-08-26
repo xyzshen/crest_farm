@@ -25,8 +25,8 @@ export default function Login() {
     };
     return (
         <div className='flex h-screen w-full'>
-            <div className='w-[38%] relative'>
-                <Image src={loginLogo} layout='fill' objectFit='cover' alt="loginLogo" />
+            <div className='w-[560px] min-w-[560px] h-full relative'>
+                <Image src={loginLogo} layout='fill' alt="loginLogo" />
             </div>
             <div className='flex justify-center items-center flex-col w-[62%]'>
                 <div className='w-[360px]'>
