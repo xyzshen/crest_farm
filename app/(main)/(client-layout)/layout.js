@@ -34,7 +34,7 @@ export default function ClientLayout({ children }) {
                     <div className="flex h-16 justify-center items-center">
                         <div className="h-16 leading-[64px] cursor-pointer"><span><Link href="/strategy" className="text-[#1a1a1a]">Strategy</Link></span></div>
                         {user && <div className="h-16 leading-[64px] cursor-pointer ml-[88px]"><span><Link href="/tradingPost" className="text-[#1a1a1a]">Protfolio</Link></span></div>}
-                        <div className="cursor-pointer ml-[88px] relative">
+                        <div className="cursor-pointer ml-[88px] relative hidden">
                             {!user ?
                                 <span className="px-[24px] py-[8px] bg-black hover:bg-[#3d3d3d] text-[#fff] cursor-pointer rounded-[14px]">
                                     <Link href={"/login"}>Sign In</Link>
