@@ -77,7 +77,7 @@ export default function Strategy() {
     const [detailData, setDetailData] = useState([]);
     const [initDate, setInitDate] = useState('');
     const [description, setDescription] = useState('');
-
+    const [strategyDetail, setStrategyDetail] = useState(null);
     const options = {
         title: {
             text: '',
@@ -259,10 +259,15 @@ export default function Strategy() {
             .then((data) => {
                 const initialDate = data.data.detail.initialDate;
                 const description = data.data.detail.description;
+                const { max_drawdown, annual_return, sharpe_ratio, annual_volatillty } = data.data.detail.content;
+                const content = Object.assign({}, { 'Initial Date': initialDate }, { 'Max Drawdown': `${max_drawdown}%` }, { 'Annual Return': `${annual_return}%` }, { 'Sharpe ratio': `${sharpe_ratio}%` }, { 'Annual Volatillty': `${annual_volatillty}%` });
+                console.log('>>>>>>>>', content)
+                setStrategyDetail(content)
                 setDescription(description);
                 setInitDate(moment(initialDate).format('YYYY/MM'));
                 const historyValues = data.data.history
                 setDetailData(processData(historyValues))
+
             })
     }
     const formatTarget = (value) => {
@@ -420,26 +425,10 @@ export default function Strategy() {
                         <div className="h-[315px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[30px] pr-[44px] pt-[40px] col-span-3">
                             <h1 className="text-[24px] text-[#333333] font-[600]">Historical Data and Performance</h1>
                             <div className="text-[16px]">
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Initial Date</span>
-                                    <span className="text-[#333333]">2023-8</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Annual Return</span>
-                                    <span className="text-[#333333]">28.59%</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Annual Volatility</span>
-                                    <span className="text-[#333333]">3.43%</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Sharpe Ratio</span>
-                                    <span className="text-[#333333]">9.16</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Max Drawdown</span>
-                                    <span className="text-[#333333]">0.7%</span>
-                                </p>
+                                {strategyDetail && Object.keys(strategyDetail).map((key) => (<p key={key} className="flex justify-between leading-10">
+                                    <span className="text-[#999999]">{key}</span>
+                                    <span className="text-[#333333]">{strategyDetail[key]}</span>
+                                </p>))}
                             </div>
                         </div>
                         <div className="h-[315px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[30px] pr-[44px] pt-[40px] col-span-4">
