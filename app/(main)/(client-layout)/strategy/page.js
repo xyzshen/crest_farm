@@ -17,7 +17,8 @@ const headers = {
     "Access-Control-Max-Age": "3600",
     "withCredentials": true
 }
-const baseUrl = 'https://crest.devilwind.cn';
+const baseUrl = 'https://link3.io';
+// const baseUrl = 'https://crest.devilwind.cn';
 const processData = (data) => {
     const result = [];
     const groupedByYear = data.reduce((acc, item) => {
@@ -75,9 +76,11 @@ export default function Strategy() {
     const [chartData2, setChartData2] = useState(null);
     const [detailData, setDetailData] = useState([]);
     const [initDate, setInitDate] = useState('');
+    const [description, setDescription] = useState('');
+
     const options = {
         title: {
-            text: 'Running for 45 days',
+            text: '',
             right: 0,
             top: 0,
             textStyle: {
@@ -114,7 +117,7 @@ export default function Strategy() {
         },
         grid: {
             left: '0%',
-            right: '0%',
+            right: '11',
             bottom: '0%',
             containLabel: true,
             height: '105px',
@@ -125,7 +128,9 @@ export default function Strategy() {
                 data: [],
                 barWidth: 18,
                 itemStyle: {
-                    color: '#5E9EFF',
+                    color: function (params) {
+                        return params.data < 0 ? '#ff6363' : '#5E9EFF'
+                    }
                 },
                 tooltip: {
                     formatter: '{b} {c}%'
@@ -156,6 +161,9 @@ export default function Strategy() {
                     })
                     list1[j].options.xAxis.data = months;
                     list1[j].options.series[0].data = values;
+                    list1[j].options.series[0].itemStyle.color = function (params) {
+                        return params.data < 0 ? '#ff6363' : '#5E9EFF'
+                    }
                 }
                 setChartData(list1)
             })
@@ -239,6 +247,9 @@ export default function Strategy() {
         setTitle(newItem.strategy);
         newItem.options.series[0].barWidth = 26;
         newItem.options.title = '';
+        newItem.options.series[0].itemStyle.color = function (params) {
+            return params.data < 0 ? '#ff6363' : '#5E9EFF'
+        }
         setChartData2(newItem.options)
         setShowDetails(true);
         await fetch(`${baseUrl}/crestmgn/strategy/get?strategy=${item.strategy}`, {
@@ -247,6 +258,8 @@ export default function Strategy() {
         }).then((res) => res.json())
             .then((data) => {
                 const initialDate = data.data.detail.initialDate;
+                const description = data.data.detail.description;
+                setDescription(description);
                 setInitDate(moment(initialDate).format('YYYY/MM'));
                 const historyValues = data.data.history
                 setDetailData(processData(historyValues))
@@ -279,7 +292,7 @@ export default function Strategy() {
                         <h3 className="text-[40px] text-[#333] font-bold leading-[48px]">Crest Strategy</h3>
                     </div>
                     <div className="px-[130px]">
-                        <div className="w-[555px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
+                        <div className="hidden w-[555px] h-[44px] bg-[#ededed] rounded-[24px] justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 1 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
                                 onClick={() => setActiveKey(1)}>
                                 <span>LRT</span>
@@ -355,11 +368,7 @@ export default function Strategy() {
                             </div>
                             <div className="text-[#ffffff] mt-[40px]">
                                 <h6 className="text-[40px] font-bold">{isTitle}</h6>
-                                <p className="text-[14px] mt-[14px]">Obtain stable income through stablecóin staking and liquidity
-                                    proVision
-                                    new currency minin
-                                    iguidity
-                                    provision in lending agreements, etc.</p>
+                                <p className="text-[14px] mt-[14px]">{description}</p>
                             </div>
                         </div>
                     </div>
