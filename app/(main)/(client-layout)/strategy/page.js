@@ -5,7 +5,7 @@ import Chart from "../../../components/Chart.js"
 import binance from "/public/static/images/binance.png";
 import curve from "/public/static/images/curve.png";
 import okx from "/public/static/images/okx.png";
-import pancokeSwap from "/public/static/images/pancokeSwap.png";
+import pancake_swap from "/public/static/images/pancake_swap.png";
 import moment from 'moment';
 import './Strategy.css'
 const headers = {
@@ -438,7 +438,7 @@ export default function Strategy() {
                                     <Image src={binance} layout="fill" alt='binance'></Image>
                                 </div>
                                 <div className="w-full relative h-[90px]">
-                                    <Image src={pancokeSwap} layout="fill" alt='pancokeSwap'></Image>
+                                    <Image src={pancake_swap} layout="fill" alt='pancake_swap'></Image>
                                 </div>
                                 <div className="w-full relative h-[90px]">
                                     <Image src={curve} layout="fill" alt='curve'></Image>

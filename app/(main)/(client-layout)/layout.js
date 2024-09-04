@@ -4,9 +4,8 @@
 'use client'
 import { useState } from "react";
 import Footer from "./footer.js";
-import Image from "next/image";
 import Link from "next/link";
-import logo from "/public/static/images/logo.png";
+import Logo from "/public/static/icons/logo.svg";
 import Shape from "/public/static/icons/shape.svg";
 export default function ClientLayout({ children }) {
     var user;
@@ -28,7 +27,7 @@ export default function ClientLayout({ children }) {
                 <div className="content-area mx-auto flex h-16 flex-row justify-between">
                     <div className={"flex h-16 items-center"}>
                         <Link href="/#">
-                            <Image src={logo} width={152} height={30} alt="" />
+                            <Logo />
                         </Link>
                     </div>
                     <div className="flex h-16 justify-center items-center">

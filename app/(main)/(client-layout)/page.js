@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import ku_coin from "/public/static/images/ku_coin.png";
 export default function Home() {
@@ -169,27 +170,27 @@ export default function Home() {
                                 <Image src={ku_coin} layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/2.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/binance.png" layout="fill" alt="binance"></Image>
                             </div>
 
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/3.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/gate.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px]">
-                                <Image src="/static/images/4.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/bit_get.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/5.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/uni_swap.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/8.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/raydium.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/6.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/gmx.png" layout="fill" alt=""></Image>
                             </div>
 
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/7.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/pancake_swap.png" layout="fill" alt=""></Image>
                             </div>
 
                         </div>
