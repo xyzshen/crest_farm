@@ -20,29 +20,43 @@ const headers = {
 const baseUrl = 'https://link3.io';
 // const baseUrl = 'https://crest.devilwind.cn';
 const processData = (data) => {
+
+    data.forEach((item) => {
+        const [year, month] = item.month.split('-');
+        if (year === '2023') {
+
+            item.annual = 55.9;
+        } else {
+            item.annual = null;
+        }
+
+    })
+    console.log(JSON.stringify(data));
     const result = [];
     const groupedByYear = data.reduce((acc, item) => {
         const [year, month] = item.month.split('-');
+        const annual = item.annual;
         const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
         if (!acc[year]) {
-            acc[year] = { year, ...monthNames.reduce((mAcc, m) => ({ ...mAcc, [m]: 'N/A' }), {}) };
+            acc[year] = { year, ...monthNames.reduce((mAcc, m) => ({ ...mAcc, [m]: '' }), {}) };
         }
         const monthName = monthNames[parseInt(month, 10) - 1];
         acc[year][monthName] = item.content.month_return.toFixed(2);
+        acc[year].annual = annual;
         return acc;
     }, {});
-
+    console.log(groupedByYear);
     Object.keys(groupedByYear).forEach(year => {
         const yearData = groupedByYear[year];
-        const monthlyReturns = Object.values(yearData).slice(1, 13).filter(val => val !== 'N/A').map(Number);
-        if (monthlyReturns.length > 0) {
-            yearData.Annual = (monthlyReturns.reduce((sum, val) => sum + val, 0)).toFixed(2);
-        } else {
-            yearData.Annual = 'N/A';
-        }
+        // const monthlyReturns = Object.values(yearData).slice(1, 13).filter(val => val !== 'N/A').map(Number);
+        // if (monthlyReturns.length > 0) {
+        //     yearData.Annual = (monthlyReturns.reduce((sum, val) => sum + val, 0)).toFixed(2);
+        // } else {
+        //     yearData.Annual = 'N/A';
+        // }
         result.push(yearData);
     });
-
+    console.log(result);
     return result;
 };
 
@@ -237,7 +251,7 @@ export default function Strategy() {
         dataIndex: 'dec',
     },
     {
-        key: 'Annual',
+        key: 'annual',
         title: 'Annual',
         dataIndex: 'Annual',
     }
@@ -394,10 +408,10 @@ export default function Strategy() {
                                     {detailData.map((item, index) => (
                                         <tr key={index} className="leading-10">
                                             {tableHeaders.map((it, i) => (
-                                                item[it.key] === "N/A" ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
+                                                !item[it.key] ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
+                                                // item[it.key] === "N/A" ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
                                             ))
                                             }
-
                                         </tr>
                                     ))}
 
