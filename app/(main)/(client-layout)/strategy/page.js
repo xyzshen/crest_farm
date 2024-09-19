@@ -31,7 +31,6 @@ const processData = (data) => {
         }
 
     })
-    console.log(JSON.stringify(data));
     const result = [];
     const groupedByYear = data.reduce((acc, item) => {
         const [year, month] = item.month.split('-');
@@ -45,7 +44,6 @@ const processData = (data) => {
         acc[year].annual = annual;
         return acc;
     }, {});
-    console.log(groupedByYear);
     Object.keys(groupedByYear).forEach(year => {
         const yearData = groupedByYear[year];
         // const monthlyReturns = Object.values(yearData).slice(1, 13).filter(val => val !== 'N/A').map(Number);
@@ -56,7 +54,6 @@ const processData = (data) => {
         // }
         result.push(yearData);
     });
-    console.log(result);
     return result;
 };
 
@@ -83,10 +80,11 @@ function transformData(data) {
     return result;
 }
 export default function Strategy() {
-    const [isActiveKey, setActiveKey] = useState(1);
+    const [isActiveKey, setActiveKey] = useState(0);
     const [isShowDetails, setShowDetails] = useState(false);
     const [isTitle, setTitle] = useState('');
     const [chartData, setChartData] = useState([]);
+    const [filterChartData, setFilterChartData] = useState([]);
     const [chartData2, setChartData2] = useState(null);
     const [detailData, setDetailData] = useState([]);
     const [initDate, setInitDate] = useState('');
@@ -180,6 +178,7 @@ export default function Strategy() {
                     }
                 }
                 setChartData(list1)
+                setFilterChartData(list1)
             })
     }, [])
 
@@ -275,7 +274,6 @@ export default function Strategy() {
                 const description = data.data.detail.description;
                 const { max_drawdown, annual_return, sharpe_ratio, annual_volatillty } = data.data.detail.content;
                 const content = Object.assign({}, { 'Initial Date': initialDate }, { 'Max Drawdown': `${max_drawdown}%` }, { 'Annual Return': `${annual_return}%` }, { 'Sharpe ratio': `${sharpe_ratio}%` }, { 'Annual Volatillty': `${annual_volatillty}%` });
-                console.log('>>>>>>>>', content)
                 setStrategyDetail(content)
                 setDescription(description);
                 setInitDate(moment(initialDate).format('YYYY/MM'));
@@ -303,6 +301,37 @@ export default function Strategy() {
         }
         return str;
     }
+    const onTabChange = (key) => {
+        setActiveKey(key);
+        let filteredData = []
+        const newData = filterChartData;
+        switch (key) {
+            case 1:
+                filteredData = newData.filter((item) => item.strategy === 'CTA')
+                break;
+
+            case 2:
+                filteredData = newData.filter((item) => item.strategy === 'GMX-GM Delta Neutral')
+                break;
+            case 3:
+                filteredData = newData.filter((item) => item.strategy === 'Stable Coin Mining')
+                break;
+            case 4:
+                filteredData = newData.filter((item) => item.strategy === 'Liquidity Mining Hedging')
+                break;
+            case 5:
+                filteredData = newData.filter((item) => item.strategy === 'Pair Trading')
+                break;
+            case 6:
+                filteredData = newData.filter((item) => item.strategy === 'Single Exchange Arbitrage')
+                break;
+            default:
+                filteredData = newData;
+                break;
+        }
+        setChartData(filteredData);
+    }
+
     return (
         <div>
             {
@@ -311,26 +340,34 @@ export default function Strategy() {
                         <h3 className="text-[40px] text-[#333] font-bold leading-[48px]">Crest Strategy</h3>
                     </div>
                     <div className="px-[130px]">
-                        <div className="hidden w-[555px] h-[44px] bg-[#ededed] rounded-[24px] justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
+                        <div className="w-[630px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 0 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                                onClick={() => onTabChange(0)}>
+                                <span>ALL</span>
+                            </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 1 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(1)}>
-                                <span>LRT</span>
+                                onClick={() => onTabChange(1)}>
+                                <span>CTA</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 2 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(2)}>
-                                <span>LST</span>
+                                onClick={() => onTabChange(2)}>
+                                <span>GDN</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 3 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(3)}>
-                                <span>Liquidity Pool</span>
+                                onClick={() => onTabChange(3)}>
+                                <span>SCM</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 4 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(4)}>
-                                <span>Points</span>
+                                onClick={() => onTabChange(4)}>
+                                <span>LMH</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 5 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(5)}>
-                                <span>Stables</span>
+                                onClick={() => onTabChange(5)}>
+                                <span>PT</span>
+                            </div>
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 6 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                                onClick={() => onTabChange(6)}>
+                                <span>SEA</span>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-[30px] mt-[30px]">
