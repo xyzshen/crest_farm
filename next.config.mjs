@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // reactStrictMode: true,
-    // swcMinify: true,
-    // output: 'standalone',
-    webpack(config) {
+    reactStrictMode: true,
+    swcMinify: true,
+    output: 'standalone',
+    webpack (config) {
         // Grab the existing rule that handles SVG imports
         const fileLoaderRule = config.module.rules.find((rule) =>
             rule.test?.test?.('.svg'),
@@ -30,7 +30,7 @@ const nextConfig = {
 
         return config
     },
-    async headers() {
+    async headers () {
         return [
             {
                 // matching all API routes
