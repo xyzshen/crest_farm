@@ -1,6 +1,6 @@
 
 
-export default async function handler(req, res) {
+export default async function handler(req: any, res: any) {
     const { method } = req;
     const { id } = req.query;
     const { name, email, password } = req.body;

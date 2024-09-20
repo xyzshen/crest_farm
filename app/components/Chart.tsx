@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from "react";
 
 import * as echarts from "echarts";
 
-function Chart({ options }) {
-    const chartRef = useRef(null);
-    let chartInstance = null;
+function Chart({ options }: any) {
+    const chartRef = useRef<any>(null);
+    let chartInstance: any = null;
 
     // 定义渲染函数
     function renderChart() {
@@ -19,7 +19,7 @@ function Chart({ options }) {
                 chartInstance = echarts.init(chartRef.current);
             }
             chartInstance.setOption(options);
-        } catch (error) {
+        } catch (error: any) {
             console.error("error", error.message);
             chartInstance && chartInstance.dispose();
         }

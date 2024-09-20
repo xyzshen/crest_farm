@@ -1,14 +1,14 @@
 'use client'
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Chart from "../../../components/Chart.js"
+import Chart from "../../../components/Chart"
 import binance from "/public/static/images/binance.png";
 import curve from "/public/static/images/curve.png";
 import okx from "/public/static/images/okx.png";
 import pancokeSwap from "/public/static/images/pancokeSwap.png";
 import moment from 'moment';
 import './Strategy.css'
-const headers = {
+const headers: any = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "*",
@@ -18,9 +18,9 @@ const headers = {
     "withCredentials": true
 }
 const baseUrl = 'https://crest.devilwind.cn';
-const processData = (data) => {
-    const result = [];
-    const groupedByYear = data.reduce((acc, item) => {
+const processData = (data: any) => {
+    const result: any[] = [];
+    const groupedByYear = data.reduce((acc: any, item: any) => {
         const [year, month] = item.month.split('-');
         const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
         if (!acc[year]) {
@@ -46,9 +46,9 @@ const processData = (data) => {
 };
 
 
-function transformData(data) {
+function transformData(data: any) {
     const result = [];
-    const groupedByYear = data.reduce((acc, item) => {
+    const groupedByYear = data.reduce((acc: any, item: any) => {
         const [year, month] = item.month.split('-');
         if (!acc[year]) {
             acc[year] = { year: year, jan: 'N/A', feb: 'N/A', mar: 'N/A', apr: 'N/A', may: 'N/A', jun: 'N/A', jul: 'N/A', aug: 'N/A', sep: 'N/A', oct: 'N/A', nov: 'N/A', dec: 'N/A' };
@@ -59,8 +59,9 @@ function transformData(data) {
         return acc;
     }, {});
     for (const year in groupedByYear) {
-        const months = groupedByYear[year];
-        const annualReturn = Object.values(months).slice(1, 13).reduce((sum, value) => sum + parseFloat(value), 0).toFixed(2);
+        const months: any = groupedByYear[year];
+        // @ts-ignore
+        const annualReturn: any = Object.values(months).slice(1, 13).reduce((sum, value) => sum + parseFloat(value), 0).toFixed(2);
         months.Annual = `${annualReturn}`;
         result.push(months);
     }
@@ -68,13 +69,13 @@ function transformData(data) {
     return result;
 }
 export default function Strategy() {
-    const [isActiveKey, setActiveKey] = useState(1);
-    const [isShowDetails, setShowDetails] = useState(false);
-    const [isTitle, setTitle] = useState('');
-    const [chartData, setChartData] = useState([]);
-    const [chartData2, setChartData2] = useState(null);
-    const [detailData, setDetailData] = useState([]);
-    const [initDate, setInitDate] = useState('');
+    const [isActiveKey, setActiveKey] = useState<number>(1);
+    const [isShowDetails, setShowDetails] = useState<boolean>(false);
+    const [isTitle, setTitle] = useState<string>('');
+    const [chartData, setChartData] = useState<any[]>([]);
+    const [chartData2, setChartData2] = useState<any>(null);
+    const [detailData, setDetailData] = useState<any[]>([]);
+    const [initDate, setInitDate] = useState<string>('');
     const options = {
         title: {
             text: 'Running for 45 days',
@@ -148,10 +149,10 @@ export default function Strategy() {
                 let list1 = JSON.parse(JSON.stringify(list));
                 for (let j = 0; j < list1.length; j++) {
 
-                    const months = list1[j].history.map((item) => {
+                    const months = list1[j].history.map((item: any) => {
                         return item.month
                     })
-                    const values = list1[j].history.map((item) => {
+                    const values = list1[j].history.map((item: any) => {
                         return item.content.month_return
                     })
                     list1[j].options.xAxis.data = months;
@@ -234,7 +235,7 @@ export default function Strategy() {
         dataIndex: 'Annual',
     }
     ]
-    const onShowDetails = async (item) => {
+    const onShowDetails = async (item: any) => {
         const newItem = JSON.parse(JSON.stringify(item))
         setTitle(newItem.strategy);
         newItem.options.series[0].barWidth = 26;
@@ -247,11 +248,11 @@ export default function Strategy() {
             .then((data) => {
                 const initialDate = data.data.detail.initialDate;
                 setInitDate(moment(initialDate).format('YYYY/MM'));
-                const historyValues = data.data.history
+                const historyValues: any = data.data.history
                 setDetailData(processData(historyValues))
             })
     }
-    const formatTarget = (value) => {
+    const formatTarget = (value: any) => {
         let str = '';
         switch (value) {
             case 'max_drawdown':

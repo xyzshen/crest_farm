@@ -11,8 +11,8 @@ import loginLogo from "/public/static/images/login_logo.png";
 
 export default function Login() {
     const router = useRouter()
-    const [isShowType, setIsShowType] = useState(1);
-    const onFinish = (values) => {
+    const [isShowType, setIsShowType] = useState<number>(1);
+    const onFinish = (values: any) => {
         console.log('Success:', values);
         if (typeof window !== 'undefined') {
             window && window.sessionStorage.setItem('accountNumber', values.accountNumber)
@@ -20,7 +20,7 @@ export default function Login() {
 
         alert('Success!')
     };
-    const onFinishFailed = (errorInfo) => {
+    const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
     return (
