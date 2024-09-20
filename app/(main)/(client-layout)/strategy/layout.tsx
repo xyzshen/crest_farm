@@ -7,6 +7,4 @@ export default function StrategyLayout({ children }: Readonly<{
     return (
         <>{children}</>
     )
-
-
 }

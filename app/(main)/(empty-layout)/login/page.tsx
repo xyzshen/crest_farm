@@ -9,7 +9,7 @@ import loginLogo from "/public/static/images/login_logo.png";
 
 export default function Login() {
     const router = useRouter()
-    const [isShowType, setIsShowType] = useState<number>(1);
+    const [isShowType, setIsShowType] = useState(1);
     const onFinish = (values: any) => {
         console.log('Success:', values);
         if (typeof window !== 'undefined') {
@@ -26,9 +26,8 @@ export default function Login() {
     };
     return (
         <div className='flex h-screen w-full'>
-
-            <div className='w-[38%] min-h-[780px]'>
-                <Image src={loginLogo} height={780} alt="loginLogo" />
+            <div className='w-[560px] min-w-[560px] h-full relative'>
+                <Image src={loginLogo} layout='fill' alt="loginLogo" />
             </div>
             <div className='flex justify-center items-center flex-col w-[62%]'>
                 <div className='w-[360px]'>

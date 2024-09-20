@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import ku_coin from "/public/static/images/ku_coin.png";
 export default function Home() {
@@ -62,7 +63,7 @@ export default function Home() {
                             <span className="font-[600]">Management</span>
                         </h3>
                         <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
-                            A1 Asset Manageris a digital asset managementplatform developed by the Alfa1 team to provide holisticdigital asset management services for institutions orhigh net worth customers, by offering:
+                            Crest Asset Manager is a digital asset management plat form developed by the crest team to provide holistic digital asset management services for institutions or high net worth customers, by offering:
                         </p>
                         <ul className="text-[#4d4d4d] mt-[25px] list-disc ml-4">
                             <li>
@@ -169,27 +170,27 @@ export default function Home() {
                                 <Image src={ku_coin} layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/2.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/binance.png" layout="fill" alt="binance"></Image>
                             </div>
 
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/3.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/gate.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px]">
-                                <Image src="/static/images/4.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/bit_get.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/5.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/uni_swap.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/8.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/raydium.png" layout="fill" alt=""></Image>
                             </div>
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/6.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/gmx.png" layout="fill" alt=""></Image>
                             </div>
 
                             <div className="relative h-[90px] ">
-                                <Image src="/static/images/7.png" layout="fill" alt=""></Image>
+                                <Image src="/static/images/pancake_swap.png" layout="fill" alt=""></Image>
                             </div>
 
                         </div>

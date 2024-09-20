@@ -160,7 +160,6 @@ export default function TradingPost() {
                             <ConfigProvider
                                 theme={{
                                     token: {
-                                        // 没这个配置
                                         // fontWeight: "500",
                                     },
                                 }}

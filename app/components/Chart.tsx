@@ -12,12 +12,14 @@ function Chart({ options }: any) {
         try {
             // `echarts.getInstanceByDom` 可以从已经渲染成功的图表中获取实例，其目的就是在 options 发生改变的时候，不需要
             // 重新创建图表，而是复用该图表实例，提升性能
+
             const renderedInstance = echarts.getInstanceByDom(chartRef.current);
             if (renderedInstance) {
                 chartInstance = renderedInstance;
             } else {
                 chartInstance = echarts.init(chartRef.current);
             }
+
             chartInstance.setOption(options);
         } catch (error: any) {
             console.error("error", error.message);
@@ -33,19 +35,17 @@ function Chart({ options }: any) {
     // 页面初始化时，开始渲染图表
     useEffect(() => {
         renderChart();
-
         return () => {
             // 销毁图表实例，释放内存
             chartInstance && chartInstance.dispose();
         };
-    }, []);
+    }, [options]);
 
     // 监听窗口大小改变
     useEffect(() => {
         window.addEventListener("resize", resizeHandler);
         return () => window.removeEventListener("resize", resizeHandler);
     }, []);
-
     return (
         <div style={{ width: '100%', height: '100%' }}>
             <div style={{ width: '100%', height: '100%' }} ref={chartRef} />

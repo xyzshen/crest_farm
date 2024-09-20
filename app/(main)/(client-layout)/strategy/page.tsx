@@ -5,7 +5,7 @@ import Chart from "../../../components/Chart"
 import binance from "/public/static/images/binance.png";
 import curve from "/public/static/images/curve.png";
 import okx from "/public/static/images/okx.png";
-import pancokeSwap from "/public/static/images/pancokeSwap.png";
+import pancake_swap from "/public/static/images/pancake_swap.png";
 import moment from 'moment';
 import './Strategy.css'
 const headers: any = {
@@ -17,37 +17,49 @@ const headers: any = {
     "Access-Control-Max-Age": "3600",
     "withCredentials": true
 }
-const baseUrl = 'https://crest.devilwind.cn';
+const baseUrl = 'https://link3.io';
+// const baseUrl = 'https://crest.devilwind.cn';
 const processData = (data: any) => {
+
+    data.forEach((item: any) => {
+        const [year, month] = item.month.split('-');
+        if (year === '2023') {
+
+            item.annual = 55.9;
+        } else {
+            item.annual = null;
+        }
+
+    })
     const result: any[] = [];
     const groupedByYear = data.reduce((acc: any, item: any) => {
         const [year, month] = item.month.split('-');
+        const annual = item.annual;
         const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
         if (!acc[year]) {
-            acc[year] = { year, ...monthNames.reduce((mAcc, m) => ({ ...mAcc, [m]: 'N/A' }), {}) };
+            acc[year] = { year, ...monthNames.reduce((mAcc, m) => ({ ...mAcc, [m]: '' }), {}) };
         }
         const monthName = monthNames[parseInt(month, 10) - 1];
         acc[year][monthName] = item.content.month_return.toFixed(2);
+        acc[year].annual = annual;
         return acc;
     }, {});
-
     Object.keys(groupedByYear).forEach(year => {
         const yearData = groupedByYear[year];
-        const monthlyReturns = Object.values(yearData).slice(1, 13).filter(val => val !== 'N/A').map(Number);
-        if (monthlyReturns.length > 0) {
-            yearData.Annual = (monthlyReturns.reduce((sum, val) => sum + val, 0)).toFixed(2);
-        } else {
-            yearData.Annual = 'N/A';
-        }
+        // const monthlyReturns = Object.values(yearData).slice(1, 13).filter(val => val !== 'N/A').map(Number);
+        // if (monthlyReturns.length > 0) {
+        //     yearData.Annual = (monthlyReturns.reduce((sum, val) => sum + val, 0)).toFixed(2);
+        // } else {
+        //     yearData.Annual = 'N/A';
+        // }
         result.push(yearData);
     });
-
     return result;
 };
 
 
 function transformData(data: any) {
-    const result = [];
+    const result: any = [];
     const groupedByYear = data.reduce((acc: any, item: any) => {
         const [year, month] = item.month.split('-');
         if (!acc[year]) {
@@ -59,9 +71,10 @@ function transformData(data: any) {
         return acc;
     }, {});
     for (const year in groupedByYear) {
-        const months: any = groupedByYear[year];
+        const months = groupedByYear[year];
+        // 忽略typescript检查
         // @ts-ignore
-        const annualReturn: any = Object.values(months).slice(1, 13).reduce((sum, value) => sum + parseFloat(value), 0).toFixed(2);
+        const annualReturn = Object.values(months).slice(1, 13).reduce((sum, value) => sum + parseFloat(value), 0).toFixed(2);
         months.Annual = `${annualReturn}`;
         result.push(months);
     }
@@ -69,16 +82,19 @@ function transformData(data: any) {
     return result;
 }
 export default function Strategy() {
-    const [isActiveKey, setActiveKey] = useState<number>(1);
+    const [isActiveKey, setActiveKey] = useState<number>(0);
     const [isShowDetails, setShowDetails] = useState<boolean>(false);
     const [isTitle, setTitle] = useState<string>('');
     const [chartData, setChartData] = useState<any[]>([]);
+    const [filterChartData, setFilterChartData] = useState<any[]>([]);
     const [chartData2, setChartData2] = useState<any>(null);
     const [detailData, setDetailData] = useState<any[]>([]);
     const [initDate, setInitDate] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
+    const [strategyDetail, setStrategyDetail] = useState<any>(null);
     const options = {
         title: {
-            text: 'Running for 45 days',
+            text: '',
             right: 0,
             top: 0,
             textStyle: {
@@ -115,7 +131,7 @@ export default function Strategy() {
         },
         grid: {
             left: '0%',
-            right: '0%',
+            right: '11',
             bottom: '0%',
             containLabel: true,
             height: '105px',
@@ -126,7 +142,9 @@ export default function Strategy() {
                 data: [],
                 barWidth: 18,
                 itemStyle: {
-                    color: '#5E9EFF',
+                    color: function (params: any) {
+                        return params.data < 0 ? '#ff6363' : '#5E9EFF'
+                    }
                 },
                 tooltip: {
                     formatter: '{b} {c}%'
@@ -157,8 +175,12 @@ export default function Strategy() {
                     })
                     list1[j].options.xAxis.data = months;
                     list1[j].options.series[0].data = values;
+                    list1[j].options.series[0].itemStyle.color = function (params: any) {
+                        return params.data < 0 ? '#ff6363' : '#5E9EFF'
+                    }
                 }
                 setChartData(list1)
+                setFilterChartData(list1)
             })
     }, [])
 
@@ -230,7 +252,7 @@ export default function Strategy() {
         dataIndex: 'dec',
     },
     {
-        key: 'Annual',
+        key: 'annual',
         title: 'Annual',
         dataIndex: 'Annual',
     }
@@ -239,6 +261,10 @@ export default function Strategy() {
         const newItem = JSON.parse(JSON.stringify(item))
         setTitle(newItem.strategy);
         newItem.options.series[0].barWidth = 26;
+        newItem.options.title = '';
+        newItem.options.series[0].itemStyle.color = function (params: any) {
+            return params.data < 0 ? '#ff6363' : '#5E9EFF'
+        }
         setChartData2(newItem.options)
         setShowDetails(true);
         await fetch(`${baseUrl}/crestmgn/strategy/get?strategy=${item.strategy}`, {
@@ -247,9 +273,15 @@ export default function Strategy() {
         }).then((res) => res.json())
             .then((data) => {
                 const initialDate = data.data.detail.initialDate;
+                const description = data.data.detail.description;
+                const { max_drawdown, annual_return, sharpe_ratio, annual_volatillty } = data.data.detail.content;
+                const content = Object.assign({}, { 'Initial Date': initialDate }, { 'Max Drawdown': `${max_drawdown}%` }, { 'Annual Return': `${annual_return}%` }, { 'Sharpe ratio': `${sharpe_ratio}%` }, { 'Annual Volatillty': `${annual_volatillty}%` });
+                setStrategyDetail(content)
+                setDescription(description);
                 setInitDate(moment(initialDate).format('YYYY/MM'));
-                const historyValues: any = data.data.history
+                const historyValues = data.data.history
                 setDetailData(processData(historyValues))
+
             })
     }
     const formatTarget = (value: any) => {
@@ -271,6 +303,37 @@ export default function Strategy() {
         }
         return str;
     }
+    const onTabChange = (key: any) => {
+        setActiveKey(key);
+        let filteredData = []
+        const newData = filterChartData;
+        switch (key) {
+            case 1:
+                filteredData = newData.filter((item) => item.strategy === 'CTA')
+                break;
+
+            case 2:
+                filteredData = newData.filter((item) => item.strategy === 'GMX-GM Delta Neutral')
+                break;
+            case 3:
+                filteredData = newData.filter((item) => item.strategy === 'Stable Coin Mining')
+                break;
+            case 4:
+                filteredData = newData.filter((item) => item.strategy === 'Liquidity Mining Hedging')
+                break;
+            case 5:
+                filteredData = newData.filter((item) => item.strategy === 'Pair Trading')
+                break;
+            case 6:
+                filteredData = newData.filter((item) => item.strategy === 'Single Exchange Arbitrage')
+                break;
+            default:
+                filteredData = newData;
+                break;
+        }
+        setChartData(filteredData);
+    }
+
     return (
         <div>
             {
@@ -279,26 +342,34 @@ export default function Strategy() {
                         <h3 className="text-[40px] text-[#333] font-bold leading-[48px]">Crest Strategy</h3>
                     </div>
                     <div className="px-[130px]">
-                        <div className="w-[555px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
+                        <div className="w-[630px] h-[44px] bg-[#ededed] rounded-[24px] flex justify-between px-1 py-1  text-[16px] shadow-strategy_chart_table_shadow">
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 0 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                                onClick={() => onTabChange(0)}>
+                                <span>ALL</span>
+                            </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 1 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(1)}>
-                                <span>LRT</span>
+                                onClick={() => onTabChange(1)}>
+                                <span>CTA</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 2 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(2)}>
-                                <span>LST</span>
+                                onClick={() => onTabChange(2)}>
+                                <span>GDN</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 3 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(3)}>
-                                <span>Liquidity Pool</span>
+                                onClick={() => onTabChange(3)}>
+                                <span>SCM</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 4 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(4)}>
-                                <span>Points</span>
+                                onClick={() => onTabChange(4)}>
+                                <span>LMH</span>
                             </div>
                             <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 5 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
-                                onClick={() => setActiveKey(5)}>
-                                <span>Stables</span>
+                                onClick={() => onTabChange(5)}>
+                                <span>PT</span>
+                            </div>
+                            <div className={`flex rounded-[24px] justify-center items-center px-[28px] py-[8px] hover:bg-[#e3e3e3] ${isActiveKey === 6 ? 'bg-[#fcfcfc] font-bold text-[#1a1a1a] shadow-tabs_sub_shadow' : 'text-[#8c8c8c]'}`}
+                                onClick={() => onTabChange(6)}>
+                                <span>SEA</span>
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-[30px] mt-[30px]">
@@ -355,11 +426,7 @@ export default function Strategy() {
                             </div>
                             <div className="text-[#ffffff] mt-[40px]">
                                 <h6 className="text-[40px] font-bold">{isTitle}</h6>
-                                <p className="text-[14px] mt-[14px]">Obtain stable income through stablecóin staking and liquidity
-                                    proVision
-                                    new currency minin
-                                    iguidity
-                                    provision in lending agreements, etc.</p>
+                                <p className="text-[14px] mt-[14px]">{description}</p>
                             </div>
                         </div>
                     </div>
@@ -380,10 +447,10 @@ export default function Strategy() {
                                     {detailData.map((item, index) => (
                                         <tr key={index} className="leading-10">
                                             {tableHeaders.map((it, i) => (
-                                                item[it.key] === "N/A" ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
+                                                !item[it.key] ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
+                                                // item[it.key] === "N/A" ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
                                             ))
                                             }
-
                                         </tr>
                                     ))}
 
@@ -411,26 +478,10 @@ export default function Strategy() {
                         <div className="h-[315px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[30px] pr-[44px] pt-[40px] col-span-3">
                             <h1 className="text-[24px] text-[#333333] font-[600]">Historical Data and Performance</h1>
                             <div className="text-[16px]">
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Initial Date</span>
-                                    <span className="text-[#333333]">2023-8</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Annual Return</span>
-                                    <span className="text-[#333333]">28.59%</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Annual Volatility</span>
-                                    <span className="text-[#333333]">3.43%</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Sharpe Ratio</span>
-                                    <span className="text-[#333333]">9.16</span>
-                                </p>
-                                <p className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">Max Drawdown</span>
-                                    <span className="text-[#333333]">0.7%</span>
-                                </p>
+                                {strategyDetail && Object.keys(strategyDetail).map((key) => (<p key={key} className="flex justify-between leading-10">
+                                    <span className="text-[#999999]">{key}</span>
+                                    <span className="text-[#333333]">{strategyDetail[key]}</span>
+                                </p>))}
                             </div>
                         </div>
                         <div className="h-[315px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[30px] pr-[44px] pt-[40px] col-span-4">
@@ -440,7 +491,7 @@ export default function Strategy() {
                                     <Image src={binance} layout="fill" alt='binance'></Image>
                                 </div>
                                 <div className="w-full relative h-[90px]">
-                                    <Image src={pancokeSwap} layout="fill" alt='pancokeSwap'></Image>
+                                    <Image src={pancake_swap} layout="fill" alt='pancake_swap'></Image>
                                 </div>
                                 <div className="w-full relative h-[90px]">
                                     <Image src={curve} layout="fill" alt='curve'></Image>
