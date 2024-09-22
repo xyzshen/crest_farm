@@ -3,14 +3,16 @@
 
 'use client'
 import { useState } from "react";
-import Footer from "./footer.js";
+import Footer from "./footer";
 import Link from "next/link";
 import Logo from "/public/static/icons/logo.svg";
 import Shape from "/public/static/icons/shape.svg";
-export default function ClientLayout({ children }) {
-    var user;
+export default function ClientLayout({ children }: Readonly<{
+    children: React.ReactNode;
+}>) {
+    var user: any;
     if (typeof window !== 'undefined') {
-        var user = window && window.sessionStorage.getItem("accountNumber");;
+        user = window && window.sessionStorage.getItem("accountNumber");;
     }
 
     const [isShowQuit, setIsShowQuit] = useState(false);

@@ -14,8 +14,8 @@ import {
     Divider
 } from "antd";
 export default function TradingPost() {
-    const [loading, setLoading] = useState(false);
-    const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [open, setOpen] = useState<boolean>(false);
     const showModal = () => {
         setOpen(true);
     };
@@ -45,7 +45,7 @@ export default function TradingPost() {
         {
             title: "Operation",
             key: "Operation",
-            render: (_, record) => (
+            render: (_: any, record: any) => (
                 <Space size="middle">
 
                     <span
@@ -82,10 +82,10 @@ export default function TradingPost() {
             Add exchange
         </div>
     );
-    const onFinish = (values) => {
+    const onFinish = (values: any) => {
         console.log("Success:", values);
     };
-    const onFinishFailed = (errorInfo) => {
+    const onFinishFailed = (errorInfo: any) => {
         console.log("Failed:", errorInfo);
     };
 
@@ -102,7 +102,8 @@ export default function TradingPost() {
                         wave={{ disabled: true }}
                         theme={{
                             token: {
-                                fontWeight: "500",
+                                // 没这个配置
+                                // fontWeight: "500",
                             },
                             components: {
                                 Button: {
@@ -159,7 +160,7 @@ export default function TradingPost() {
                             <ConfigProvider
                                 theme={{
                                     token: {
-                                        fontWeight: "500",
+                                        // fontWeight: "500",
                                     },
                                 }}
                             >
