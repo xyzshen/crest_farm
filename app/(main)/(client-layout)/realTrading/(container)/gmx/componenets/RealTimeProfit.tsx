@@ -13,7 +13,7 @@ interface IRealTimeProfit {
   data?: TGmxData
 }
 
-export const segmentedTypeList = [
+const segmentedTypeList = [
   {
     label: '30天',
     value: 'day'
