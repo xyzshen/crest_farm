@@ -7,6 +7,7 @@ import Footer from "./footer";
 import Link from "next/link";
 import Logo from "/public/static/icons/logo.svg";
 import Shape from "/public/static/icons/shape.svg";
+import Header from "./header";
 export default function ClientLayout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
@@ -25,7 +26,7 @@ export default function ClientLayout({ children }: Readonly<{
     }
     return (
         <>
-            <header className="px-[50px] bg-white shadow-home_header_shadow h-16 static top-0 z-50">
+            {/* <header className="px-[50px] bg-white shadow-home_header_shadow h-16 static top-0 z-50">
                 <div className="content-area mx-auto flex h-16 flex-row justify-between">
                     <div className={"flex h-16 items-center"}>
                         <Link href="/#">
@@ -53,7 +54,8 @@ export default function ClientLayout({ children }: Readonly<{
 
                     </div>
                 </div>
-            </header >
+            </header > */}
+            <Header />
             {children}
             < Footer />
         </>

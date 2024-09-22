@@ -337,7 +337,7 @@ export default function Strategy() {
     return (
         <div>
             {
-                !isShowDetails && <div className="bg-home-grid-point bg-cover bg-no-repeat h-[1406px]">
+                !isShowDetails && <div className="bg-[#eee] bg-cover bg-no-repeat h-[1406px]">
                     <div className="px-[130px] pt-[60px] pb-[70px]">
                         <h3 className="text-[40px] text-[#333] font-bold leading-[48px]">Crest Strategy</h3>
                     </div>
