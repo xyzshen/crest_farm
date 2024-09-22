@@ -31,3 +31,39 @@
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .login-form {
+    .ant-form-item {
+      width: 360px;
+      margin-bottom: 16px;
+
+      .ant-form-item-label {
+        width: 100%;
+        /* white-space: nowrap; */
+
+
+        >label {
+          width: 100%;
+          font-weight: 500;
+          font-size: 16px;
+          color: #333333;
+          line-height: 30px;
+        }
+      }
+
+      .ant-form-item-control-input input,
+      .ant-form-item-control-input .ant-input-outlined {
+        border: none;
+        background-color: #F3F3F5;
+        border-radius: 10px;
+      }
+    }
+  }
+  .w-content{
+    width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+

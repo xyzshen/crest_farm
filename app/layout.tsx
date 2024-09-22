@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ConfigProvider } from "antd";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,17 @@ export default function RootLayout({ children }: Readonly<{
         <html lang="en">
 
             <body>
-                {children}
+                <ConfigProvider
+                    theme={{
+                        components: {
+                            Menu: {
+                                groupTitleFontSize: 16
+                            }
+                        },
+                    }}
+                >
+                    {children}
+                </ConfigProvider>
             </body>
         </html>
     );

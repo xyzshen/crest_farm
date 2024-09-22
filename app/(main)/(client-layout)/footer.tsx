@@ -17,7 +17,7 @@ export default function Footer() {
     const [isShowGithub, setIsShowGithub] = useState(true);
     return (
         <footer className="">
-            <div className="px-[50px] flex  items-center justify-between text-center text-[#4d4d4d] h-[136px]">
+            <div className="px-[50px] flex  items-center justify-between text-center text-[#4d4d4d] h-[136px] w-content">
                 <div>
                     <Logo />
                 </div>

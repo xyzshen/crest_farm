@@ -2,119 +2,68 @@
 
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { Button, Form, Input } from 'antd';
-import Image from "next/image";
-import Link from "next/link";
-import loginLogo from "/public/static/images/login_logo.png";
+import Register from '../components/Register';
+import { LoginApi } from '@/app/service/login-api';
+import { Base64 } from 'js-base64';
+import { message } from 'antd';
+import LoginState from '@/utils/loginState';
 
 export default function Login() {
     const router = useRouter()
-    const [isShowType, setIsShowType] = useState(1);
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
-        if (typeof window !== 'undefined') {
-            window && window.sessionStorage.setItem('accountNumber', values.accountNumber)
-        }
+    const [code, setCode] = useState<string>('')
+    const [token, setToken] = useState<string>('')
 
-        alert('Success!')
+    const onFinish = (values: IRegisterParams) => {
+        const data = {
+            ...values,
+            password: Base64.encode(values.password),
+            confirmPassword: Base64.encode(values.confirmPassword),
+        }
+        LoginApi.register(data).then((res: any) => {
+            if (res) {
+                // LoginState.loginSuccess({ ...res.data }
+                message.success('Register successfully, please log in')
+                router.push('/login')
+            }
+        }).catch((err) => {
+            getpictureCheckCode()
+        })
     };
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
+
+    const getpictureCheckCode = () => {
+        LoginApi.getpictureCheckCode().then((res: any) => {
+            if (res) {
+                // 添加base64图片标志
+                setCode(`data:image/png;base64,${res.data?.base64Image}`)
+                setToken(res.data?.token)
+            }
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    const onCheck = (value: string) => {
+        router.push(value)
+    }
+
+    const onSendEmail = async (values: string) => {
+        const req = {
+            email: values,
+            purpose: 'register'
+        }
+        await LoginApi.sendEmail(req);
+        message.success('Email sent successfully')
+    }
+
+    useEffect(() => {
+        getpictureCheckCode()
+    }, [])
     return (
-        <div className='flex h-screen w-full'>
-            <div className='w-[560px] min-w-[560px] h-full relative'>
-                <Image src={loginLogo} layout='fill' alt="loginLogo" />
-            </div>
-            <div className='flex justify-center items-center flex-col w-[62%]'>
-                <div className='w-[360px]'>
-                    <h6 className='text-[#000000] text-[30px] font-bold'>Create new account</h6>
-                    <Form
-                        name="basic"
-                        layout="vertical"
-                        labelCol={{
-                            span: 9,
-                        }}
-                        wrapperCol={{
-                            span: 15,
-                        }}
-                        initialValues={{
-                            remember: true,
-                        }}
-                        onFinish={onFinish}
-                        onFinishFailed={onFinishFailed}
-                        autoComplete="off"
-                    >
-                        <Form.Item
-                            label="Account number"
-                            name="accountNumber"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your account number!',
-                                },
-                            ]}
-                            wrapperCol={{
-                                span: 24,
-                            }}
-                        >
-                            <Input style={{ width: '100%', height: '46px' }} placeholder='account number' />
-                        </Form.Item>
-
-                        <Form.Item
-                            label="Email"
-                            name="Email"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your Email!',
-                                },
-                            ]}
-                            wrapperCol={{
-                                span: 24,
-                            }}
-                        >
-                            <Input style={{ width: '100%', height: '46px' }} placeholder='email' />
-                        </Form.Item>
-
-                        <Form.Item
-                            label="Verification code"
-                            name="code"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your verification code!',
-                                },
-                            ]}
-                            wrapperCol={{
-                                span: 24,
-                            }}
-                        >
-                            <Input style={{ width: '100%', height: '46px' }} placeholder='Verification code' />
-
-                        </Form.Item>
-                        <Form.Item
-                            wrapperCol={{
-                                span: 24,
-                            }}
-                        >
-                            <Button style={{ width: '100%', height: '46px', backgroundColor: '#1a1a1a', borderRadius: '10px' }} type="primary" htmlType="submit">
-                                Register
-                            </Button>
-                        </Form.Item>
-                    </Form>
-                </div>
-                <div>
-                    <span>Already have an account？</span>
-                    <span className='text-[#2C4E93] font-bold cursor-pointer'>
-                        <Link href="/login">Log in</Link>
-                    </span>
-                </div>
-            </div>
-
-
-        </div>
+        <Register onChangePictureCheckCode={getpictureCheckCode} onSendEmail={onSendEmail} onCheck={onCheck} onFinish={onFinish} onFinishFailed={onFinishFailed} code={code} />
     )
 }

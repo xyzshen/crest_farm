@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <main className="">
             <div className="">
-                <div className="bg-home-banner bg-cover bg-no-repeat ">
+                <div className="bg-home-banner bg-cover bg-center bg-no-repeat " style={{ backgroundSize: '100% 100%' }}>
                     <div className="content-area mx-auto h-[480px] flex flex-col pt-[78px]">
                         <div className="text-center font-[600] text-[#fff] text-[68px]">
                             Growth&nbsp;your&nbsp;crypto&nbsp;asset<br />Build&nbsp;for&nbsp;the&nbsp;top
@@ -13,7 +13,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="mt-[80px]">
+            <div className="mt-[80px] w-content">
                 <h6 className="text-center text-[52px] font-[600]">What We Serve</h6>
                 {/* 1 */}
                 <div className="px-[125px] mt-[60px] flex justify-between">
@@ -80,7 +80,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="bg-home-grid-point bg-cover bg-no-repeat mt-[80px] h-[1231px]">
-                <div className="px-[125px]">
+                <div className="px-[125px] w-content">
                     <h6 className="text-center text-[52px] font-[600] pt-[60px] pb-[46px] px-[130px]">Why Crest</h6>
                     <div className="flex justify-between">
                         <div>
@@ -158,8 +158,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="mx-[50px]">
-                <div className="bg-[#1a1a1a] rounded-[40px]  mt-[-270px] h-[480px]">
+            <div className="mx-[50px] ">
+                <div className="bg-[#1a1a1a] rounded-[40px]  mt-[-270px] h-[480px] w-content">
                     <h6 className="text-[#fff] text-[52px]  font-[600] text-center pt-[50px]">Our Partners</h6>
 
                     <div className="px-[80px] mt-[55px]">
