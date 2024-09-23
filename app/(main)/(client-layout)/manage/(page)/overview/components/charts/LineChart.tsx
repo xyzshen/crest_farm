@@ -52,12 +52,15 @@ const LineChart = (props: any) => {
           }
         },
         axisLabel: {
-          color: '#666'
+          color: '#4D4D4D'
         }
       },
       yAxis: {
         type: 'value',
         max: yMax,
+        axisLabel: {
+          color: '#4D4D4D'
+        },
         splitLine: {
           show: true,
           lineStyle: {

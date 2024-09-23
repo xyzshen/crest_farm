@@ -1,16 +1,17 @@
+'use cilent'
 import Link from "next/link"
 import Logo from "/public/static/icons/logo.svg";
 import Shape from "/public/static/icons/shape.svg";
 import { Menu, message } from "antd";
 import { Items } from './item'
-import React from "react";
+import React, { useEffect } from "react";
 import LoginState from "@/utils/loginState";
 import { useRouter } from 'next/navigation'
 import { findNodeByKey } from "@/utils";
 
 const Header = () => {
   const router = useRouter()
-  const user = LoginState?.getUserInfo()?.account
+  const [user, setUser] = React.useState<string | null>(null)
   const [current, setCurrent] = React.useState('strategy');
   const [isShowQuit, setIsShowQuit] = React.useState(false);
 
@@ -31,6 +32,14 @@ const Header = () => {
     setIsShowQuit(false)
     router.push('/login')
   }
+
+  const goDetail = () => {
+    router.push('/manage/overview')
+  }
+
+  useEffect(() => {
+    setUser(LoginState?.getUserInfo()?.account || '')
+  }, [])
 
   return (
     <header className="px-[50px] bg-white shadow-home_header_shadow h-16 static top-0 z-50">
@@ -54,8 +63,9 @@ const Header = () => {
               <span className="ml-[5px] cursor-default"  ><Shape /></span>
 
             </span>}
-            {isShowQuit && <div className="absolute top-11 right-0 w-[100px] py-4 text-center bg-[#3c3c3c] rounded-md text-[#fff] cursor-pointer">
-              <span onClick={onQuit}>Quit</span>
+            {isShowQuit && <div className="absolute top-11 right-0 w-[120px] py-4 text-center bg-[#3c3c3c] rounded-md text-[#fff] cursor-pointer">
+              {user && <div className="leading-10" onClick={goDetail}>Management</div>}
+              <div className="leading-10" onClick={onQuit}>Quit</div>
             </div>}
           </div>
 

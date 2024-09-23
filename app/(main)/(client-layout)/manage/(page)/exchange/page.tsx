@@ -28,7 +28,7 @@ const getTableData = (props: TableParams): Promise<Result> => {
   }
   return ExchangeApi.getExchangeList(query).then((res: any) => {
     return {
-      total: res.total,
+      total: res.totalCount,
       list: res.data,
     };
   })

@@ -4,9 +4,6 @@
 'use client'
 import { useState } from "react";
 import Footer from "./footer";
-import Link from "next/link";
-import Logo from "/public/static/icons/logo.svg";
-import Shape from "/public/static/icons/shape.svg";
 import Header from "./header";
 export default function ClientLayout({ children }: Readonly<{
     children: React.ReactNode;
@@ -14,15 +11,6 @@ export default function ClientLayout({ children }: Readonly<{
     var user: any;
     if (typeof window !== 'undefined') {
         user = window && window.sessionStorage.getItem("accountNumber");;
-    }
-
-    const [isShowQuit, setIsShowQuit] = useState(false);
-    const onQuit = () => {
-        if (typeof window !== 'undefined') {
-            window && window.sessionStorage.removeItem("accountNumber");
-        }
-
-        location.reload();
     }
     return (
         <>

@@ -24,7 +24,7 @@ export default function Home() {
                     </div>
                     <div className="w-[520px] pt-[16px]">
                         <h3 className="text-[#1a1a1a] text-[35px]">
-                            <span>Financial</span>&nbsp;
+                            <span className="font-[600]">Financial</span>&nbsp;
                             <span className="font-[600]">Solution</span>
                         </h3>
                         <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
@@ -37,7 +37,7 @@ export default function Home() {
                     <div className="flex justify-center items-center">
                         <div className="w-[520px] pt-[16px]">
                             <h3 className="text-[#1a1a1a] text-[35px]">
-                                <span>Market</span>&nbsp;
+                                <span className="font-[600]">Market</span>&nbsp;
                                 <span className="font-[600]">Making</span>
                             </h3>
                             <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
@@ -59,7 +59,7 @@ export default function Home() {
                     </div>
                     <div className="w-[520px] pt-[16px]">
                         <h3 className="text-[#1a1a1a] text-[35px]">
-                            <span>Asset</span>&nbsp;
+                            <span className="font-[600]">Asset</span>&nbsp;
                             <span className="font-[600]">Management</span>
                         </h3>
                         <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">

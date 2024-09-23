@@ -90,7 +90,7 @@ export default function TradingPost() {
     };
 
     return (
-        <div className="h-screen w-screen">
+        <div className="h-full w-full">
             <div className="h-[54px] bg-white flex items-center pl-[25px]">
                 <span className="text-lg font-bold text-[#2C4E93] leading-7">
                     Trading Post
