@@ -45,6 +45,9 @@ const BarChart = (props: IBarChart) => {
         axisTick: {
           show: false
         },
+        axisLabel: {
+          color: '#4D4D4D'
+        },
         axisLine: {
           show: true,
           lineStyle: {
@@ -56,7 +59,8 @@ const BarChart = (props: IBarChart) => {
         type: 'value',
         splitNumber: 2,
         axisLabel: {
-          formatter: '{value} %'
+          formatter: '{value} %',
+          color: '#4D4D4D'
         }
       },
       series: [
