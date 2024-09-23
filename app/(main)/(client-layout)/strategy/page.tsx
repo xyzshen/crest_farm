@@ -113,21 +113,29 @@ export default function Strategy() {
             data: [],
             axisLine: {
                 lineStyle: {
-                    color: "#999999"
+                    color: "#D6D6D6"
                 }
-            }
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                color: '#4d4d4d'
+            },
         },
         yAxis: {
             type: 'value',
             axisLabel: {
-                formatter: '{value}.00 %'
-            },
-            interval: 50,
-            axisLine: {
+                formatter: '{value}.00 %',
                 lineStyle: {
-                    color: "#999999"
+                    color: "#4D4D4D"
                 }
-            }
+            },
+            splitNumber: 1.5,
+            axisLine: {
+                show: false,
+                color: '#4d4d4d'
+            },
         },
         grid: {
             left: '0%',
@@ -385,9 +393,9 @@ export default function Strategy() {
                                         <div className="flex justify-between w-full">
                                             {
                                                 Object.keys(item.detail.content).slice(0, 2).map((key, it) => (
-                                                    <div key={it} className="w-[210px] flex justify-between">
-                                                        <span className="text-[#999999]">{formatTarget(key)}</span>
-                                                        <span className="text-[#333333]">{item.detail.content[key]}%</span>
+                                                    <div key={it} className="w-[210px] flex justify-between leading-8">
+                                                        <span className="text-[#4D4D4D] font-semibold">{formatTarget(key)}</span>
+                                                        <span className="text-[#333333] font-semibold">{item.detail.content[key]}%</span>
                                                     </div>
                                                 ))
                                             }
@@ -396,9 +404,9 @@ export default function Strategy() {
                                         <div className="flex justify-between w-full">
                                             {
                                                 Object.keys(item.detail.content).slice(2, 4).map((key, it) => (
-                                                    <div key={it} className="w-[210px] flex justify-between">
-                                                        <span className="text-[#999999]">{formatTarget(key)}</span>
-                                                        <span className="text-[#333333]">{item.detail.content[key]}%</span>
+                                                    <div key={it} className="w-[210px] flex justify-between leading-8">
+                                                        <span className="text-[#4D4D4D] font-semibold">{formatTarget(key)}</span>
+                                                        <span className="text-[#333333] font-semibold">{item.detail.content[key]}%</span>
                                                     </div>
                                                 ))
                                             }

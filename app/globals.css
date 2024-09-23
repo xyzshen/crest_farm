@@ -61,9 +61,39 @@
     }
   }
   .w-content{
-    width: 1440px;
+    max-width: 1440px;
+    min-width: 1280px;
     margin: 0 auto;
   }
+  .sidebar-menus {
+      .ant-menu-submenu-title,
+      .ant-menu-item {
+        margin: 20px 0 !important;
+        color: #858585;
+        font-size: 14px;
+        font-weight: 600;
+        height: 40px;
+        line-height: 40px;
+      }
+  
+      .ant-menu-item-selected {
+        background-color: transparent !important;
+        color: #1a1a1a !important;
+      }
+  
+      .ant-menu-submenu-selected>.ant-menu-submenu-title {
+        background-color: transparent !important;
+        color: #1a1a1a !important;
+      }
+  
+      .ant-menu-inline {
+        background-color: transparent !important;
+      }
+  
+      .ant-menu-item-only-child {
+        margin-top: 0 !important;
+      }
+    }
 }
 
 

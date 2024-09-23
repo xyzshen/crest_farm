@@ -54,6 +54,9 @@ interceptors.request.use((config: any) => {
     configDefault,
     config,
   );
+  if (!token) {
+    delete configDefault.headers.AuthorizationToken;
+  }
   return configDefault;
 });
 
@@ -151,6 +154,9 @@ function request(method: string, path: string, data?: any, config?: any) {
       body: JSON.stringify(data),
       method,
     };
+    if (!token) {
+      delete myInit.headers.AuthorizationToken;
+    }
     return Cfetch(path, myInit);
   }
 }

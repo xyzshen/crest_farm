@@ -20,7 +20,7 @@ export default function Login() {
         LoginApi.login(data, values.code, token).then((res: any) => {
             if (res) {
                 LoginState.loginSuccess({ ...res.data })
-                router.push('/')
+                router.push('/manage/overview')
             }
         }).catch((err) => {
             getpictureCheckCode()

@@ -2,8 +2,8 @@ import { TApi } from "./type";
 
 export default <TApi>{
   common: {
-    getpictureCheckCode: '/cs/account/pictureCheckCode',
-    login: 'cs/account/login',
+    getpictureCheckCode: `/cs/account/pictureCheckCode?time=${new Date().getTime()}`,
+    login: '/cs/account/login',
     logout: '/api/logout',
     sendEmail: '/cs/user/sendEmail',
     register: '/cs/user/register',

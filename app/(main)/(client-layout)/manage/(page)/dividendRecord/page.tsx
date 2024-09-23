@@ -3,9 +3,9 @@ import React from 'react';
 import Container from '@/app/components/Container';
 import { Button, Input, Table } from 'antd';
 import { useAntdTable } from 'ahooks';
-import { FundFlowApi } from '@/app/service/fundFlow-api';
+import { DividendRecordApi } from '@/app/service/dividendRecord-api';
 import dayjs from 'dayjs';
-import { AddFundFlow } from './modal/AddFundFlow';
+import AddDividendRecord from './modal/AddDividendRecord';
 
 export default function Page() {
 
@@ -15,31 +15,30 @@ export default function Page() {
       pageNumber: current,
       pageSize: pageSize
     }
-    return FundFlowApi.getFundFlowList(query).then((res: any) => {
+    return DividendRecordApi.getDividendRecordList(query).then((res: any) => {
       return {
-        total: res.total,
+        total: res.totalCount,
         list: res.data,
       };
     })
   };
 
+  const { tableProps, search } = useAntdTable(getTableData);
   const [visible, setVisible] = React.useState<boolean>(false)
 
-  const { tableProps, search } = useAntdTable(getTableData);
+  const onAdd = () => {
+    setVisible(true)
+  }
 
   const handleCancel = () => {
-    setVisible(false);
     search.reset()
+    setVisible(false)
   }
 
   const columns = [
     {
       title: '账号',
       dataIndex: 'account',
-    },
-    {
-      title: '类型',
-      dataIndex: 'type',
     },
     {
       title: '金额',
@@ -54,7 +53,7 @@ export default function Page() {
     },
   ]
   return (
-    <Container title='资金流水'>
+    <Container title='分红记录'>
       <div className='p-6'>
         <div className='flex justify-between pb-4'>
           <Input.Search placeholder='搜索账号' style={{ width: '20rem' }} />
@@ -63,7 +62,7 @@ export default function Page() {
           <Table columns={columns} rowKey="email" {...tableProps} />
         </div>
       </div>
-      <AddFundFlow visible={visible} onCancel={handleCancel} />
+      <AddDividendRecord visible={visible} onCancel={handleCancel} />
     </Container>
   );
 }
