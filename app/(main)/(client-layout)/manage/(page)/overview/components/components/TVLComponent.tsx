@@ -1,40 +1,76 @@
-import { formatNumber } from "@/utils";
-import { useState } from "react";
+import { formatDecimal, formatNumber } from "@/utils";
+import { useEffect, useState } from "react";
 import PieChart from "../charts/PieChart";
 
 const defaultAssetsList = [
   {
     label: 'GDN',
-    value: 300208,
+    key: 'gmx',
+    value: 0,
   }, {
     label: 'CTA',
-    value: 100000,
+    key: 'cta',
+    value: 0,
   }, {
     label: 'LMH',
-    value: 200000,
+    key: 'lmh',
+    value: 0,
   }, {
     label: 'PT',
-    value: 400000,
+    key: 'pt',
+    value: 0,
   },
   {
     label: 'SEA',
-    value: 400000,
+    key: 'sea',
+    value: 0,
   },
   {
     label: 'SCM',
-    value: 400000,
+    key: 'scm',
+    value: 0,
   }
 ]
 
-const TVLComponent = () => {
-  const [tvlValue, setTvlValue] = useState(7006401);
-  const [assetsList, setAssetsList] = useState<any>(defaultAssetsList)
+const formatData = (data: any) => {
+  const array = defaultAssetsList.map((item: any) => {
+    const obj = data.find((d: any) => d.strategy === item.key)
+    return {
+      label: item.label,
+      value: obj ? obj.value : 0
+    }
+  })
+  return array
+}
+
+const totalNumber = (data: any) => {
+  return data.reduce((pre: number, cur: any) => {
+    return pre + cur.value
+  }, 0)
+}
+
+
+const TVLComponent = (props: { data: any }) => {
+  const { data } = props;
+  const [tvlValue, setTvlValue] = useState(0);
+  const [assetsList, setAssetsList] = useState<any>(defaultAssetsList);
+
+
+  useEffect(() => {
+    if (data) {
+      const array = formatData(data || [])
+      setTvlValue(totalNumber(array || []))
+      setAssetsList(array)
+    }
+  }, [data])
+
+
   return (
     <div style={{ width: 'calc(50% - 15px)' }} className="flex bg-white p-8 rounded-lg shadow-md">
       <div className="flex flex-col justify-between">
         <div>
           <div className="text-[#4D4D4D]">Total investment <span className="text-[#999]">(USDT)</span></div>
-          <div className="text-2xl text-[#1a1a1a] font-semibold">${formatNumber(tvlValue)}</div>
+          <div className="text-2xl text-[#1a1a1a] font-semibold">${formatDecimal(tvlValue, 2)}</div>
         </div>
         <div className="flex flex-wrap">
           {
@@ -49,7 +85,7 @@ const TVLComponent = () => {
       </div>
       <div className="w-[40%] flex flex-col justify-between">
         <div></div>
-        <PieChart data={defaultAssetsList.map(item => {
+        <PieChart data={assetsList.map((item: any) => {
           return {
             name: item.label,
             value: item.value

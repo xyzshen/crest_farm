@@ -1,3 +1,4 @@
+import { formatDecimal } from '@/utils';
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
 
@@ -6,16 +7,16 @@ const LineChart = (props: any) => {
   const { data } = props
 
   const xAxis = useMemo(() => {
-    return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-  }, [])
+    return data.map((item: any) => item.date)
+  }, [data])
 
   const yAxis = useMemo(() => {
-    return [771, 885, 1093, 321, 98, 3211, 2107]
-  }, [])
+    return data.map((item: any) => formatDecimal(item.value, 2))
+  }, [data])
 
   const yMax = useMemo(() => {
-    return 4000
-  }, [])
+    return Math.ceil(Math.max(...yAxis) * 1.2)
+  }, [yAxis])
 
   const options = useMemo(() => {
     return {
@@ -52,15 +53,13 @@ const LineChart = (props: any) => {
           }
         },
         axisLabel: {
-          color: '#4D4D4D'
+          color: '#666'
         }
       },
       yAxis: {
         type: 'value',
         max: yMax,
-        axisLabel: {
-          color: '#4D4D4D'
-        },
+        splitNumber: 1.5,
         splitLine: {
           show: true,
           lineStyle: {

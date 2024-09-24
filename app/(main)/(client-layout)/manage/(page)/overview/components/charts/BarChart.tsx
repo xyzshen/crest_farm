@@ -1,6 +1,7 @@
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
 import dayjs from 'dayjs';
+import { formatDecimal } from '@/utils';
 
 interface IBarChart {
   data: any[];
@@ -12,13 +13,11 @@ const BarChart = (props: IBarChart) => {
 
   const { data, title } = props
   const xData = useMemo(() => {
-    if (!data || data.length === 0) return []
-    return data.map((item: any) => dayjs(item.time).format('MM-DD'))
+    return data.map((item: any) => item.date)
   }, [data])
 
   const yData = useMemo(() => {
-    if (!data || data.length === 0) return []
-    return data.map((item: any) => Math.ceil(item.value * 10) / 10)
+    return data.map((item: any) => formatDecimal(item.value, 2))
   }, [data])
 
   const options = useMemo(() => {
@@ -45,9 +44,6 @@ const BarChart = (props: IBarChart) => {
         axisTick: {
           show: false
         },
-        axisLabel: {
-          color: '#4D4D4D'
-        },
         axisLine: {
           show: true,
           lineStyle: {
@@ -57,10 +53,9 @@ const BarChart = (props: IBarChart) => {
       },
       yAxis: {
         type: 'value',
-        splitNumber: 2,
+        splitNumber: 1.5,
         axisLabel: {
-          formatter: '{value} %',
-          color: '#4D4D4D'
+          formatter: '{value}'
         }
       },
       series: [
@@ -75,7 +70,7 @@ const BarChart = (props: IBarChart) => {
         },
       ]
     }
-  }, [])
+  }, [yData, xData])
 
   return <ReactECharts
     option={options}

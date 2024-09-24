@@ -42,5 +42,9 @@ export default <TApi>{
     queryGmxReportList: '/cs/gmx/queryGmxReportList',   // 分天利润
     queryOperationByPage: '/cs/gmx/queryOperationByPage', // 操作记录
     getGmxProfit: '/cs/gmx/getGmxProfit',
+  },
+  overview: {
+    getTotalSummary: '/cs/overview/getTotalSummary',
+    getTotalList: '/cs/overview/getTotalList',
   }
 }

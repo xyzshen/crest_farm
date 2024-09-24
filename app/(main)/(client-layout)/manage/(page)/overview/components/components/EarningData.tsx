@@ -1,13 +1,25 @@
-import { formatNumber } from "@/utils";
+import { formatDecimal, formatNumber } from "@/utils";
 import dayjs from "dayjs";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import BarChart from "../charts/BarChart";
-import mock from "../../mock";
 
-const EarningData = () => {
+const EarningData = (props: { data: any }) => {
+  const { data } = props
   const [currentValue, setCurrentValue] = useState<number>(1102);
   const [currentTime, setCurrentTime] = useState<string>(dayjs().format('YYYY-MM-DD'));
-  const { stableList } = mock
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      const lastData = data[data.length - 1]
+      const now = dayjs().format('YYYY-MM-DD')
+      setCurrentValue(lastData?.value || 0)
+      setCurrentTime(lastData?.date || now)
+    }
+  }, [data])
+
+  const stableList = useMemo(() => {
+    return data || []
+  }, [data])
 
   return <div className="bg-white mt-8 p-8 rounded-lg shadow-md">
     <div className="flex justify-between">
@@ -15,7 +27,7 @@ const EarningData = () => {
         Total assets trend
       </div>
       <div className="flex items-center">
-        <div className="text-xl text-[#2C4E93] font-semibold pr-4">${formatNumber(currentValue)}</div>
+        <div className="text-xl text-[#2C4E93] font-semibold pr-4">${formatDecimal(currentValue, 2)}</div>
         <div>{currentTime}</div>
       </div>
     </div>
