@@ -24,7 +24,7 @@ export default function Register(props: ILogin) {
       if (!value) {
         return Promise.reject('Please input your confirm password!');
       }
-      if (!value || form.getFieldValue('newPassword') === value) {
+      if (!value || form.getFieldValue('password') === value) {
         return Promise.resolve();
       }
       return Promise.reject('The two passwords that you entered do not match!');
@@ -84,9 +84,8 @@ export default function Register(props: ILogin) {
             <Input.Search
               placeholder="Please input your email!"
               allowClear
-              enterButton={<Button disabled={sendDisabled} type="primary">Send Email</Button>}
+              enterButton={<Button onClick={onSend} disabled={sendDisabled} type="primary">Send Email</Button>}
               size="large"
-              onSearch={onSend}
             />
           </Form.Item>
           <Form.Item
