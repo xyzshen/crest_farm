@@ -396,7 +396,7 @@ export default function Strategy() {
                                                 Object.keys(item.detail.content).slice(0, 2).map((key, it) => (
                                                     <div key={it} className="w-[210px] flex justify-between leading-8">
                                                         <span className="text-[#4D4D4D] font-semibold">{formatTarget(key)}</span>
-                                                        <span className="text-[#333333] font-semibold">{item.detail.content[key]}%</span>
+                                                        <span className="text-[#333333]">{item.detail.content[key]}%</span>
                                                     </div>
                                                 ))
                                             }
@@ -407,7 +407,7 @@ export default function Strategy() {
                                                 Object.keys(item.detail.content).slice(2, 4).map((key, it) => (
                                                     <div key={it} className="w-[210px] flex justify-between leading-8">
                                                         <span className="text-[#4D4D4D] font-semibold">{formatTarget(key)}</span>
-                                                        <span className="text-[#333333] font-semibold">{item.detail.content[key]}%</span>
+                                                        <span className="text-[#333333]">{item.detail.content[key]}%</span>
                                                     </div>
                                                 ))
                                             }
@@ -467,14 +467,14 @@ export default function Strategy() {
                         </div>
                     </div>
                     <div className="mt-[30px]  w-content">
-                        <div className=" h-[380px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pt-[40px] pl-[30px] pr-[32px] pb-[44px]">
+                        <div className=" h-[380px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pt-10 pl-8 pr-8 pb-11">
                             <div className=" flex justify-between items-center">
-                                <div className="text-[#333333] text-[24px] font-[600]">
+                                <div className="text-[#333333] text-2xl font-semibold">
                                     Performance
                                 </div>
                                 <div>
-                                    <span className="text-[#2C4E93] text-[20px] font-bold">Monthly Yield Overview</span>
-                                    <span className="text-[#4d4d4d] text-[14px] ml-[15px]">since {initDate}</span>
+                                    <span className="text-[#2C4E93] text-xl font-bold">Monthly Yield Overview</span>
+                                    <span className="text-[#4d4d4d] text-base ml-4">since {initDate}</span>
                                 </div>
                             </div>
                             <div className="h-[252px]">
@@ -488,7 +488,7 @@ export default function Strategy() {
                             <div className="text-[16px]">
                                 {strategyDetail && Object.keys(strategyDetail).map((key) => (<p key={key} className="flex justify-between leading-10">
                                     <span className="text-[#4D4D4D] font-semibold">{key}</span>
-                                    <span className="text-[#333333] font-semibold">{strategyDetail[key]}</span>
+                                    <span className="text-[#333333]">{strategyDetail[key]}</span>
                                 </p>))}
                             </div>
                         </div>

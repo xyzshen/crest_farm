@@ -2,7 +2,7 @@
 
 import { validateFormItem } from "@/utils/validator";
 import { Button, Form, Input, Image } from "antd";
-import BackSvg from '/public/static/icons/back.svg'
+import BackSvg from '/public/static/icons/back-dark.svg'
 import { useState } from "react";
 import { useTimeout } from "ahooks";
 
@@ -52,8 +52,8 @@ export default function ForgotPass(props: ILogin) {
 
   return (
     <div className="w-[62%] h-full relative">
-      <div className="text-sm font-bold absolute left-12 top-10 cursor-pointer" onClick={() => onCheck('/login')}>
-        <Image src={BackSvg} width={14} />
+      <div className="text-sm flex font-bold absolute left-12 top-10 cursor-pointer" onClick={() => onCheck('/login')}>
+        <BackSvg className="inline-block w-6 mr-2" />
         back</div>
       <div className='flex justify-center items-center flex-col w-full h-full'>
 

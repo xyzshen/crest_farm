@@ -1,4 +1,5 @@
-import { Button, Form, Input, Space } from "antd";
+import { Button, Form, Input, Space, Image } from "antd";
+import BackSvg from '/public/static/icons/back-dark.svg'
 
 interface ILogin {
   code: string;
@@ -10,8 +11,17 @@ interface ILogin {
 
 export default function LoginComponent(props: ILogin) {
   const { code, onFinish, onChangePictureCheckCode, onFinishFailed, onCheck, } = props;
+
+  const onRoute = () => {
+    onCheck?.('/')
+  }
+
   return (
-    <div className='flex justify-center items-center flex-col w-[62%]'>
+    <div className='flex justify-center items-center flex-col w-[62%] relative'>
+      <div className="text-sm font-bold absolute left-12 top-10 cursor-pointer" onClick={() => onRoute()}>
+        <BackSvg className="inline-block w-6 mr-2" />
+        back
+      </div>
       <div className='w-[360px]'>
         <h6 className='text-[#000000] text-[30px] font-bold mb-8'>Log in to your account</h6>
         <Form

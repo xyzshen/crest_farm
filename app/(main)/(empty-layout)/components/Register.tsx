@@ -3,6 +3,7 @@ import { Button, Form, Input, Space } from "antd";
 import { validateFormItem } from "@/utils/validator";
 import { useState } from "react";
 import { useInterval, useTimeout } from "ahooks";
+import BackSvg from '/public/static/icons/back.svg'
 
 interface ILogin {
   code: string;
@@ -96,7 +97,7 @@ export default function Register(props: ILogin) {
                 required: true,
                 message: 'Please input your password!',
               },
-              () => validateFormItem('password', '长度超过8位，必须要有英文和数字')
+              () => validateFormItem('password', 'The length must exceed 8 characters and must contain both letters and numbers.')
             ]}
           >
             <Input.Password style={{ width: '100%', height: '46px' }} placeholder='Password' />
