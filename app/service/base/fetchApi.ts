@@ -71,11 +71,10 @@ interceptors.response.use(async (response: any) => {
     if (res?.code === 0) {
       return res;
     } else {
-      if (res.code === 209252) {
+      if (res.code === 209252 || res.code === 209301) {
         console.log("token过期");
-        // loginState.clearLoginState();
-        // window.location.href = "/login";
-        // loginState.clear();
+        loginState.clearLoginState();
+        window.location.href = "/login";
       }
       toast_error_code(res);
       return Promise.reject(res);
