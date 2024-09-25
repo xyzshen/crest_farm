@@ -44,6 +44,7 @@ export default function Page() {
 
   const handleModalCancle = () => {
     setExchangeAccountModalVisible(false);
+    setExchangeAccountData(undefined)
     search.reset()
   }
 
