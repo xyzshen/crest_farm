@@ -97,7 +97,7 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
     }
   }, [data])
 
-  return <Modal open={visible} onCancel={handleCancle} onOk={handleOk} title={data ? "Add Exchange Account" : "Edit Exchange Account"}>
+  return <Modal open={visible} onCancel={handleCancle} onOk={handleOk} title={!data ? "Add Exchange Account" : "Edit Exchange Account"}>
     <Form form={form} labelCol={{ span: 6 }}
       wrapperCol={{ span: 16 }}>
       <Form.Item label="Protocol" name="protocol">
