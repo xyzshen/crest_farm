@@ -62,6 +62,7 @@ export default function ForgotPass(props: ILogin) {
             Reset Password
           </h6>
           <Form
+            requiredMark={false}
             name="basic"
             form={form}
             className={'login-form'}

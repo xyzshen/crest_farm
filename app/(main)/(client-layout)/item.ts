@@ -10,5 +10,11 @@ export const Items: MenuItem[] = [
     key: '/strategy',
     title: 'Strategy',
     label: 'Strategy',
+  },
+  {
+    key: '/manage/overview',
+    title: 'My portfolio',
+    label: 'My portfolio',
+    isLogin: true
   }
 ];

@@ -9,10 +9,26 @@ export function formatNumber(num: number): string {
 }
 
 // 根据传入时间计算距离当前时间的时间差，单位天，向上取整
-export function calcDaysFromNow(time: string): number {
+// 根据传入时间计算距离当前时间的时间差，单位天，向上取整
+export function calcDaysFromNow(time: string | number): string {
+  // 传入是number, 则是时间戳
   const now = new Date().getTime()
-  const target = new Date(time).getTime()
-  return Math.ceil((now - target) / (1000 * 60 * 60 * 24))
+  const target = typeof (time) === 'number' ? time : new Date(time).getTime()
+  const diff = now - target
+  // 返回值小于3分钟，则返回秒
+  if (diff < 1000 * 60 * 3) {
+    return Math.floor(diff / 1000) + 1 + 's'
+  }
+  // 返回值小于2小时，则返回分钟
+  if (diff < 1000 * 60 * 60 * 2) {
+    return Math.floor(diff / (1000 * 60)) + 1 + 'm'
+  }
+  // 返回值小于48小时，则返回小时
+  if (diff < 1000 * 60 * 60 * 48) {
+    return Math.floor(diff / (1000 * 60 * 60)) + 1 + 'h'
+  }
+  // 其余返回天
+  return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1 + 'days'
 }
 
 // url 参数拼接,需要将参数转义

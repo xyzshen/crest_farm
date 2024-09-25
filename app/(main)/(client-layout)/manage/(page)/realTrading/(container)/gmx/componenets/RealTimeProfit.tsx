@@ -15,11 +15,11 @@ interface IRealTimeProfit {
 
 const segmentedTypeList = [
   {
-    label: '30天',
+    label: '30 days',
     value: 'day'
   },
   {
-    label: '24小时',
+    label: '24 hours',
     value: 'hour'
   }
 ]
@@ -47,7 +47,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
 
   const columns = [
     {
-      title: '时间',
+      title: 'Time',
       dataIndex: 'createTime',
       key: 'createTime',
       render: (text: string) => {
@@ -55,7 +55,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: '本金',
+      title: 'Principal',
       dataIndex: 'principal',
       key: 'principal',
       render: (text: string) => {
@@ -63,7 +63,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: '协议价值',
+      title: 'LP Value',
       dataIndex: 'LPValue',
       key: 'LPValue',
       render: (text: string) => {
@@ -71,7 +71,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'token空单价值',
+      title: 'Short Token Value',
       dataIndex: 'shortTokenValue',
       key: 'shortTokenValue',
       render: (text: string) => {
@@ -79,7 +79,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'USDC数量',
+      title: 'USDC Count',
       dataIndex: 'usdtCount',
       key: 'usdtCount',
       render: (text: string) => {
@@ -87,7 +87,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'GM价格',
+      title: 'GM Price',
       dataIndex: 'gmPrice',
       key: 'gmPrice',
       render: (text: string) => {
@@ -95,7 +95,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: '资金费率',
+      title: 'Funding Rate',
       dataIndex: 'fundingRate',
       key: 'fundingRate',
       render: (text: any) => {
@@ -103,7 +103,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: '开单消耗',
+      title: 'Open Fee',
       dataIndex: 'fee',
       key: 'fee',
       render: (text: string) => {
@@ -111,7 +111,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: '实时收益',
+      title: 'Current Profit',
       dataIndex: 'currentProfit',
       key: 'currentProfit',
       render: (text: string) => {
@@ -119,7 +119,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: '总收益',
+      title: 'Total Profit',
       dataIndex: 'totalProfit',
       key: 'totalProfit',
       render: (text: string) => {

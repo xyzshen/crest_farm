@@ -25,7 +25,8 @@ export type TGmxData = {
   description?: string;
   createTime: string;
   profit?: number;   // 收益
-  detail?: TGmxProfitDATA[]
+  detail?: TGmxProfitDATA[];
+  lastRunTime?: number // 最后运行时间
 }
 
 export type TGmxStat = {

@@ -15,16 +15,16 @@ const BarChart = (props: any) => {
   const options = useMemo(() => {
     return {
       title: {
-        text: '实时收益趋势图'
+        text: 'Real-time Profit Trend'
       },
       tooltip: {
         trigger: 'axis',
       },
       legend: {
-        data: ['实时收益']
+        data: ['Real-time Profit']
       },
       xAxis: {
-        name: '时间',
+        name: 'Time',
         type: 'category',
         data: xData,
         // 刻度线
@@ -38,7 +38,7 @@ const BarChart = (props: any) => {
       },
       barMaxWidth: 40,
       yAxis: [{
-        name: '实时收益',
+        name: 'Real-time Profit',
         type: 'value',
         splitLine: {
           show: false,
@@ -46,7 +46,7 @@ const BarChart = (props: any) => {
         }
       }],
       series: [{
-        name: '实时收益',
+        name: 'Real-time Profit',
         type: 'bar',
         data: yData,
       }],

@@ -7,7 +7,7 @@ const Position = (props: any) => {
   const { tableProps, data } = props;
   const columns = [
     {
-      title: '时间',
+      title: 'CreateTime',
       dataIndex: 'createTime',
       key: 'createTime',
       render: (text: string) => {
@@ -15,7 +15,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: '本金',
+      title: 'Principal',
       dataIndex: 'principal',
       key: 'principal',
       render: (text: string) => {
@@ -23,7 +23,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: '协议价值',
+      title: 'LP Value',
       dataIndex: 'LPValue',
       key: 'LPValue',
       render: (text: string) => {
@@ -31,7 +31,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'token空单价值',
+      title: 'Short Token Value',
       dataIndex: 'shortTokenValue',
       key: 'shortTokenValue',
       render: (text: string) => {
@@ -39,7 +39,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'USDC数量',
+      title: 'USDT Count',
       dataIndex: 'usdtCount',
       key: 'usdtCount',
       render: (text: string) => {
@@ -47,7 +47,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'GM价格',
+      title: 'GM Price',
       dataIndex: 'gmPrice',
       key: 'gmPrice',
       render: (text: string) => {
@@ -55,7 +55,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: '资金费率',
+      title: 'Funding Rate',
       dataIndex: 'fundingRate',
       key: 'fundingRate',
       render: (text: any) => {
@@ -63,7 +63,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: '开单消耗',
+      title: 'Open fee',
       dataIndex: 'fee',
       key: 'fee',
       render: (text: string) => {
@@ -71,7 +71,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: '实时收益',
+      title: 'Current Profit',
       dataIndex: 'currentProfit',
       key: 'currentProfit',
       render: (text: string) => {
@@ -79,7 +79,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: '总收益',
+      title: 'Total Profit',
       dataIndex: 'totalProfit',
       key: 'totalProfit',
       render: (text: string) => {

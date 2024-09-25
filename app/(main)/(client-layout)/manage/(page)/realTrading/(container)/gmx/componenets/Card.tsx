@@ -7,14 +7,14 @@ interface ICard extends TGmxData {
 }
 
 const Card = (props: ICard) => {
-  const { symbol, userName, createTime, detail = [], principal, profit, status, toDetail } = props;
+  const { symbol, userName, createTime, detail = [], principal, profit, status, lastRunTime, toDetail } = props;
 
   return <div className="bg-white shadow-md p-4 rounded-md cursor-pointer h-[275px]" onClick={toDetail}>
     <div className="text-[#1a1a1a] text-xl font-bold">{symbol}</div>
     <div className="flex justify-between py-4">
       <div className="text-sky-500 text-lg font-semibold">{userName}</div>
-      {status === 1 && <div className="text-lg font-medium text-emerald-400">运行{calcDaysFromNow(createTime)}天</div>}
-      {status === 0 && <div className="text-lg font-medium text-red-500">已停止</div>}
+      {status === 1 && <div className="text-lg font-medium text-emerald-400">RunNing{calcDaysFromNow(lastRunTime || 0)}</div>}
+      {status === 0 && <div className="text-lg font-medium text-red-500">Stop</div>}
     </div>
     <div className="w-full py-4 h-[130px]">
       <MiniLine
@@ -28,11 +28,11 @@ const Card = (props: ICard) => {
     </div>
     <div className="flex justify-between">
       <div className="flex">
-        <div className="text-[#666] pr-2">本金</div>
+        <div className="text-[#666] pr-2">Principal</div>
         <div className="font-semibold">${principal}</div>
       </div>
       <div className="flex">
-        <div className="text-[#666] pr-2">收益</div>
+        <div className="text-[#666] pr-2">Profit</div>
         <div className="font-semibold">${profit || 0}</div>
       </div>
     </div>

@@ -64,7 +64,7 @@ const Header = () => {
 
             </span>}
             {isShowQuit && <div className="absolute top-11 right-0 w-[120px] py-4 text-center bg-[#3c3c3c] rounded-md text-[#fff] cursor-pointer">
-              {user && <div className="leading-10" onClick={goDetail}>Management</div>}
+              {/* {user && <div className="leading-10" onClick={goDetail}>Management</div>} */}
               <div className="leading-10" onClick={onQuit}>Quit</div>
             </div>}
           </div>

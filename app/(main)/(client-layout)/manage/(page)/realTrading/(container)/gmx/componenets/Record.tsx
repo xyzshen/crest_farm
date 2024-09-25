@@ -5,10 +5,10 @@ import dayjs from 'dayjs';
 import React from 'react';
 
 enum Opt {
-  'open' = '开仓',
-  'close' = '平仓',
-  'increase' = '增加空单量',
-  'decrease' = '减少空单'
+  'open' = 'Open Position',
+  'close' = 'Close Position',
+  'increase' = 'Increase',
+  'decrease' = 'Decrease'
 }
 
 
@@ -17,40 +17,40 @@ const Record = (props: any) => {
   const optObj = enumToObject(Opt);
   const columns: any = [
     {
-      title: '时间',
+      title: 'Time',
       dataIndex: 'createTime',
       render: (text: string) => {
         return dayjs(text).format('YYYY-MM-DD HH:mm:ss')
       }
     },
     {
-      title: '操作',
+      title: 'Action',
       dataIndex: 'operate',
       render: (text: string) => {
         return optObj[text]
       }
     },
     {
-      title: '操作token数量',
+      title: 'Count',
       dataIndex: 'count',
     },
     {
-      title: '开单消耗',
+      title: 'Open Fee',
       dataIndex: 'openFee',
       render: (text: string) => {
         return text ? formatDecimal(text, 3) : '-'
       }
     },
     {
-      title: '资金费率',
+      title: 'Fund Fee',
       dataIndex: 'fundFee',
     },
     {
-      title: '持仓数量',
+      title: 'Short Count',
       dataIndex: 'shortCount',
     },
     {
-      title: '协议中token数量',
+      title: 'Token Count',
       dataIndex: 'tokenCount',
     },
   ];

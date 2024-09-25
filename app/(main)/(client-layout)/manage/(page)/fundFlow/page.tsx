@@ -34,19 +34,19 @@ export default function Page() {
 
   const columns = [
     {
-      title: '账号',
+      title: 'Account',
       dataIndex: 'account',
     },
     {
-      title: '类型',
+      title: 'Type',
       dataIndex: 'type',
     },
     {
-      title: '金额',
+      title: 'Amount',
       dataIndex: 'amount',
     },
     {
-      title: '时间',
+      title: 'CreateTime',
       dataIndex: 'createTime',
       render: (text: string) => {
         return dayjs(text).format('YYYY-MM-DD HH:mm:ss')
@@ -54,11 +54,8 @@ export default function Page() {
     },
   ]
   return (
-    <Container title='资金流水'>
+    <Container title='Fund Flow'>
       <div className='p-6'>
-        <div className='flex justify-between pb-4'>
-          <Input.Search placeholder='搜索账号' style={{ width: '20rem' }} />
-        </div>
         <div>
           <Table columns={columns} rowKey="email" {...tableProps} />
         </div>

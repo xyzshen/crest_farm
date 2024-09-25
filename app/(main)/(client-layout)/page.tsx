@@ -81,7 +81,7 @@ export default function Home() {
             </div>
             <div className="bg-[#FAFAFA] mt-20 h-[1231px]">
                 <div className="px-[125px] w-content">
-                    <h6 className="text-center text-[52px] font-[600] pt-[60px] pb-[46px] px-[130px]">Why Crest</h6>
+                    <h6 className="text-center text-[52px] font-[600] pt-[60px] pb-[46px]">Why Crest</h6>
                     <div className="flex justify-between">
                         <div>
                             <Image

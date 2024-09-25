@@ -48,24 +48,24 @@ const CMXPageList = () => {
     getGmxStat()
   }, [getGmxStat])
 
-  return <Container title='GMX策略' isCommonBg={true}>
+  return <Container title='GMX Strategy' isCommonBg={true}>
     <div className="w-full p-6 bg-white rounded-lg shadow-md">
       <div className="flex justify-between px-6">
         <div className="flex flex-col items-center">
-          <div className="text-[#666666] text-[1.25rem]">总金额</div>
+          <div className="text-[#666666] text-[1.25rem]">Total Assets</div>
           <div className="text-[#1a1a1a] text-[1.5rem] font-bold">${formatDecimal(statics?.totalMoney || 0, 2)}</div>
         </div>
         <div className="flex flex-col items-center">
-          <div className="text-[#666666] text-[1.25rem]">总收益</div>
+          <div className="text-[#666666] text-[1.25rem]">Total Profit</div>
           <div className="text-[#1a1a1a] text-[1.5rem] font-bold">${formatDecimal(statics?.totalProfit || 0, 2)}</div>
         </div>
         <div className="flex flex-col items-center">
-          <div className="text-[#666666] text-[1.25rem]">实盘数</div>
+          <div className="text-[#666666] text-[1.25rem]">Live Trading Volume</div>
           <div className="text-[#1a1a1a] text-[1.5rem] font-bold">{statics?.count || 0}</div>
         </div>
       </div>
     </div>
-    <div className="flex flex-wrap justify-between items-center pt-4 overflow-auto">
+    <div className="flex flex-wrap justify-between items-center pt-4 overflow-auto ">
       {list.map((item, index) => <div className="w-[33.333%] p-2" key={index}>
         <Card {...item} toDetail={() => toDetail(item)} />
       </div>)}

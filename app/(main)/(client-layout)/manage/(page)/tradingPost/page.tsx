@@ -13,6 +13,7 @@ import {
     Space,
     Divider
 } from "antd";
+
 export default function TradingPost() {
     const [loading, setLoading] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);

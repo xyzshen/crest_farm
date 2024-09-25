@@ -13,7 +13,7 @@ const BarChart = (props: IBarChart) => {
 
   const { data, title } = props
   const xData = useMemo(() => {
-    return data.map((item: any) => item.date)
+    return data.map((item: any) => dayjs(item.date).format('MM-DD'))
   }, [data])
 
   const yData = useMemo(() => {

@@ -21,7 +21,7 @@ const LineChart = (props: any) => {
     }
     return {
       title: {
-        text: '收益趋势图'
+        text: 'Profit Trend'
       },
       tooltip: {
         trigger: 'axis',
@@ -30,15 +30,15 @@ const LineChart = (props: any) => {
         }
       },
       legend: {
-        data: ['累计收益']
+        data: ['Profit ']
       },
       xAxis: {
-        name: '时间',
+        name: 'tIME',
         type: 'category',
         data: xData
       },
       yAxis: [{
-        name: '累计收益',
+        name: 'Profit',
         type: 'value',
         minInterval: minInterval,
         max: maxYData,
@@ -49,7 +49,7 @@ const LineChart = (props: any) => {
         }
       }],
       series: [{
-        name: '累计收益',
+        name: 'Profit',
         type: 'line',
         data: yData,
       }],

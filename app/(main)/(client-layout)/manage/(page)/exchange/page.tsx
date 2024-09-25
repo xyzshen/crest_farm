@@ -54,15 +54,15 @@ export default function Page() {
 
   const handleDelete = (data: ExchangeDataType) => {
     Modal.warning({
-      title: '确认删除改交易所账号？',
+      title: 'Confirm the deletion of this exchange account?',
       content: (
         <div>
-          <p>删除后平台将无法操作该交易所账号的交易，且账号不可恢复</p>
+          <p>After deletion, the platform will no longer be able to operate transactions for this exchange account, and the account cannot be recovered.</p>
         </div>
       ),
       onOk() {
         ExchangeApi.deleteExchange(data.id).then((res: any) => {
-          message.success('删除成功');
+          message.success('Deletion successful.');
           search.reset();
         })
       },
@@ -74,11 +74,11 @@ export default function Page() {
 
   const columns = [
     {
-      title: '账号',
+      title: 'Account',
       dataIndex: 'account',
     },
     {
-      title: '所属交易所',
+      title: 'Protocol',
       dataIndex: 'protocol',
     },
     {
@@ -87,7 +87,7 @@ export default function Page() {
       render: (text: string) => {
         return <>
           <span>{text}</span>
-          <CopyToClipboard text={text} onCopy={() => message.success('复制成功')}>
+          <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
             <CopyOutlined className='text-blue-500 cursor-pointer' />
           </CopyToClipboard>
         </>
@@ -99,7 +99,7 @@ export default function Page() {
       render: (text: string) => {
         return <>
           <span>{text}</span>
-          <CopyToClipboard text={text} onCopy={() => message.success('复制成功')}>
+          <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
             <CopyOutlined className='text-blue-500 cursor-pointer' />
           </CopyToClipboard>
         </>
@@ -111,27 +111,27 @@ export default function Page() {
       render: (text: string) => {
         return <>
           <span>{text || '-'}</span>
-          {text && <CopyToClipboard text={text} onCopy={() => message.success('复制成功')}>
+          {text && <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
             <CopyOutlined className='text-blue-500 cursor-pointer' />
           </CopyToClipboard>}
         </>
       }
     },
     {
-      title: 'IP 白名单',
+      title: 'White Ips',
       dataIndex: 'whiteListIp'
     },
     {
-      title: '创建时间',
+      title: 'CreateTime',
       dataIndex: 'createTime',
     },
     {
-      title: '操作',
+      title: 'Action',
       render: (text: string, record: any) => {
         return (
           <div>
-            <Button type="link" onClick={() => handleEdit(record)}>编辑</Button>
-            <Button type="link" danger onClick={() => handleDelete(record)}>删除</Button>
+            <Button type="link" onClick={() => handleEdit(record)}>Edit</Button>
+            <Button type="link" danger onClick={() => handleDelete(record)}>Delete</Button>
           </div>
         )
       }
@@ -139,7 +139,7 @@ export default function Page() {
   ]
 
   return (
-    <Container title='交易所管理'>
+    <Container title='Exchange Management'>
       <div className='p-6'>
         <div className='pb-4'>
           <Segmented<string>
@@ -150,8 +150,7 @@ export default function Page() {
           />
         </div>
         <div className='flex justify-between pb-4'>
-          <Button type='primary' onClick={() => setExchangeAccountModalVisible(true)}>新增</Button>
-          <Input.Search placeholder='搜索账号' style={{ width: '20rem' }} />
+          <Button type='primary' onClick={() => setExchangeAccountModalVisible(true)}>Add</Button>
         </div>
         <div>
           <Table columns={columns} rowKey="email" {...tableProps} />

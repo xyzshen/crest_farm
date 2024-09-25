@@ -25,6 +25,7 @@ export default function LoginComponent(props: ILogin) {
       <div className='w-[360px]'>
         <h6 className='text-[#000000] text-[30px] font-bold mb-8'>Log in to your account</h6>
         <Form
+          requiredMark={false}
           className={'login-form'}
           name="basic"
           layout="vertical"

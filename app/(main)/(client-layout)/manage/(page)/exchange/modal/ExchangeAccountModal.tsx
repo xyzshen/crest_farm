@@ -40,14 +40,14 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
 
   const onAddExchange = (values: TAddExchangeData) => {
     ExchangeApi.addExchange(values).then((res: any) => {
-      message.success('新增成功')
+      message.success('Add Successful')
       handleCancle()
     })
   }
 
   const onUpdateExchange = (values: TUpdateExchangeData) => {
     ExchangeApi.updateExchange(values).then((res: any) => {
-      message.success('修改成功')
+      message.success('edit successful')
       handleCancle()
     })
   }
@@ -97,18 +97,10 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
     }
   }, [data])
 
-  return <Modal open={visible} onCancel={handleCancle} onOk={handleOk} title={data ? "新增交易所账号" : "修改交易所账号"}>
+  return <Modal open={visible} onCancel={handleCancle} onOk={handleOk} title={data ? "Add Exchange Account" : "Edit Exchange Account"}>
     <Form form={form} labelCol={{ span: 6 }}
       wrapperCol={{ span: 16 }}>
-      <Form.Item label="账号" name="account">
-        <Select options={userList.map(item => {
-          return {
-            label: item.name,
-            value: item.account
-          }
-        })} />
-      </Form.Item>
-      <Form.Item label="所属交易所" name="protocol">
+      <Form.Item label="Protocol" name="protocol">
         <Select options={exchangeOptions} onChange={(value) => {
           setExchange(value)
         }} />
@@ -122,9 +114,6 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
       {exchange === 'okx' && <Form.Item label="phasePassword" name="phasePassword">
         <Input />
       </Form.Item>}
-      <Form.Item label="IP 白名单" name="whiteListIp">
-        <Input.TextArea placeholder="使用逗号分隔ip" />
-      </Form.Item>
     </Form>
   </Modal>
 }

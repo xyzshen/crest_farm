@@ -52,6 +52,7 @@ export default function Register(props: ILogin) {
       <div className='w-[360px]'>
         <h6 className='text-[#000000] text-[30px] font-bold mb-8'>Create new account</h6>
         <Form
+          requiredMark={false}
           className={'login-form'}
           name="basic"
           form={form}
