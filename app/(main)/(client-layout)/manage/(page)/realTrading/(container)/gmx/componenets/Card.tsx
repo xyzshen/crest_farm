@@ -1,6 +1,6 @@
 import { TGmxData } from "@/app/service/realTrading-api/type";
 import MiniLine from "./MiniLine";
-import { calcDaysFromNow } from "@/utils";
+import { calcDaysFromNow, formatDecimal } from "@/utils";
 
 interface ICard extends TGmxData {
   toDetail: () => void
@@ -13,7 +13,7 @@ const Card = (props: ICard) => {
     <div className="text-[#1a1a1a] text-xl font-bold">{symbol}</div>
     <div className="flex justify-between py-4">
       <div className="text-sky-500 text-lg font-semibold">{userName}</div>
-      {status === 1 && <div className="text-lg font-medium text-emerald-400">RunNing{calcDaysFromNow(lastRunTime || 0)}</div>}
+      {status === 1 && <div className="text-lg font-medium text-emerald-400">Running {calcDaysFromNow(lastRunTime || 0)}</div>}
       {status === 0 && <div className="text-lg font-medium text-red-500">Stop</div>}
     </div>
     <div className="w-full py-4 h-[130px]">
@@ -29,11 +29,11 @@ const Card = (props: ICard) => {
     <div className="flex justify-between">
       <div className="flex">
         <div className="text-[#666] pr-2">Principal</div>
-        <div className="font-semibold">${principal}</div>
+        <div className="font-semibold">${formatDecimal(principal, 2)}</div>
       </div>
       <div className="flex">
         <div className="text-[#666] pr-2">Profit</div>
-        <div className="font-semibold">${profit || 0}</div>
+        <div className="font-semibold">${formatDecimal(profit || 0, 4)}</div>
       </div>
     </div>
   </div>

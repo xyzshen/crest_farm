@@ -8,6 +8,8 @@ import { ExchangeApi } from '@/app/service/exchange-api';
 import { ExchangeDataType } from '@/app/service/exchange-api/type';
 import Container from '@/app/components/Container';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { formatAppSecret } from '@/utils';
+import dayjs from 'dayjs';
 
 
 export interface Result {
@@ -87,7 +89,7 @@ export default function Page() {
       dataIndex: 'accessKey',
       render: (text: string) => {
         return <>
-          <span>{text}</span>
+          <span>{formatAppSecret(text)}</span>
           <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
             <CopyOutlined className='text-blue-500 cursor-pointer' />
           </CopyToClipboard>
@@ -99,7 +101,7 @@ export default function Page() {
       dataIndex: 'accessSecret',
       render: (text: string) => {
         return <>
-          <span>{text}</span>
+          <span>{formatAppSecret(text)}</span>
           <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
             <CopyOutlined className='text-blue-500 cursor-pointer' />
           </CopyToClipboard>
@@ -120,11 +122,14 @@ export default function Page() {
     },
     {
       title: 'White Ips',
-      dataIndex: 'whiteListIp'
+      dataIndex: 'whitelistIp'
     },
     {
       title: 'CreateTime',
       dataIndex: 'createTime',
+      render: (text: string) => {
+        return text ? dayjs(text).format('YYYY-MM-DD HH:mm:ss') : text
+      }
     },
     {
       title: 'Action',
