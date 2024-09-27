@@ -7,20 +7,21 @@ const MiniLine = (props: any) => {
   const data = props.data
   const style = props.style
 
-  const xData = data.map((item: any) => dayjs(item.time).format('YYYY-MM-DD HH:mm'))
-  const yData = data.map((item: any) => item.currentProfit || item.value)
-  const maxData = Math.max(...yData)
 
   const options = useMemo(() => {
+    const yData = data.map((item: any) => Number(item.value));
+    const xData = data.map((item: any) => dayjs(item.time).format('YYYY-MM-DD HH:mm'));
+    const maxData = Math.ceil(Math.max(...yData) > 0 ? Math.max(...yData) * 1.2 : Math.max(...yData) * 0.9);
+    const minData = Math.min(...yData) > 0 ? Math.ceil(Math.min(...yData) * 0.8) : Math.ceil(Math.min(...yData) * 1.2);
     return {
       title: {
         show: false,
         text: '收益趋势图'
       },
       grid: {
-        top: 10,
-        left: 40,
-        right: 10,
+        top: 5,
+        left: 30,
+        right: 0,
         bottom: 5,
       },
       tooltip: {
@@ -47,6 +48,9 @@ const MiniLine = (props: any) => {
       yAxis: [{
         name: '累计收益',
         type: 'value',
+        max: maxData,
+        min: minData,
+        minInterval: Math.round((maxData - minData) / 5),
         splitLine: {
           show: false,
           interval: 1,
