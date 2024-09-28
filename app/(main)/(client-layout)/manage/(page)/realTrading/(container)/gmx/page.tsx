@@ -70,9 +70,6 @@ const CMXPageList = () => {
         {list.map((item, index) => <div className=" p-2 lg:w-[50%] xl:w-[33.333%]" key={index}>
           <Card {...item} toDetail={() => toDetail(item)} />
         </div>)}
-        {list.map((item, index) => <div className=" p-2 lg:w-[50%] xl:w-[33.333%]" key={index}>
-          <Card {...item} toDetail={() => toDetail(item)} />
-        </div>)}
         <div className="lg:w-[50%] xl:w-[33.333%]"></div>
         <div className="lg:w-[50%] xl:w-[33.333%]"></div>
         <div className="lg:w-[50%] xl:w-[33.333%]"></div>

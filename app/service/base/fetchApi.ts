@@ -56,7 +56,10 @@ interceptors.request.use((config: any) => {
   );
   if (!token) {
     delete configDefault.headers.AuthorizationToken;
+  } else {
+    configDefault.headers.AuthorizationToken = `Token ${token}`;
   }
+  console.log('configDefault', configDefault, token)
   return configDefault;
 });
 
@@ -154,8 +157,11 @@ function request(method: string, path: string, data?: any, config?: any) {
       method,
     };
     if (!token) {
-      delete myInit.headers.AuthorizationToken;
+      delete configDefault.headers.AuthorizationToken;
+    } else {
+      configDefault.headers.AuthorizationToken = `Token ${token}`;
     }
+    console.log('myInit', myInit)
     return Cfetch(path, myInit);
   }
 }
