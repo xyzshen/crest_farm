@@ -21,8 +21,8 @@ const Card = (props: ICard) => {
         style={{ width: '100%', height: '100%' }}
         data={detail.map((item: any) => {
           return {
-            time: item.time,
-            value: item.apr
+            time: item.createTime,
+            value: item.currentProfit
           }
         })} />
     </div>

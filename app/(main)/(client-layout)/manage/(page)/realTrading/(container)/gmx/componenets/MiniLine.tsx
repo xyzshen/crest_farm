@@ -20,7 +20,7 @@ const MiniLine = (props: any) => {
       },
       grid: {
         top: 5,
-        left: 30,
+        left: 5,
         right: 0,
         bottom: 5,
       },
