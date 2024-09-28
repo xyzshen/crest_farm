@@ -9,7 +9,7 @@ interface ICard extends TGmxData {
 const Card = (props: ICard) => {
   const { symbol, userName, createTime, detail = [], principal, profit, status, lastRunTime, toDetail } = props;
 
-  return <div className="bg-white shadow-md p-4 rounded-md cursor-pointer h-[275px]" onClick={toDetail}>
+  return <div className="min-w-[360px] bg-white shadow-md p-4 rounded-md cursor-pointer h-[275px]" onClick={toDetail}>
     <div className="text-[#1a1a1a] text-xl font-bold">{symbol}</div>
     <div className="flex justify-between py-4">
       <div className="text-sky-500 text-lg font-semibold">{userName}</div>
