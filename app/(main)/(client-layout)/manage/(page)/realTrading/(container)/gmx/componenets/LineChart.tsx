@@ -15,8 +15,9 @@ const LineChart = (props: any) => {
   let minInterval = 20
   const options = useMemo(() => {
     if (data) {
+      console.log('Math.max(...yData) * 1.2', Math.max(...yData) * 1.2)
       minYData = getMinValue(Math.min(...yData) * 1.1);
-      maxYData = getMaxValue(Math.max(...yData) * 1.1);
+      maxYData = getMaxValue(Math.max(...yData) * 1.2);
       minInterval = Math.ceil((maxYData - minYData) / 5);
     }
     return {
@@ -49,6 +50,7 @@ const LineChart = (props: any) => {
         }
       }],
       series: [{
+        showSymbol: false,
         name: 'Profit',
         type: 'line',
         data: yData,

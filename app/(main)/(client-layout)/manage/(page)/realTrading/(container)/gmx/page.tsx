@@ -17,7 +17,7 @@ const CMXPageList = () => {
 
   const toDetail = (item: any) => {
     sessionStorage.setItem('gmxData', JSON.stringify(item))
-    router.push(`/realTrading/gmx/${item.id}`)
+    router.push(`/manage/realTrading/gmx/${item.id}`)
   }
 
   const fetchList = useCallback(() => {

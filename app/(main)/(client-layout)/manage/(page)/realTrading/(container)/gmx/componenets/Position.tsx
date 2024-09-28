@@ -56,16 +56,16 @@ const Position = (props: any) => {
     },
     {
       title: 'Funding Rate',
-      dataIndex: 'fundingRate',
-      key: 'fundingRate',
+      dataIndex: 'fundFee',
+      key: 'fundFee',
       render: (text: any) => {
         return text ? (text * 100).toFixed(2) + '%' : 0
       }
     },
     {
       title: 'Open fee',
-      dataIndex: 'fee',
-      key: 'fee',
+      dataIndex: 'fundFee',
+      key: 'fundFee',
       render: (text: string) => {
         return formatDecimal(text, 6)
       }

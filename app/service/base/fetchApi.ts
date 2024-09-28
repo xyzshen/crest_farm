@@ -59,7 +59,6 @@ interceptors.request.use((config: any) => {
   } else {
     configDefault.headers.AuthorizationToken = `Token ${token}`;
   }
-  console.log('configDefault', configDefault, token)
   return configDefault;
 });
 
@@ -75,7 +74,6 @@ interceptors.response.use(async (response: any) => {
       return res;
     } else {
       if (res.code === 209252 || res.code === 209301) {
-        console.log("token过期");
         loginState.clearLoginState();
         window.location.href = "/login";
       }
@@ -161,7 +159,6 @@ function request(method: string, path: string, data?: any, config?: any) {
     } else {
       configDefault.headers.AuthorizationToken = `Token ${token}`;
     }
-    console.log('myInit', myInit)
     return Cfetch(path, myInit);
   }
 }

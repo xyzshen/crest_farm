@@ -99,11 +99,12 @@ export function getMinValue(num: number): number {
   const len = numStr.length
   const first = numStr[0]
   let min = 0
-  if (first === '-') {
+  if (newNumber < 0) {
     min = Math.floor(newNumber / Math.pow(10, len - 2)) * Math.pow(10, len - 2)
   } else {
     min = Math.ceil(newNumber / Math.pow(10, len - 1)) * Math.pow(10, len - 1)
   }
+  console.log('min', min, newNumber)
   return newNumber
 }
 
@@ -115,11 +116,12 @@ export function getMaxValue(num: number): number {
   const len = numStr.length
   const first = numStr[0]
   let max = 0
-  if (first === '-') {
-    max = Math.ceil(newNumber / Math.pow(10, len - 2)) * Math.pow(10, len - 2)
+  if (newNumber < 0) {
+    max = Math.floor(newNumber / Math.pow(10, len - 2)) * Math.pow(10, len - 2)
   } else {
-    max = Math.floor(newNumber / Math.pow(10, len - 1)) * Math.pow(10, len - 1)
+    max = Math.ceil(newNumber / Math.pow(10, len - 1)) * Math.pow(10, len - 1)
   }
+  console.log('max', max, newNumber)
   return max > 0 && max < 10 ? 10 : max
 }
 

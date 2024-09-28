@@ -96,16 +96,16 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
     },
     {
       title: 'Funding Rate',
-      dataIndex: 'fundingRate',
-      key: 'fundingRate',
+      dataIndex: 'fundFee',
+      key: 'fundFee',
       render: (text: any) => {
         return text ? (text * 100).toFixed(2) + '%' : 0
       }
     },
     {
       title: 'Open Fee',
-      dataIndex: 'fee',
-      key: 'fee',
+      dataIndex: 'openFee',
+      key: 'openFee',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }
