@@ -67,12 +67,15 @@ const CMXPageList = () => {
         </div>
       </div>
       <div className="flex flex-wrap justify-between items-center pt-4 overflow-auto ">
-        {list.map((item, index) => <div className="w-[33.333%] p-2" key={index}>
+        {list.map((item, index) => <div className=" p-2 lg:w-[50%] xl:w-[33.333%]" key={index}>
           <Card {...item} toDetail={() => toDetail(item)} />
         </div>)}
-        <div className="w-[33.333%]"></div>
-        <div className="w-[33.333%]"></div>
-        <div className="w-[33.333%]"></div>
+        {list.map((item, index) => <div className=" p-2 lg:w-[50%] xl:w-[33.333%]" key={index}>
+          <Card {...item} toDetail={() => toDetail(item)} />
+        </div>)}
+        <div className="lg:w-[50%] xl:w-[33.333%]"></div>
+        <div className="lg:w-[50%] xl:w-[33.333%]"></div>
+        <div className="lg:w-[50%] xl:w-[33.333%]"></div>
       </div>
     </div>
     <AddLiveTrading visible={AddLiveTradingVisible} onCancel={() => setAddLiveTradingVisible(false)} />
