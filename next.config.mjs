@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+    reactStrictMode: false,
     swcMinify: true,
     output: 'standalone',
     webpack (config) {
@@ -22,7 +22,7 @@ const nextConfig = {
                 issuer: fileLoaderRule.issuer,
                 resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
                 use: ['@svgr/webpack'],
-            },
+            }
         )
 
         // Modify the file loader rule to ignore *.svg, since we have it handled now.
@@ -42,6 +42,14 @@ const nextConfig = {
                     { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
                 ]
             }
+        ]
+    },
+    async rewrites () {
+        return [
+            {
+                source: '/cs/:path*',
+                destination: 'http://110.41.87.225/cs/:path*',
+            },
         ]
     }
 };

@@ -13,6 +13,7 @@ import {
     Space,
     Divider
 } from "antd";
+
 export default function TradingPost() {
     const [loading, setLoading] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
@@ -90,7 +91,7 @@ export default function TradingPost() {
     };
 
     return (
-        <div className="h-screen w-screen">
+        <div className="h-full w-full">
             <div className="h-[54px] bg-white flex items-center pl-[25px]">
                 <span className="text-lg font-bold text-[#2C4E93] leading-7">
                     Trading Post

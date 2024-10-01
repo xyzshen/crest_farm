@@ -31,3 +31,69 @@
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .login-form {
+    .ant-form-item {
+      width: 360px;
+      margin-bottom: 16px;
+
+      .ant-form-item-label {
+        width: 100%;
+        /* white-space: nowrap; */
+
+
+        >label {
+          width: 100%;
+          font-weight: 500;
+          font-size: 16px;
+          color: #333333;
+          line-height: 30px;
+        }
+      }
+
+      .ant-form-item-control-input input,
+      .ant-form-item-control-input .ant-input-outlined {
+        border: none;
+        background-color: #F3F3F5;
+        border-radius: 10px;
+      }
+    }
+  }
+  .w-content{
+    max-width: 1440px;
+    min-width: 1280px;
+    margin: 0 auto;
+  }
+  .sidebar-menus {
+      .ant-menu-submenu-title,
+      .ant-menu-item {
+        margin: 20px 0 !important;
+        color: #858585;
+        font-size: 14px;
+        font-weight: 600;
+        height: 40px;
+        line-height: 40px;
+      }
+  
+      .ant-menu-item-selected {
+        background-color: transparent !important;
+        color: #1a1a1a !important;
+      }
+  
+      .ant-menu-submenu-selected>.ant-menu-submenu-title {
+        background-color: transparent !important;
+        color: #1a1a1a !important;
+      }
+  
+      .ant-menu-inline {
+        background-color: transparent !important;
+      }
+  
+      .ant-menu-item-only-child {
+        margin-top: 0 !important;
+      }
+    }
+}
+
+

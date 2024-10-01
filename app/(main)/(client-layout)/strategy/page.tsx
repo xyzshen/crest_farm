@@ -92,7 +92,7 @@ export default function Strategy() {
     const [initDate, setInitDate] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [strategyDetail, setStrategyDetail] = useState<any>(null);
-    const options = {
+    let options = {
         title: {
             text: '',
             right: 0,
@@ -113,21 +113,29 @@ export default function Strategy() {
             data: [],
             axisLine: {
                 lineStyle: {
-                    color: "#999999"
+                    color: "#D6D6D6"
                 }
-            }
+            },
+            axisTick: {
+                show: false
+            },
+            axisLabel: {
+                color: '#4d4d4d'
+            },
         },
         yAxis: {
             type: 'value',
             axisLabel: {
-                formatter: '{value}.00 %'
-            },
-            interval: 50,
-            axisLine: {
+                formatter: '{value}.00 %',
                 lineStyle: {
-                    color: "#999999"
+                    color: "#4D4D4D"
                 }
-            }
+            },
+            splitNumber: 1.5,
+            axisLine: {
+                show: false,
+                color: '#4d4d4d'
+            },
         },
         grid: {
             left: '0%',
@@ -261,6 +269,7 @@ export default function Strategy() {
         const newItem = JSON.parse(JSON.stringify(item))
         setTitle(newItem.strategy);
         newItem.options.series[0].barWidth = 26;
+        newItem.options.grid.height = '205px';
         newItem.options.title = '';
         newItem.options.series[0].itemStyle.color = function (params: any) {
             return params.data < 0 ? '#ff6363' : '#5E9EFF'
@@ -337,7 +346,7 @@ export default function Strategy() {
     return (
         <div>
             {
-                !isShowDetails && <div className="bg-home-grid-point bg-cover bg-no-repeat h-[1406px]">
+                !isShowDetails && <div className="bg-[#eee] bg-cover bg-no-repeat h-[1406px]">
                     <div className="px-[130px] pt-[60px] pb-[70px]">
                         <h3 className="text-[40px] text-[#333] font-bold leading-[48px]">Crest Strategy</h3>
                     </div>
@@ -385,8 +394,8 @@ export default function Strategy() {
                                         <div className="flex justify-between w-full">
                                             {
                                                 Object.keys(item.detail.content).slice(0, 2).map((key, it) => (
-                                                    <div key={it} className="w-[210px] flex justify-between">
-                                                        <span className="text-[#999999]">{formatTarget(key)}</span>
+                                                    <div key={it} className="w-[210px] flex justify-between leading-8">
+                                                        <span className="text-[#4D4D4D] font-semibold">{formatTarget(key)}</span>
                                                         <span className="text-[#333333]">{item.detail.content[key]}%</span>
                                                     </div>
                                                 ))
@@ -396,8 +405,8 @@ export default function Strategy() {
                                         <div className="flex justify-between w-full">
                                             {
                                                 Object.keys(item.detail.content).slice(2, 4).map((key, it) => (
-                                                    <div key={it} className="w-[210px] flex justify-between">
-                                                        <span className="text-[#999999]">{formatTarget(key)}</span>
+                                                    <div key={it} className="w-[210px] flex justify-between leading-8">
+                                                        <span className="text-[#4D4D4D] font-semibold">{formatTarget(key)}</span>
                                                         <span className="text-[#333333]">{item.detail.content[key]}%</span>
                                                     </div>
                                                 ))
@@ -413,9 +422,9 @@ export default function Strategy() {
             }
             {
                 isShowDetails &&
-                <div className="h-full bg-[#f2f2f2]">
-                    <div className="bg-strategy-banner h-[260px]">
-                        <div className="px-[130px]">
+                <div className="h-full  bg-[#f2f2f2]">
+                    <div className="bg-[#1a1a1a] h-[260px]">
+                        <div className=" w-content">
                             <div className="flex pt-[30px] cursor-pointer" onClick={() => setShowDetails(false)}>
                                 <Image src="/static/icons/back.svg"
                                     alt="minus"
@@ -430,14 +439,13 @@ export default function Strategy() {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-[-45px] px-[130px]">
-                        <div className="  bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[31px] pt-[10px] pb-[20px]">
-
-                            <table className="w-full text-left ">
+                    <div className="mt-[-45px]   w-content">
+                        <div className="bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-8 pt-6 pb-6">
+                            <table className="w-full text-left">
                                 <thead>
                                     <tr className="leading-10">
                                         {tableHeaders.map((item, index) => (
-                                            <th key={index} className="text-[#999999] text-[16px] font-[600]">{item.title}</th>
+                                            <th key={index} className="text-[#4D4D4D] text-base font-semibold">{item.title}</th>
                                         ))
                                         }
                                     </tr>
@@ -447,7 +455,7 @@ export default function Strategy() {
                                     {detailData.map((item, index) => (
                                         <tr key={index} className="leading-10">
                                             {tableHeaders.map((it, i) => (
-                                                !item[it.key] ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
+                                                !item[it.key] ? <td key={i} className="text-[#000000] text-base">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
                                                 // item[it.key] === "N/A" ? <td key={i} className="text-[#999999] text-[16px]">{item[it.key]}</td> : it.key === "year" ? <td key={i}>{item[it.key]}</td> : <td key={i}>{item[it.key]}%</td>
                                             ))
                                             }
@@ -458,15 +466,15 @@ export default function Strategy() {
                             </table>
                         </div>
                     </div>
-                    <div className="mt-[30px] px-[130px]">
-                        <div className=" h-[380px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pt-[40px] pl-[30px] pr-[32px] pb-[44px]">
+                    <div className="mt-[30px]  w-content">
+                        <div className=" h-[380px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pt-10 pl-8 pr-8 pb-11">
                             <div className=" flex justify-between items-center">
-                                <div className="text-[#333333] text-[24px] font-[600]">
+                                <div className="text-[#333333] text-2xl font-semibold">
                                     Performance
                                 </div>
                                 <div>
-                                    <span className="text-[#2C4E93] text-[20px] font-bold">Monthly Yield Overview</span>
-                                    <span className="text-[#4d4d4d] text-[14px] ml-[15px]">since {initDate}</span>
+                                    <span className="text-[#2C4E93] text-xl font-bold">Monthly Yield Overview</span>
+                                    <span className="text-[#4d4d4d] text-base ml-4">since {initDate}</span>
                                 </div>
                             </div>
                             <div className="h-[252px]">
@@ -474,12 +482,12 @@ export default function Strategy() {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-[30px] px-[130px] pb-[60px] grid grid-cols-7 gap-[30px]">
+                    <div className="mt-[30px]  w-content pb-[60px] grid grid-cols-7 gap-[30px]">
                         <div className="h-[315px] bg-[#fcfcfc] rounded-[20px] shadow-strategy_days_shadow pl-[30px] pr-[44px] pt-[40px] col-span-3">
                             <h1 className="text-[24px] text-[#333333] font-[600]">Historical Data and Performance</h1>
                             <div className="text-[16px]">
                                 {strategyDetail && Object.keys(strategyDetail).map((key) => (<p key={key} className="flex justify-between leading-10">
-                                    <span className="text-[#999999]">{key}</span>
+                                    <span className="text-[#4D4D4D] font-semibold">{key}</span>
                                     <span className="text-[#333333]">{strategyDetail[key]}</span>
                                 </p>))}
                             </div>

@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <main className="">
             <div className="">
-                <div className="bg-home-banner bg-cover bg-no-repeat ">
+                <div className="bg-home-banner bg-cover bg-center bg-no-repeat " style={{ backgroundSize: '100% 100%' }}>
                     <div className="content-area mx-auto h-[480px] flex flex-col pt-[78px]">
                         <div className="text-center font-[600] text-[#fff] text-[68px]">
                             Growth&nbsp;your&nbsp;crypto&nbsp;asset<br />Build&nbsp;for&nbsp;the&nbsp;top
@@ -13,7 +13,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="mt-[80px]">
+            <div className="mt-[80px] w-content">
                 <h6 className="text-center text-[52px] font-[600]">What We Serve</h6>
                 {/* 1 */}
                 <div className="px-[125px] mt-[60px] flex justify-between">
@@ -24,7 +24,7 @@ export default function Home() {
                     </div>
                     <div className="w-[520px] pt-[16px]">
                         <h3 className="text-[#1a1a1a] text-[35px]">
-                            <span>Financial</span>&nbsp;
+                            <span className="font-[600]">Financial</span>&nbsp;
                             <span className="font-[600]">Solution</span>
                         </h3>
                         <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
@@ -37,7 +37,7 @@ export default function Home() {
                     <div className="flex justify-center items-center">
                         <div className="w-[520px] pt-[16px]">
                             <h3 className="text-[#1a1a1a] text-[35px]">
-                                <span>Market</span>&nbsp;
+                                <span className="font-[600]">Market</span>&nbsp;
                                 <span className="font-[600]">Making</span>
                             </h3>
                             <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
@@ -59,7 +59,7 @@ export default function Home() {
                     </div>
                     <div className="w-[520px] pt-[16px]">
                         <h3 className="text-[#1a1a1a] text-[35px]">
-                            <span>Asset</span>&nbsp;
+                            <span className="font-[600]">Asset</span>&nbsp;
                             <span className="font-[600]">Management</span>
                         </h3>
                         <p className="text-[#4d4d4d] text-[20px] mt-[35px] leading-8">
@@ -79,9 +79,9 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="bg-home-grid-point bg-cover bg-no-repeat mt-[80px] h-[1231px]">
-                <div className="px-[125px]">
-                    <h6 className="text-center text-[52px] font-[600] pt-[60px] pb-[46px] px-[130px]">Why Crest</h6>
+            <div className="bg-[#FAFAFA] mt-20 h-[1231px]">
+                <div className="px-[125px] w-content">
+                    <h6 className="text-center text-[52px] font-[600] pt-[60px] pb-[46px]">Why Crest</h6>
                     <div className="flex justify-between">
                         <div>
                             <Image
@@ -158,8 +158,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            <div className="mx-[50px]">
-                <div className="bg-[#1a1a1a] rounded-[40px]  mt-[-270px] h-[480px]">
+            <div className="mx-[50px] ">
+                <div className="bg-[#1a1a1a] rounded-[40px]  mt-[-270px] h-[480px] w-content">
                     <h6 className="text-[#fff] text-[52px]  font-[600] text-center pt-[50px]">Our Partners</h6>
 
                     <div className="px-[80px] mt-[55px]">
