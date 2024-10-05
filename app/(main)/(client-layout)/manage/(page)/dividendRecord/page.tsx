@@ -6,6 +6,16 @@ import { useAntdTable } from 'ahooks';
 import { DividendRecordApi } from '@/app/service/dividendRecord-api';
 import dayjs from 'dayjs';
 import AddDividendRecord from './modal/AddDividendRecord';
+import { enumToObjectByKey, formatTimeToTz } from '@/utils';
+
+export enum EStrategy {
+  GDN = 'gmx',
+  CTA = 'cta',
+  LMH = 'lmh',
+  PT = 'pt',
+  SEA = 'sea',
+  SCM = 'scm',
+}
 
 export default function Page() {
 
@@ -45,10 +55,32 @@ export default function Page() {
       dataIndex: 'amount',
     },
     {
+      title: 'Service Fee',
+      dataIndex: 'serviceFee',
+    },
+    {
+      title: 'CommissionCharge Fee',
+      dataIndex: 'commissionCharge',
+    },
+    {
+      title: 'Strategy',
+      dataIndex: 'strategy',
+      render: (text: string) => {
+        return text ? enumToObjectByKey(EStrategy)[text] : ''
+      }
+    },
+    {
+      title: 'Instance',
+      dataIndex: 'instanceInfo',
+      render: (text: any) => {
+        return text ? JSON.parse(text)?.symbol : ''
+      }
+    },
+    {
       title: 'CreateTime',
       dataIndex: 'createTime',
       render: (text: string) => {
-        return dayjs(text).format('YYYY-MM-DD HH:mm:ss')
+        return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
       }
     },
   ]

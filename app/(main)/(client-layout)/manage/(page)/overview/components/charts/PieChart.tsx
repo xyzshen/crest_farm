@@ -40,7 +40,7 @@ const PieChart = (props: any) => {
         }
       ]
     }
-  }, [])
+  }, [data])
 
   return <ReactECharts
     option={options}

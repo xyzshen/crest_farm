@@ -44,6 +44,9 @@ const Record = (props: any) => {
     {
       title: 'Fund Fee',
       dataIndex: 'fundFee',
+      render: (text: string) => {
+        return text ? formatDecimal(text, 3) : '-'
+      }
     },
     {
       title: 'Short Count',
@@ -52,6 +55,9 @@ const Record = (props: any) => {
     {
       title: 'Token Count',
       dataIndex: 'tokenCount',
+      render: (text: string) => {
+        return text ? formatDecimal(text, 3) : '-'
+      }
     },
   ];
   return <Table columns={columns} {...tableProps} />

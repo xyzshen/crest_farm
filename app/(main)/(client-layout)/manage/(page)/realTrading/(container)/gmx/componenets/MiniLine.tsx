@@ -1,4 +1,5 @@
 'use client'
+import { formatTimeToTz } from '@/utils';
 import dayjs from 'dayjs';
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
@@ -10,9 +11,10 @@ const MiniLine = (props: any) => {
 
   const options = useMemo(() => {
     const yData = data.map((item: any) => Number(item.value));
-    const xData = data.map((item: any) => dayjs(item.time).format('YYYY-MM-DD HH:mm'));
+    const xData = data.map((item: any) => formatTimeToTz(item.time, 'YYYY-MM-DD HH:mm'));
     const maxData = Math.ceil(Math.max(...yData) > 0 ? Math.max(...yData) * 1.2 : Math.max(...yData) * 0.9);
     const minData = Math.min(...yData) > 0 ? Math.ceil(Math.min(...yData) * 0.8) : Math.ceil(Math.min(...yData) * 1.2);
+
     return {
       title: {
         show: false,

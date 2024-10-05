@@ -1,5 +1,5 @@
 'use client'
-import { getMaxValue, getMinValue } from '@/utils';
+import { formatDecimal, formatTimeToTz, getMaxValue, getMinValue } from '@/utils';
 import dayjs from 'dayjs';
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
@@ -8,8 +8,8 @@ const LineChart = (props: any) => {
   const data = props.data
   const style = props.style
 
-  const xData = data.map((item: any) => dayjs(item.time).format('YYYY-MM-DD HH:mm'))
-  const yData = data.map((item: any) => item.currentProfit || item.value)
+  const xData = data.map((item: any) => formatTimeToTz(item.createTime, 'YYYY-MM-DD HH:mm'))
+  const yData = data.map((item: any) => Number(formatDecimal(item.currentProfit || item.value, 2)))
   let minYData = 0
   let maxYData = 100
   let minInterval = 20

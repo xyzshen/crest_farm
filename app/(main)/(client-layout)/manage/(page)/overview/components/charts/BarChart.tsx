@@ -1,7 +1,7 @@
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
 import dayjs from 'dayjs';
-import { formatDecimal } from '@/utils';
+import { formatDecimal, formatTimeToTz } from '@/utils';
 
 interface IBarChart {
   data: any[];
@@ -13,7 +13,7 @@ const BarChart = (props: IBarChart) => {
 
   const { data, title } = props
   const xData = useMemo(() => {
-    return data.map((item: any) => dayjs(item.date).format('MM-DD'))
+    return data.map((item: any) => formatTimeToTz(item.date, 'MM-DD'))
   }, [data])
 
   const yData = useMemo(() => {
@@ -70,6 +70,7 @@ const BarChart = (props: IBarChart) => {
         },
       ]
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [yData, xData])
 
   return <ReactECharts

@@ -1,4 +1,4 @@
-import { formatDecimal } from '@/utils';
+import { formatDecimal, formatTimeToTz } from '@/utils';
 import { Table } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
@@ -11,7 +11,7 @@ const Position = (props: any) => {
       dataIndex: 'createTime',
       key: 'createTime',
       render: (text: string) => {
-        return dayjs(text).format('YYYY-MM-DD HH:mm:ss')
+        return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
       }
     },
     {
@@ -24,8 +24,8 @@ const Position = (props: any) => {
     },
     {
       title: 'LP Value',
-      dataIndex: 'LPValue',
-      key: 'LPValue',
+      dataIndex: 'protocolValue',
+      key: 'protocolValue',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }
@@ -47,14 +47,6 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'GM Price',
-      dataIndex: 'gmPrice',
-      key: 'gmPrice',
-      render: (text: string) => {
-        return formatDecimal(text, 4)
-      }
-    },
-    {
       title: 'Funding Rate',
       dataIndex: 'fundFee',
       key: 'fundFee',
@@ -64,8 +56,8 @@ const Position = (props: any) => {
     },
     {
       title: 'Open fee',
-      dataIndex: 'fundFee',
-      key: 'fundFee',
+      dataIndex: 'openFee',
+      key: 'openFee',
       render: (text: string) => {
         return formatDecimal(text, 6)
       }
@@ -74,14 +66,6 @@ const Position = (props: any) => {
       title: 'Current Profit',
       dataIndex: 'currentProfit',
       key: 'currentProfit',
-      render: (text: string) => {
-        return formatDecimal(text, 4)
-      }
-    },
-    {
-      title: 'Total Profit',
-      dataIndex: 'totalProfit',
-      key: 'totalProfit',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }

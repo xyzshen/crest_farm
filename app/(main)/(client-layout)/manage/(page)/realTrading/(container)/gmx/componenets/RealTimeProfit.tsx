@@ -2,7 +2,7 @@
 import { Segmented, Table } from "antd"
 import BarChart from "./BarChart"
 import dayjs from "dayjs"
-import { formatDecimal } from "@/utils"
+import { formatDecimal, formatTimeToTz } from "@/utils"
 import { TGmxData } from "@/app/service/realTrading-api/type"
 import { useMemo } from "react"
 
@@ -40,8 +40,10 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
 
   const tableList = useMemo(() => {
     if (list.length > 0) {
-      // 取后10条数据
-      return list.slice(0, 9)
+      // 数组先翻转
+      const newList = list.reverse()
+      // 取前10条
+      return newList.slice(0, 10)
     }
   }, [list])
 
@@ -51,7 +53,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       dataIndex: 'createTime',
       key: 'createTime',
       render: (text: string) => {
-        return dayjs(text).format('YYYY-MM-DD HH:mm:ss')
+        return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
       }
     },
     {
@@ -64,8 +66,8 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
     },
     {
       title: 'LP Value',
-      dataIndex: 'LPValue',
-      key: 'LPValue',
+      dataIndex: 'protocolValue',
+      key: 'protocolValue',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }
@@ -86,14 +88,14 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
         return formatDecimal(text, 4)
       }
     },
-    {
-      title: 'GM Price',
-      dataIndex: 'gmPrice',
-      key: 'gmPrice',
-      render: (text: string) => {
-        return formatDecimal(text, 4)
-      }
-    },
+    // {
+    //   title: 'GM Price',
+    //   dataIndex: 'gmPrice',
+    //   key: 'gmPrice',
+    //   render: (text: string) => {
+    //     return formatDecimal(text, 4)
+    //   }
+    // },
     {
       title: 'Funding Rate',
       dataIndex: 'fundFee',
@@ -118,14 +120,14 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
         return formatDecimal(text, 8)
       }
     },
-    {
-      title: 'Total Profit',
-      dataIndex: 'totalProfit',
-      key: 'totalProfit',
-      render: (text: string) => {
-        return formatDecimal(text, 4)
-      }
-    },
+    // {
+    //   title: 'Total Profit',
+    //   dataIndex: 'totalProfit',
+    //   key: 'totalProfit',
+    //   render: (text: string) => {
+    //     return formatDecimal(text, 4)
+    //   }
+    // },
     {
       title: 'APY',
       dataIndex: 'currentApy',

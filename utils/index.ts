@@ -1,3 +1,10 @@
+import dayjs from "dayjs"
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
 // 钱包地址展示
 export function formatWalletAddress(address: string): string {
   return `${address.slice(0, 6)}...${address.slice(-4)}`
@@ -57,6 +64,19 @@ export function enumToObject(enumObj: { [key: string]: any }): { [key: string]: 
       acc[key] = enumObj[key];
     } else {
       acc[key] = String(enumObj[key]); // 将其他类型转换为 string
+    }
+    return acc;
+  }, {} as { [key: string]: string }); // 类型断言 reduce 返回的对象为 { [key: string]: string }
+}
+
+// 枚举转对象
+export function enumToObjectByKey(enumObj: { [key: string]: any }): { [key: string]: string } {
+  return Object.keys(enumObj).reduce((acc, key) => {
+    // 检查 enumObj[key] 是否为 string
+    if (typeof enumObj[key] === 'string') {
+      acc[enumObj[key]] = key;
+    } else {
+      acc[String(enumObj[key])] = key; // 将其他类型转换为 string
     }
     return acc;
   }, {} as { [key: string]: string }); // 类型断言 reduce 返回的对象为 { [key: string]: string }
@@ -143,4 +163,9 @@ export function findNodeByKey<T extends Record<string, any>>(
     }
   }
   return undefined;
+}
+
+// dayjs 格式化时间并转换时区
+export function formatTimeToTz(time: string, format: string): string {
+  return dayjs.utc(time).tz('Asia/Shanghai').format(format)
 }

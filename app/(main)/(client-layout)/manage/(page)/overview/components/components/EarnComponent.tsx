@@ -1,6 +1,7 @@
 import { formatDecimal, formatNumber } from "@/utils";
 import { useEffect, useState } from "react";
 import PieChart from "../charts/PieChart";
+import { IAssets } from "../../type";
 
 const defaultAssetsList = [
   {
@@ -32,27 +33,28 @@ const defaultAssetsList = [
   }
 ]
 
-const formatData = (data: any) => {
-  const array = defaultAssetsList.map((item: any) => {
-    const obj = data.find((d: any) => d.strategy === item.key)
-    return {
-      label: item.label,
-      value: obj ? obj.value : 0
-    }
-  })
-  return array
-}
-
-const totalNumber = (data: any) => {
-  return data.reduce((pre: number, cur: any) => {
-    return pre + cur.value
-  }, 0)
-}
-
 const TVLComponent = (props: { data: any }) => {
   const { data } = props;
   const [tvlValue, setTvlValue] = useState(0);
-  const [assetsList, setAssetsList] = useState<any>(defaultAssetsList)
+  const [assetsList, setAssetsList] = useState<IAssets[]>(defaultAssetsList)
+
+
+  const formatData = (data: any) => {
+    const array = defaultAssetsList.map((item: IAssets) => {
+      const obj = data.find((d: any) => d.strategy === item.key)
+      return {
+        label: item.label,
+        value: obj ? obj.value : 0
+      }
+    })
+    return array
+  }
+
+  const totalNumber = (data: IAssets[]) => {
+    return data.reduce((pre: number, cur: IAssets) => {
+      return pre + cur.value
+    }, 0)
+  }
 
   useEffect(() => {
     if (data) {
@@ -83,7 +85,7 @@ const TVLComponent = (props: { data: any }) => {
       </div>
       <div className="w-[40%] flex flex-col justify-between">
         <div></div>
-        <PieChart data={defaultAssetsList.map(item => {
+        <PieChart data={assetsList.map(item => {
           return {
             name: item.label,
             value: item.value

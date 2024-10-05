@@ -1,4 +1,4 @@
-import { formatDecimal, formatNumber } from "@/utils";
+import { formatDecimal, formatNumber, formatTimeToTz } from "@/utils";
 import dayjs from "dayjs";
 import { useEffect, useMemo, useState } from "react";
 import BarChart from "../charts/BarChart";
@@ -28,7 +28,7 @@ const EarningData = (props: { data: any }) => {
       </div>
       <div className="flex items-center">
         <div className="text-xl text-[#2C4E93] font-semibold pr-4">${formatDecimal(currentValue, 2)}</div>
-        <div>{dayjs(currentTime).format('YYYY-MM-DD')}</div>
+        <div>{formatTimeToTz(currentTime, 'YYYY-MM-DD')}</div>
       </div>
     </div>
     <div>

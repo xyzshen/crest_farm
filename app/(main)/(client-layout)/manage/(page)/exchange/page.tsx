@@ -8,7 +8,7 @@ import { ExchangeApi } from '@/app/service/exchange-api';
 import { ExchangeDataType } from '@/app/service/exchange-api/type';
 import Container from '@/app/components/Container';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { formatAppSecret } from '@/utils';
+import { formatAppSecret, formatTimeToTz } from '@/utils';
 import dayjs from 'dayjs';
 
 
@@ -97,18 +97,6 @@ export default function Page() {
       }
     },
     {
-      title: 'App secrit',
-      dataIndex: 'accessSecret',
-      render: (text: string) => {
-        return <>
-          <span>{formatAppSecret(text)}</span>
-          <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
-            <CopyOutlined className='text-blue-500 cursor-pointer' />
-          </CopyToClipboard>
-        </>
-      }
-    },
-    {
       title: 'Phase password',
       dataIndex: 'phasePassword',
       render: (text: string) => {
@@ -122,17 +110,20 @@ export default function Page() {
     },
     {
       title: 'White Ips',
+      width: 240,
       dataIndex: 'whitelistIp'
     },
     {
       title: 'CreateTime',
+      width: 200,
       dataIndex: 'createTime',
       render: (text: string) => {
-        return text ? dayjs(text).format('YYYY-MM-DD HH:mm:ss') : text
+        return text ? formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss') : text
       }
     },
     {
       title: 'Action',
+      width: 180,
       render: (text: string, record: any) => {
         return (
           <div>
@@ -147,14 +138,14 @@ export default function Page() {
   return (
     <Container title='Exchange Management'>
       <div className='p-6'>
-        <div className='pb-4'>
+        {/* <div className='pb-4'>
           <Segmented<string>
             options={typeList}
             onChange={(value) => {
               setActiveKey(value);
             }}
           />
-        </div>
+        </div> */}
         <div className='flex justify-between pb-4'>
           <Button type='primary' onClick={() => setExchangeAccountModalVisible(true)}>Add</Button>
         </div>

@@ -1,4 +1,4 @@
-import { formatDecimal } from '@/utils';
+import { formatDecimal, formatTimeToTz } from '@/utils';
 import dayjs from 'dayjs';
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
@@ -8,7 +8,7 @@ const LineChart = (props: any) => {
   const { data } = props
 
   const xAxis = useMemo(() => {
-    return data.map((item: any) => dayjs(item.date).format('MM-DD'))
+    return data.map((item: any) => formatTimeToTz(item.date, 'MM-DD'))
   }, [data])
 
   const yAxis = useMemo(() => {

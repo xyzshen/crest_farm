@@ -1,4 +1,5 @@
 'use client'
+import { formatDecimal, formatTimeToTz } from '@/utils';
 import dayjs from 'dayjs';
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
@@ -10,8 +11,8 @@ const BarChart = (props: any) => {
 
   const formatData = type === 'day' ? 'MM-DD' : 'HH:mm'
 
-  const xData = data?.map((item: any) => dayjs(item.createTime).format(formatData)) || []
-  const yData = data?.map((item: any) => item.value || item.currentProfit) || []
+  const xData = data?.map((item: any) => formatTimeToTz(item.createTime, formatData)) || []
+  const yData = data?.map((item: any) => Number(formatDecimal(item.value || item.currentProfit, 2))) || []
   const options = useMemo(() => {
     return {
       title: {

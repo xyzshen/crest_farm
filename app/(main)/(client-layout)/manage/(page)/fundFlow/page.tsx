@@ -6,6 +6,8 @@ import { useAntdTable } from 'ahooks';
 import { FundFlowApi } from '@/app/service/fundFlow-api';
 import dayjs from 'dayjs';
 import { AddFundFlow } from './modal/AddFundFlow';
+import { enumToObjectByKey, formatTimeToTz } from '@/utils';
+import { EStrategy } from '../dividendRecord/page';
 
 export default function Page() {
 
@@ -42,6 +44,13 @@ export default function Page() {
       dataIndex: 'type',
     },
     {
+      title: 'Strategy',
+      dataIndex: 'strategy',
+      render: (text: string) => {
+        return text ? enumToObjectByKey(EStrategy)[text] : ''
+      }
+    },
+    {
       title: 'Amount',
       dataIndex: 'amount',
     },
@@ -49,7 +58,7 @@ export default function Page() {
       title: 'CreateTime',
       dataIndex: 'createTime',
       render: (text: string) => {
-        return dayjs(text).format('YYYY-MM-DD HH:mm:ss')
+        return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
       }
     },
   ]

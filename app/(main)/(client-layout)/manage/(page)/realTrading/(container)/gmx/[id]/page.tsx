@@ -8,7 +8,7 @@ import Position from "../componenets/Position"
 import Record from "../componenets/Record"
 import { Button, message, Segmented, Table } from "antd"
 import RealTimeProfit from "../componenets/RealTimeProfit"
-import { formatNumber, formatWalletAddress } from "@/utils"
+import { formatDecimal, formatNumber, formatTimeToTz, formatWalletAddress } from "@/utils"
 import EditStrategy from "../modal/EditStrategy"
 import { AddLiveTrading } from "../modal/AddLiveTrading"
 import { TGmxData } from "@/app/service/realTrading-api/type"
@@ -60,6 +60,17 @@ export interface TStatics extends TGmxData {
   totalProfit?: number;
   totalMoney?: number
 }
+
+export const segmentedTypeList = [
+  {
+    label: '30天',
+    value: 'day'
+  },
+  {
+    label: '24小时',
+    value: 'hour'
+  }
+]
 
 
 
@@ -186,15 +197,15 @@ const CMXPageDetail = () => {
         </div>
         <div className="flex w-[25%] pb-4">
           <div className="pr-2 text-[#666]">Create Time</div>
-          <div className="text-[#1a1a1a] font-semibold">{dayjs(statics?.createTime).format('YYYY-MM-DD HH:mm:ss')}</div>
+          <div className="text-[#1a1a1a] font-semibold">{statics?.createTime ? formatTimeToTz(statics?.createTime, 'YYYY-MM-DD HH:mm:ss') : ''}</div>
         </div>
         <div className="flex w-[25%] pb-4">
           <div className="pr-2 text-[#666]">Total Profit</div>
-          <div className="text-[#1a1a1a] font-semibold">{formatNumber(statics?.profit || 0)}</div>
+          <div className="text-[#1a1a1a] font-semibold">{formatDecimal(statics?.profit || 0, 4)}</div>
         </div>
         <div className="flex w-[25%] pb-4">
           <div className="pr-2 text-[#666]">Principal</div>
-          <div className="text-[#1a1a1a] font-semibold">${formatNumber(statics?.principal || 0)}</div>
+          <div className="text-[#1a1a1a] font-semibold">${formatDecimal(statics?.principal || 0, 2)}</div>
         </div>
         <div className="flex w-[25%] pb-4">
           <div className="pr-2 text-[#666]">GM Count</div>

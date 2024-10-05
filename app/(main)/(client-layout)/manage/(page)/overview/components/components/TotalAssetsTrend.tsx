@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import LineChart from "../charts/LineChart";
-import { formatDecimal, formatNumber } from "@/utils";
+import { formatDecimal, formatNumber, formatTimeToTz } from "@/utils";
 
 const TotalAssetsTrend = (props: { data: any }) => {
   const { data } = props
@@ -24,7 +24,7 @@ const TotalAssetsTrend = (props: { data: any }) => {
       </div>
       <div className="flex items-center">
         <div className="text-xl text-[#2C4E93] font-semibold pr-4">${formatDecimal(currentValue, 2)}</div>
-        <div>{dayjs(currentTime).format('YYYY-MM-DD')}</div>
+        <div>{formatTimeToTz(currentTime, 'YYYY-MM-DD')}</div>
       </div>
     </div>
     <div>
