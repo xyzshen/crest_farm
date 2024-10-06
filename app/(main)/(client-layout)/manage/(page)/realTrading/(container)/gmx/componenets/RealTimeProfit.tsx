@@ -33,7 +33,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
   const list = useMemo(() => {
     // 数组反转
     if (staticData && staticData.length > 0) {
-      return staticData?.reverse()
+      return staticData
     }
     return []
   }, [staticData])
@@ -41,7 +41,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
   const tableList = useMemo(() => {
     if (list.length > 0) {
       // 数组先翻转
-      const newList = list.reverse()
+      const newList = [...list]
       // 取前10条
       return newList.slice(0, 10)
     }
