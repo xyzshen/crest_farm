@@ -61,17 +61,6 @@ export interface TStatics extends TGmxData {
   totalMoney?: number
 }
 
-export const segmentedTypeList = [
-  {
-    label: '30天',
-    value: 'day'
-  },
-  {
-    label: '24小时',
-    value: 'hour'
-  }
-]
-
 
 
 const CMXPageDetail = () => {

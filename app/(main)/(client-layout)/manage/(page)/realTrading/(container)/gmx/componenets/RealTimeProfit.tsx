@@ -155,7 +155,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
 
   return <div className=" bg-white rounded-md p-6 mb-6">
     <div className="pb-4">
-      <Segmented<string>
+      <Segmented<any>
         options={segmentedTypeList}
         onChange={(value) => {
           setSegmentedType(value)
