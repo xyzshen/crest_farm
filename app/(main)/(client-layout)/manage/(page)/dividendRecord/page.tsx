@@ -1,21 +1,12 @@
 'use client'
 import React from 'react';
 import Container from '@/app/components/Container';
-import { Button, Input, Table } from 'antd';
+import { Table } from 'antd';
 import { useAntdTable } from 'ahooks';
 import { DividendRecordApi } from '@/app/service/dividendRecord-api';
-import dayjs from 'dayjs';
 import AddDividendRecord from './modal/AddDividendRecord';
-import { enumToObjectByKey, formatTimeToTz } from '@/utils';
-
-export enum EStrategy {
-  GDN = 'gmx',
-  CTA = 'cta',
-  LMH = 'lmh',
-  PT = 'pt',
-  SEA = 'sea',
-  SCM = 'scm',
-}
+import { formatTimeToTz } from '@/utils';
+import { EStrategyMap } from '../overview/type';
 
 export default function Page() {
 
@@ -66,7 +57,7 @@ export default function Page() {
       title: 'Strategy',
       dataIndex: 'strategy',
       render: (text: string) => {
-        return text ? enumToObjectByKey(EStrategy)[text] : ''
+        return text ? EStrategyMap[text] : ''
       }
     },
     {

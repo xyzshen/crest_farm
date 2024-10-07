@@ -7,7 +7,7 @@ import { FundFlowApi } from '@/app/service/fundFlow-api';
 import dayjs from 'dayjs';
 import { AddFundFlow } from './modal/AddFundFlow';
 import { enumToObjectByKey, formatTimeToTz } from '@/utils';
-import { EStrategy } from '../dividendRecord/page';
+import { EStrategyMap } from '../overview/type';
 
 export default function Page() {
 
@@ -47,7 +47,7 @@ export default function Page() {
       title: 'Strategy',
       dataIndex: 'strategy',
       render: (text: string) => {
-        return text ? enumToObjectByKey(EStrategy)[text] : ''
+        return text ? EStrategyMap[text] : ''
       }
     },
     {

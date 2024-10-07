@@ -70,16 +70,12 @@ export function enumToObject(enumObj: { [key: string]: any }): { [key: string]: 
 }
 
 // 枚举转对象
-export function enumToObjectByKey(enumObj: { [key: string]: any }): { [key: string]: string } {
+export function enumToObjectByKey<T extends { [key: string]: string }>(enumObj: T): { [key in T[keyof T]]: keyof T } {
   return Object.keys(enumObj).reduce((acc, key) => {
-    // 检查 enumObj[key] 是否为 string
-    if (typeof enumObj[key] === 'string') {
-      acc[enumObj[key]] = key;
-    } else {
-      acc[String(enumObj[key])] = key; // 将其他类型转换为 string
-    }
+    const value = enumObj[key as keyof T];
+    acc[value] = key as keyof T;
     return acc;
-  }, {} as { [key: string]: string }); // 类型断言 reduce 返回的对象为 { [key: string]: string }
+  }, {} as { [key in T[keyof T]]: keyof T });
 }
 
 export function isValidKey(
