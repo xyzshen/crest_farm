@@ -23,9 +23,25 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'LP Value',
+      title: 'Protocol Value',
       dataIndex: 'protocolValue',
       key: 'protocolValue',
+      render: (text: string) => {
+        return formatDecimal(text, 4)
+      }
+    },
+    {
+      title: 'Token Count',
+      dataIndex: 'tokenCount',
+      key: 'tokenCount',
+      render: (text: string) => {
+        return formatDecimal(text, 4)
+      }
+    },
+    {
+      title: 'Account Balance',
+      dataIndex: 'accountBalance',
+      key: 'accountBalance',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }
@@ -36,6 +52,14 @@ const Position = (props: any) => {
       key: 'shortTokenValue',
       render: (text: string) => {
         return formatDecimal(text, 4)
+      }
+    },
+    {
+      title: 'Token Price',
+      dataIndex: 'tokenPrice',
+      key: 'tokenPrice',
+      render: (text: string) => {
+        return formatDecimal(text, 6)
       }
     },
     {

@@ -5,7 +5,7 @@ import BarChart from "../charts/BarChart";
 
 const EarningData = (props: { data: any }) => {
   const { data } = props
-  const [currentValue, setCurrentValue] = useState<number>(1102);
+  const [currentValue, setCurrentValue] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<string>(dayjs().format('YYYY-MM-DD'));
 
   useEffect(() => {

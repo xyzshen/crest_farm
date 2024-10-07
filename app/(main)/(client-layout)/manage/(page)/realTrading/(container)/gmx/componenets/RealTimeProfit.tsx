@@ -33,7 +33,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
   const list = useMemo(() => {
     // 数组反转
     if (staticData && staticData.length > 0) {
-      return staticData
+      return [...staticData].reverse()
     }
     return []
   }, [staticData])
@@ -41,7 +41,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
   const tableList = useMemo(() => {
     if (list.length > 0) {
       // 数组先翻转
-      const newList = [...list]
+      const newList = [...list].reverse()
       // 取前10条
       return newList.slice(0, 10)
     }
@@ -65,9 +65,17 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'LP Value',
-      dataIndex: 'protocolValue',
-      key: 'protocolValue',
+      title: 'Token Count',
+      dataIndex: 'tokenCount',
+      key: 'tokenCount',
+      render: (text: string) => {
+        return formatDecimal(text, 4)
+      }
+    },
+    {
+      title: 'Account Balance',
+      dataIndex: 'accountBalance',
+      key: 'accountBalance',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }
@@ -78,6 +86,14 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       key: 'shortTokenValue',
       render: (text: string) => {
         return formatDecimal(text, 4)
+      }
+    },
+    {
+      title: 'Token Price',
+      dataIndex: 'tokenPrice',
+      key: 'tokenPrice',
+      render: (text: string) => {
+        return formatDecimal(text, 6)
       }
     },
     {

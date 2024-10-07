@@ -12,12 +12,12 @@ export const Items: MenuItem[] = [
     label: 'dashboard',
     isLogin: true,
   },
-  {
-    key: '/tradingPost',
-    title: 'tradingPost',
-    label: 'tradingPost',
-    isLogin: true,
-  },
+  // {
+  //   key: '/tradingPost',
+  //   title: 'tradingPost',
+  //   label: 'tradingPost',
+  //   isLogin: true,
+  // },
   {
     key: '/fundFlow',
     title: 'assets',

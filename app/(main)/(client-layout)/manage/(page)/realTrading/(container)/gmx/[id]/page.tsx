@@ -183,38 +183,38 @@ const CMXPageDetail = () => {
   return <Container title={statics?.symbol} isCommonBg={true}>
     <div className="w-full h-full overflow-auto">
       <div className="bg-white rounded-md py-6 px-10 flex flex-wrap justify-between text-base mb-6">
-        <div className="flex w-[25%] pb-4">
-          <div className="pr-2 text-[#666]">Address</div>
-          <div className="text-[#1a1a1a] font-semibold">{formatWalletAddress(statics?.evmAddress || '')}</div>
-        </div>
-        <div className="flex w-[25%] pb-4">
+        <div className="flex w-[33%] pb-4">
           <div className="pr-2 text-[#666]">Symbol</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.symbol}</div>
         </div>
-        <div className="flex w-[25%] pb-4">
+        <div className="flex w-[33%] pb-4">
           <div className="pr-2 text-[#666]">Exchange Type</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.exchangeType}</div>
         </div>
-        <div className="flex w-[25%] pb-4">
+        <div className="flex w-[33%] pb-4">
           <div className="pr-2 text-[#666]">Create Time</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.createTime ? formatTimeToTz(statics?.createTime, 'YYYY-MM-DD HH:mm:ss') : ''}</div>
         </div>
-        <div className="flex w-[25%] pb-4">
+        <div className="flex w-[33%] pb-4">
           <div className="pr-2 text-[#666]">Total Profit</div>
           <div className="text-[#1a1a1a] font-semibold">{formatDecimal(statics?.profit || 0, 4)}</div>
         </div>
-        <div className="flex w-[25%] pb-4">
+        <div className="flex w-[33%] pb-4">
           <div className="pr-2 text-[#666]">Principal</div>
           <div className="text-[#1a1a1a] font-semibold">${formatDecimal(statics?.principal || 0, 2)}</div>
         </div>
-        <div className="flex w-[25%] pb-4">
+        <div className="flex w-[33%] pb-4">
           <div className="pr-2 text-[#666]">GM Count</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.gmCount}</div>
+        </div>
+        <div className="flex w-full pb-4">
+          <div className="pr-2 text-[#666]">Address</div>
+          <div className="text-[#1a1a1a] font-semibold">{statics?.evmAddress || ''}</div>
         </div>
       </div>
       <div className=" bg-white rounded-md p-6 mb-6">
         <div className="w-full h-[20rem] border-1 rounded-md">
-          <LineChart data={logData} />
+          <LineChart data={logData.reverse()} />
         </div>
       </div>
       <div className=" bg-white rounded-md p-6 mb-6">
