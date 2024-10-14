@@ -91,8 +91,8 @@ const Header = () => {
 
             </span>}
             {isShowQuit && <div className="absolute top-11 right-0 w-[180px] py-4 text-center bg-[#3c3c3c] rounded-md text-[#fff] cursor-pointer">
-              {isUserLogin && <div className="leading-10" onClick={onChangPassWord}>Change PassWord</div>}
-              <div className="leading-6" onClick={onQuit}>Quit</div>
+              {isUserLogin && <div className="leading-10" onClick={onChangPassWord}>修改密码</div>}
+              <div className="leading-6" onClick={onQuit}>取消</div>
             </div>}
           </div>
 

@@ -3,21 +3,28 @@ import Container from "@/app/components/Container"
 import Card from "./componenets/Card"
 import { PlusOutlined } from "@ant-design/icons"
 import { AddLiveTrading } from "./modal/AddLiveTrading"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import { RealTradingApi } from "@/app/service/realTrading-api"
 import { TGmxData } from "@/app/service/realTrading-api/type"
 import { formatDecimal, formatNumber } from "@/utils"
 import { useRouter } from "next/navigation"
+import React from "react"
+import { Switch } from "antd"
 
 const CMXPageList = () => {
   const router = useRouter()
-  const [list, setList] = useState<TGmxData[]>([])
+  const [gmxCardList, setGmxCardList] = useState<TGmxData[]>([])
   const [AddLiveTradingVisible, setAddLiveTradingVisible] = useState<boolean>(false)
   const [statics, setStatics] = useState<any>()
+  const [showStopCard, setShowStopCard] = React.useState<boolean>(false);
 
   const toDetail = (item: any) => {
     sessionStorage.setItem('gmxData', JSON.stringify(item))
     router.push(`/manage/realTrading/gmx/${item.id}`)
+  }
+
+  const onChangeSwitch = (checked: boolean) => {
+    setShowStopCard(checked);
   }
 
   const fetchList = useCallback(() => {
@@ -27,7 +34,7 @@ const CMXPageList = () => {
     }
     RealTradingApi.getGMXList(query).then((res: any) => {
       if (res) {
-        setList(res.data)
+        setGmxCardList(res.data)
       }
     })
   }, [])
@@ -40,6 +47,10 @@ const CMXPageList = () => {
     })
   }, [])
 
+  const list = useMemo(() => {
+    return gmxCardList.filter(item => showStopCard ? item.status > 0 : item.status === 1).sort((a, b) => a.status - b.status)
+  }, [gmxCardList, showStopCard])
+
   useEffect(() => {
     fetchList()
   }, [fetchList])
@@ -48,20 +59,24 @@ const CMXPageList = () => {
     getGmxStat()
   }, [getGmxStat])
 
-  return <Container title='GMX策略' isCommonBg={true}>
+  return <Container title='GMX策略' isCommonBg={true} opt={
+    <div className='absolute right-4 top-4 flex items-center'>
+      <span className='inline-block pr-2 text-[#333] text-sm'>显示停止实盘</span>
+      <Switch checked={showStopCard} onChange={onChangeSwitch} />
+    </div>}>
     <div className="w-full h-full overflow-auto">
       <div className="w-full p-6 bg-white rounded-lg shadow-md">
         <div className="flex justify-between px-6">
           <div className="flex flex-col items-center">
-            <div className="text-[#666666] text-[1.25rem]">Total Assets</div>
+            <div className="text-[#666666] text-[1.25rem]">总资金</div>
             <div className="text-[#1a1a1a] text-[1.5rem] font-bold">${formatDecimal(statics?.totalMoney || 0, 2)}</div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="text-[#666666] text-[1.25rem]">Total Profit</div>
+            <div className="text-[#666666] text-[1.25rem]">总收益</div>
             <div className="text-[#1a1a1a] text-[1.5rem] font-bold">${formatDecimal(statics?.totalProfit || 0, 2)}</div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="text-[#666666] text-[1.25rem]">Live Trading Volume</div>
+            <div className="text-[#666666] text-[1.25rem]">实盘数量</div>
             <div className="text-[#1a1a1a] text-[1.5rem] font-bold">{statics?.count || 0}</div>
           </div>
         </div>

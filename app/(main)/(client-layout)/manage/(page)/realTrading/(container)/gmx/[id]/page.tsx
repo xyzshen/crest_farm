@@ -83,6 +83,12 @@ const CMXPageDetail = () => {
     })
   }
 
+  const token0 = useMemo(() => {
+    if (statics?.symbol) {
+      return statics.symbol.substring(0, statics.symbol.length - 4)
+    }
+  }, [statics?.symbol])
+
 
   const fetchDetail = async (id: number) => {
     const res: any = await RealTradingApi.getGmxDetail(id);
@@ -208,15 +214,15 @@ const CMXPageDetail = () => {
       </div>
       <div className=" bg-white rounded-md p-6 mb-6">
         <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">实时收益</div>
-        <div className="w-full h-[20rem] border-1 rounded-md">
-          <Position data={statics} tableProps={positionTableProps} />
+        <div className="w-full h-[10rem] border-1 rounded-md">
+          <Position data={statics} tableProps={positionTableProps} token0={token0} />
         </div>
       </div>
-      <RealTimeProfit segmentedType={segmentedType} setSegmentedType={setSegmentedType} data={statics} staticData={staticData} />
+      <RealTimeProfit segmentedType={segmentedType} token0={token0} setSegmentedType={setSegmentedType} data={statics} staticData={staticData} />
       <div className=" bg-white rounded-md p-6 mb-6">
         <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">日志记录</div>
         <div className="w-full h-[20rem] border-1 rounded-md">
-          <Record tableProps={recordTableProps} />
+          <Record tableProps={recordTableProps} token0={token0} />
         </div>
       </div>
     </div>

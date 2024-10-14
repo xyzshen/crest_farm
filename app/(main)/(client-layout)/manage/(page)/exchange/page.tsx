@@ -77,7 +77,7 @@ export default function Page() {
 
   const columns = [
     {
-      title: '账号别名',
+      title: '账号名',
       dataIndex: 'aliasName',
       render: (text: string) => {
         return <span>{text || '-'}</span>
@@ -99,18 +99,18 @@ export default function Page() {
         </>
       }
     },
-    {
-      title: 'Phase password',
-      dataIndex: 'phasePassword',
-      render: (text: string) => {
-        return <>
-          <span>{text || '-'}</span>
-          {text && <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
-            <CopyOutlined className='text-blue-500 cursor-pointer' />
-          </CopyToClipboard>}
-        </>
-      }
-    },
+    // {
+    //   title: 'Phase password',
+    //   dataIndex: 'phasePassword',
+    //   render: (text: string) => {
+    //     return <>
+    //       <span>{text || '-'}</span>
+    //       {text && <CopyToClipboard text={text} onCopy={() => message.success('Copy successful.')}>
+    //         <CopyOutlined className='text-blue-500 cursor-pointer' />
+    //       </CopyToClipboard>}
+    //     </>
+    //   }
+    // },
     {
       title: 'ip白名单',
       width: 240,

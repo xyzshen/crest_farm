@@ -104,7 +104,7 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
           setExchange(value)
         }} />
       </Form.Item>
-      <Form.Item label="交易所账号别名" name="aliasName">
+      <Form.Item label="账号名" name="aliasName">
         <Input />
       </Form.Item>
       <Form.Item label="API Key" name="accessKey">

@@ -59,7 +59,7 @@ const ChangePwdModal = (props: IChangePwdModal) => {
           required: true,
           message: 'Please input your password!',
         },
-        () => validateFormItem('password', 'The length must exceed 8 characters and must contain both letters and numbers.')
+        () => validateFormItem('password', '密码必须使用数字加英文，且长度超过8位')
       ]}>
         <Input.Password />
       </Form.Item>
@@ -68,7 +68,7 @@ const ChangePwdModal = (props: IChangePwdModal) => {
           required: true,
           message: 'Please input your password!',
         },
-        () => validateFormItem('password', 'The length must exceed 8 characters and must contain both letters and numbers.')
+        () => validateFormItem('password', '密码必须使用数字加英文，且长度超过8位')
       ]}>
         <Input.Password />
       </Form.Item>
