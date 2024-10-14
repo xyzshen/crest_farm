@@ -88,6 +88,7 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
         accessKey: data.accessKey,
         accessSecret: data.accessSecret,
         phasePassword: data.phasePassword || '',
+        aliasName: data.aliasName || ''
       })
       if (data.protocol === 'okx') {
         setExchange('okx')

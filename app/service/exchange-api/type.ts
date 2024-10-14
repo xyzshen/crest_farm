@@ -14,7 +14,8 @@ export interface ExchangeDataType {
   accessSecret?: string;
   phasePassword?: string;
   createTime: string;
-  whitelistIp?: string
+  whitelistIp?: string;
+  aliasName?: string;
 }
 
 export type TAddExchangeData = Omit<ExchangeDataType, 'id' | 'createTime' | 'tag'>;
