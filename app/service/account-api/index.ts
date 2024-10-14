@@ -18,6 +18,11 @@ class AccountService {
   updateUserInfo(data: any) {
     return fetchApi.put("/api/userInfo", data);
   }
+
+  // 修改用户密码
+  updatePassword(data: any) {
+    return fetchApi.put(api.user.updatePassword, data);
+  }
 }
 
 export const AccountApi = new AccountService();

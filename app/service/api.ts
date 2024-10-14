@@ -15,6 +15,7 @@ export default <TApi>{
   },
   user: {
     list: '/cs/user/list',
+    updatePassword: '/cs/user/updatePassword',
   },
   exchange: {
     list: '/cs/exchange/list',

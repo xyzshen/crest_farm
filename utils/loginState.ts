@@ -2,22 +2,22 @@
 
 class LoginState {
   loginSuccess(data: any) {
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    sessionStorage.setItem("token", data.token);
+    sessionStorage.setItem("userInfo", JSON.stringify(data));
   }
   isLogin() {
-    return localStorage.getItem("token");
+    return sessionStorage.getItem("token");
   }
   clearLoginState() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userInfo");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userInfo");
   }
   getToken() {
-    return localStorage.getItem("token");
+    return sessionStorage.getItem("token");
   }
   getUserInfo() {
-    if (typeof window !== 'undefined' && localStorage.getItem("userInfo")) {
-      return JSON.parse(localStorage.getItem("userInfo") || "{}");
+    if (typeof window !== 'undefined' && sessionStorage.getItem("userInfo")) {
+      return JSON.parse(sessionStorage.getItem("userInfo") || "{}");
     }
     return null
   }

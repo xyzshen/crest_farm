@@ -98,10 +98,13 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
   return <Modal open={visible} onCancel={handleCancle} onOk={handleOk} title={!data ? "Add Exchange Account" : "Edit Exchange Account"}>
     <Form form={form} labelCol={{ span: 6 }}
       wrapperCol={{ span: 16 }}>
-      <Form.Item label="Exchange Type" name="protocol">
+      <Form.Item label="交易所" name="protocol">
         <Select options={exchangeOptions} onChange={(value) => {
           setExchange(value)
         }} />
+      </Form.Item>
+      <Form.Item label="交易所账号别名" name="aliasName">
+        <Input />
       </Form.Item>
       <Form.Item label="API Key" name="accessKey">
         <Input />

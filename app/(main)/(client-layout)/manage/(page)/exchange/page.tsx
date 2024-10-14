@@ -77,6 +77,13 @@ export default function Page() {
 
   const columns = [
     {
+      title: '账号别名',
+      dataIndex: 'aliasName',
+      render: (text: string) => {
+        return <span>{text || '-'}</span>
+      }
+    },
+    {
       title: '交易所',
       dataIndex: 'protocol',
     },
