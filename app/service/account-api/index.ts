@@ -21,7 +21,7 @@ class AccountService {
 
   // 修改用户密码
   updatePassword(data: any) {
-    return fetchApi.put(api.user.updatePassword, data);
+    return fetchApi.post(api.user.updatePassword, data);
   }
 }
 

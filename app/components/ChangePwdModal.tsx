@@ -1,6 +1,7 @@
 import { validateFormItem } from "@/utils/validator";
 import { Form, Input, message, Modal } from "antd"
 import { AccountApi } from "../service/account-api";
+import { Base64 } from "js-base64";
 
 interface IChangePwdModal {
   visible: boolean;
@@ -31,7 +32,12 @@ const ChangePwdModal = (props: IChangePwdModal) => {
 
   const handleOk = () => {
     form.validateFields().then(values => {
-      AccountApi.updatePassword(values).then((res: any) => {
+      const req = {
+        oldPassword: Base64.encode(values.oldPassword),
+        newPassword: Base64.encode(values.newPassword),
+        confirmPassword: Base64.encode(values.confirmPassword)
+      }
+      AccountApi.updatePassword(req).then((res: any) => {
         if (res) {
           message.success('Change Successful')
           handleCancel()
@@ -44,10 +50,10 @@ const ChangePwdModal = (props: IChangePwdModal) => {
   return <Modal title="修改密码" open={visible} onCancel={handleCancel} onOk={handleOk} >
     <Form
       requiredMark={false}
-      className={'login-form'}
+      wrapperCol={{ span: 16 }}
+      labelCol={{ span: 4 }}
       name="basic"
-      form={form}
-      layout="vertical">
+      form={form}>
       <Form.Item label="原密码" name="oldPassword" rules={[
         {
           required: true,

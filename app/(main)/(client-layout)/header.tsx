@@ -90,7 +90,7 @@ const Header = () => {
               <span className="ml-[5px] cursor-default"  ><Shape /></span>
 
             </span>}
-            {isShowQuit && <div className="absolute top-11 right-0 w-[100px] py-4 text-center bg-[#3c3c3c] rounded-md text-[#fff] cursor-pointer">
+            {isShowQuit && <div className="absolute top-11 right-0 w-[180px] py-4 text-center bg-[#3c3c3c] rounded-md text-[#fff] cursor-pointer">
               {isUserLogin && <div className="leading-10" onClick={onChangPassWord}>Change PassWord</div>}
               <div className="leading-6" onClick={onQuit}>Quit</div>
             </div>}
