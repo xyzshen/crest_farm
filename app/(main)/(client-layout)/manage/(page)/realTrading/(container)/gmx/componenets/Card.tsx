@@ -13,9 +13,8 @@ const Card = (props: ICard) => {
   return <div className="min-w-[320px] bg-white shadow-md p-4 rounded-md cursor-pointer h-[275px]" onClick={toDetail}>
     <div className="text-[#1a1a1a] text-xl font-bold">{symbol}</div>
     <div className="flex justify-between py-4">
-      <div className="text-sky-500 text-lg font-semibold">{userName}</div>
-      {status === 1 && <div className="text-lg font-medium text-emerald-400">Running {lastRunTime ? calcDaysFromNow(lastRunTime || 0) : 0}</div>}
-      {status === 0 && <div className="text-lg font-medium text-red-500">Stoped</div>}
+      {status === 1 && <div className="text-lg font-medium text-emerald-400">运行 {lastRunTime ? calcDaysFromNow(lastRunTime || 0) : 0}</div>}
+      {status === 0 && <div className="text-lg font-medium text-red-500">停止</div>}
     </div>
     <div className="w-full py-4 h-[130px]">
       <MiniLine
@@ -29,11 +28,11 @@ const Card = (props: ICard) => {
     </div>
     <div className="flex justify-between">
       <div className="flex">
-        <div className="text-[#666] pr-2">Principal</div>
+        <div className="text-[#666] pr-2">本金</div>
         <div className="font-semibold">${formatDecimal(principal, 2)}</div>
       </div>
       <div className="flex">
-        <div className="text-[#666] pr-2">Profit</div>
+        <div className="text-[#666] pr-2">收益</div>
         <div className="font-semibold">${formatDecimal(profit || 0, 4)}</div>
       </div>
     </div>

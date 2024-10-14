@@ -77,11 +77,7 @@ export default function Page() {
 
   const columns = [
     {
-      title: 'Account',
-      dataIndex: 'account',
-    },
-    {
-      title: 'Protocol',
+      title: '交易所',
       dataIndex: 'protocol',
     },
     {
@@ -109,12 +105,12 @@ export default function Page() {
       }
     },
     {
-      title: 'White Ips',
+      title: 'ip白名单',
       width: 240,
       dataIndex: 'whitelistIp'
     },
     {
-      title: 'CreateTime',
+      title: '创建时间',
       width: 200,
       dataIndex: 'createTime',
       render: (text: string) => {
@@ -122,13 +118,13 @@ export default function Page() {
       }
     },
     {
-      title: 'Action',
+      title: '操作',
       width: 180,
       render: (text: string, record: any) => {
         return (
           <div>
-            <Button type="link" onClick={() => handleEdit(record)}>Edit</Button>
-            <Button type="link" danger onClick={() => handleDelete(record)}>Delete</Button>
+            <Button type="link" onClick={() => handleEdit(record)}>修改</Button>
+            <Button type="link" danger onClick={() => handleDelete(record)}>删除</Button>
           </div>
         )
       }
@@ -136,7 +132,7 @@ export default function Page() {
   ]
 
   return (
-    <Container title='Exchange Management'>
+    <Container title='交易所管理'>
       <div className='p-6'>
         {/* <div className='pb-4'>
           <Segmented<string>

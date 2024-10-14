@@ -69,7 +69,7 @@ const TVLComponent = (props: { data: any }) => {
     <div style={{ width: 'calc(50% - 15px)' }} className="flex bg-white p-8 rounded-lg shadow-md">
       <div className="flex flex-col justify-between">
         <div>
-          <div className="text-[#4D4D4D]">User Earned <span className="text-[#999]">(USDT)</span></div>
+          <div className="text-[#4D4D4D]">总利润 <span className="text-[#999]">(USDT)</span></div>
           <div className="text-2xl text-[#1a1a1a] font-semibold">${formatDecimal(tvlValue, 2)}</div>
         </div>
         <div className="flex flex-wrap">

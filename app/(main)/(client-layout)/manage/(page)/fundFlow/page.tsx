@@ -36,26 +36,22 @@ export default function Page() {
 
   const columns = [
     {
-      title: 'Account',
-      dataIndex: 'account',
-    },
-    {
-      title: 'Type',
+      title: '类型',
       dataIndex: 'type',
     },
     {
-      title: 'Strategy',
+      title: '策略',
       dataIndex: 'strategy',
       render: (text: string) => {
         return text ? EStrategyMap[text] : ''
       }
     },
     {
-      title: 'Amount',
+      title: '金额',
       dataIndex: 'amount',
     },
     {
-      title: 'CreateTime',
+      title: '时间',
       dataIndex: 'createTime',
       render: (text: string) => {
         return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
@@ -63,7 +59,7 @@ export default function Page() {
     },
   ]
   return (
-    <Container title='Fund Flow'>
+    <Container title='资金流水'>
       <div className='p-6'>
         <div>
           <Table columns={columns} rowKey="email" {...tableProps} />

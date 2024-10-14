@@ -36,7 +36,7 @@ export default function Page() {
   }, [])
 
   return (
-    <Container>
+    <Container title='数据概览' isCommonBg={true}>
       <div className='w-full h-full overflow-auto'>
         <div className='flex justify-between'>
           <TVLComponent data={assetsObj?.totalInvest || []} />

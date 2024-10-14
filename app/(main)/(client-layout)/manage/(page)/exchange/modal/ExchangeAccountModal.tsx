@@ -15,9 +15,7 @@ interface IExchangeAccountModal {
 
 const exchangeOptions = [
   { label: 'OKX', value: 'okx' },
-  { label: 'Binance', value: 'binance' },
-  { label: 'Huobi', value: 'huobi' },
-  { label: 'Gate', value: 'gate' },
+  { label: 'Binance', value: 'binance' }
 ]
 
 const ExchangeAccountModal = (props: IExchangeAccountModal) => {
@@ -100,7 +98,7 @@ const ExchangeAccountModal = (props: IExchangeAccountModal) => {
   return <Modal open={visible} onCancel={handleCancle} onOk={handleOk} title={!data ? "Add Exchange Account" : "Edit Exchange Account"}>
     <Form form={form} labelCol={{ span: 6 }}
       wrapperCol={{ span: 16 }}>
-      <Form.Item label="Protocol" name="protocol">
+      <Form.Item label="Exchange Type" name="protocol">
         <Select options={exchangeOptions} onChange={(value) => {
           setExchange(value)
         }} />

@@ -24,7 +24,7 @@ const EarningData = (props: { data: any }) => {
   return <div className="bg-white mt-8 p-8 rounded-lg shadow-md">
     <div className="flex justify-between">
       <div className="text-2xl text-[#333] font-semibold">
-        Total profit trend
+        利润趋势
       </div>
       <div className="flex items-center">
         <div className="text-xl text-[#2C4E93] font-semibold pr-4">${formatDecimal(currentValue, 2)}</div>

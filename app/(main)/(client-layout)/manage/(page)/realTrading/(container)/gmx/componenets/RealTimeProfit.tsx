@@ -49,7 +49,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
 
   const columns = [
     {
-      title: 'Time',
+      title: '时间',
       dataIndex: 'createTime',
       key: 'createTime',
       render: (text: string) => {
@@ -57,7 +57,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'Principal',
+      title: '本金',
       dataIndex: 'principal',
       key: 'principal',
       render: (text: string) => {
@@ -65,7 +65,15 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'Token Count',
+      title: '协议价值',
+      dataIndex: 'protocolValue',
+      key: 'protocolValue',
+      render: (text: string) => {
+        return formatDecimal(text, 4)
+      }
+    },
+    {
+      title: '协议token数量',
       dataIndex: 'tokenCount',
       key: 'tokenCount',
       render: (text: string) => {
@@ -73,7 +81,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'Account Balance',
+      title: '合约账户余额',
       dataIndex: 'accountBalance',
       key: 'accountBalance',
       render: (text: string) => {
@@ -81,7 +89,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'Short Token Value',
+      title: 'token空单价值',
       dataIndex: 'shortTokenValue',
       key: 'shortTokenValue',
       render: (text: string) => {
@@ -89,7 +97,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'Token Price',
+      title: '空单token价格',
       dataIndex: 'tokenPrice',
       key: 'tokenPrice',
       render: (text: string) => {
@@ -97,7 +105,15 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     {
-      title: 'USDC Count',
+      title: 'token空单数量',
+      dataIndex: 'shortCount',
+      key: 'shortCount',
+      render: (text: string) => {
+        return formatDecimal(text, 4)
+      }
+    },
+    {
+      title: 'USDC数量',
       dataIndex: 'usdtCount',
       key: 'usdtCount',
       render: (text: string) => {
@@ -105,7 +121,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
       }
     },
     // {
-    //   title: 'GM Price',
+    //   title: 'GM价格',
     //   dataIndex: 'gmPrice',
     //   key: 'gmPrice',
     //   render: (text: string) => {
@@ -113,37 +129,37 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
     //   }
     // },
     {
-      title: 'Funding Rate',
+      title: '资金费率',
       dataIndex: 'fundFee',
       key: 'fundFee',
       render: (text: any) => {
-        return text ? (text * 100).toFixed(2) + '%' : 0
-      }
-    },
-    {
-      title: 'Open Fee',
-      dataIndex: 'openFee',
-      key: 'openFee',
-      render: (text: string) => {
         return formatDecimal(text, 4)
       }
     },
     {
-      title: 'Current Profit',
-      dataIndex: 'currentProfit',
-      key: 'currentProfit',
+      title: '开单消耗',
+      dataIndex: 'openFee',
+      key: 'openFee',
+      render: (text: string) => {
+        return formatDecimal(text, 6)
+      }
+    },
+    {
+      title: '实时收益',
+      dataIndex: 'periodProfit',
+      key: 'periodProfit',
       render: (text: string) => {
         return formatDecimal(text, 8)
       }
     },
-    // {
-    //   title: 'Total Profit',
-    //   dataIndex: 'totalProfit',
-    //   key: 'totalProfit',
-    //   render: (text: string) => {
-    //     return formatDecimal(text, 4)
-    //   }
-    // },
+    {
+      title: '总收益',
+      dataIndex: 'currentProfit',
+      key: 'currentProfit',
+      render: (text: string) => {
+        return formatDecimal(text, 4)
+      }
+    },
     {
       title: 'APY',
       dataIndex: 'currentApy',
@@ -165,7 +181,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
 
     <BarChart data={list} type={segmentedType || ''} />
     <div>
-      <Table columns={columns} dataSource={tableList} />
+      <Table columns={columns} dataSource={tableList} pagination={false} />
     </div>
   </div>
 }

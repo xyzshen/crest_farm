@@ -45,7 +45,7 @@ export default function ClientLayout({ children }: Readonly<{
             </header > */}
             <Header />
             {children}
-            < Footer />
+            {/* < Footer /> */}
         </>
     )
 }

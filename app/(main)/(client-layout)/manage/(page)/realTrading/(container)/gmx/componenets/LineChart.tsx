@@ -22,7 +22,7 @@ const LineChart = (props: any) => {
     }
     return {
       title: {
-        text: 'Profit Trend'
+        text: '收益趋势'
       },
       tooltip: {
         trigger: 'axis',
@@ -34,16 +34,17 @@ const LineChart = (props: any) => {
         data: ['Profit ']
       },
       xAxis: {
-        name: 'tIME',
+        name: '时间',
         type: 'category',
         data: xData
       },
       yAxis: [{
-        name: 'Profit',
+        name: '收益',
         type: 'value',
-        minInterval: minInterval,
-        max: maxYData,
-        min: minYData,
+        // minInterval: minInterval,
+        // max: maxYData,
+        // min: minYData,
+        splitNumber: 3,
         splitLine: {
           show: false,
           interval: 3,
@@ -51,7 +52,7 @@ const LineChart = (props: any) => {
       }],
       series: [{
         showSymbol: false,
-        name: 'Profit',
+        name: '收益',
         type: 'line',
         data: yData,
       }],

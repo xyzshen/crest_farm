@@ -76,7 +76,7 @@ const CMXPageDetail = () => {
   const [staticData, setStaticData] = useState<TGmxData | undefined>()
 
   const fetchLogData = async () => {
-    const res: any = await RealTradingApi.queryGmxReportList({ gmxId: Number(id), pageNumber: 1, pageSize: 10000, type: 'quarter' }).then((res: any) => {
+    const res: any = await RealTradingApi.queryGmxReportList({ gmxId: Number(id), pageNumber: 1, pageSize: 1000, type: 'quarter' }).then((res: any) => {
       if (res) {
         setLogData(res.data)
       }
@@ -173,31 +173,31 @@ const CMXPageDetail = () => {
     <div className="w-full h-full overflow-auto">
       <div className="bg-white rounded-md py-6 px-10 flex flex-wrap justify-between text-base mb-6">
         <div className="flex w-[33%] pb-4">
-          <div className="pr-2 text-[#666]">Symbol</div>
+          <div className="pr-2 text-[#666]">交易币对</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.symbol}</div>
         </div>
         <div className="flex w-[33%] pb-4">
-          <div className="pr-2 text-[#666]">Exchange Type</div>
+          <div className="pr-2 text-[#666]">交易所</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.exchangeType}</div>
         </div>
         <div className="flex w-[33%] pb-4">
-          <div className="pr-2 text-[#666]">Create Time</div>
+          <div className="pr-2 text-[#666]">创建时间</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.createTime ? formatTimeToTz(statics?.createTime, 'YYYY-MM-DD HH:mm:ss') : ''}</div>
         </div>
         <div className="flex w-[33%] pb-4">
-          <div className="pr-2 text-[#666]">Total Profit</div>
+          <div className="pr-2 text-[#666]">总收益</div>
           <div className="text-[#1a1a1a] font-semibold">{formatDecimal(statics?.profit || 0, 4)}</div>
         </div>
         <div className="flex w-[33%] pb-4">
-          <div className="pr-2 text-[#666]">Principal</div>
+          <div className="pr-2 text-[#666]">本金</div>
           <div className="text-[#1a1a1a] font-semibold">${formatDecimal(statics?.principal || 0, 2)}</div>
         </div>
         <div className="flex w-[33%] pb-4">
-          <div className="pr-2 text-[#666]">GM Count</div>
+          <div className="pr-2 text-[#666]">gm 数量</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.gmCount}</div>
         </div>
         <div className="flex w-full pb-4">
-          <div className="pr-2 text-[#666]">Address</div>
+          <div className="pr-2 text-[#666]">地址</div>
           <div className="text-[#1a1a1a] font-semibold">{statics?.evmAddress || ''}</div>
         </div>
       </div>
@@ -207,14 +207,14 @@ const CMXPageDetail = () => {
         </div>
       </div>
       <div className=" bg-white rounded-md p-6 mb-6">
-        <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">Real-time Profit</div>
+        <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">实时收益</div>
         <div className="w-full h-[20rem] border-1 rounded-md">
           <Position data={statics} tableProps={positionTableProps} />
         </div>
       </div>
       <RealTimeProfit segmentedType={segmentedType} setSegmentedType={setSegmentedType} data={statics} staticData={staticData} />
       <div className=" bg-white rounded-md p-6 mb-6">
-        <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">Log Records</div>
+        <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">日志记录</div>
         <div className="w-full h-[20rem] border-1 rounded-md">
           <Record tableProps={recordTableProps} />
         </div>

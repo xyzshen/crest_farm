@@ -1,14 +1,14 @@
 'use client'
-import { enumToObject, formatDecimal } from '@/utils';
+import { enumToObject, formatDecimal, formatTimeToTz } from '@/utils';
 import { Table } from 'antd';
 import dayjs from 'dayjs';
 import React from 'react';
 
 enum Opt {
-  'open' = 'Open Position',
-  'close' = 'Close Position',
-  'increase' = 'Increase',
-  'decrease' = 'Decrease'
+  'open' = '开仓',
+  'close' = '平仓',
+  'increase' = '增加空单',
+  'decrease' = '减少空单'
 }
 
 
@@ -17,50 +17,47 @@ const Record = (props: any) => {
   const optObj = enumToObject(Opt);
   const columns: any = [
     {
-      title: 'Time',
+      title: '时间',
       dataIndex: 'createTime',
       render: (text: string) => {
-        return dayjs(text).format('YYYY-MM-DD HH:mm:ss')
+        return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
       }
     },
     {
-      title: 'Action',
+      title: '操作',
       dataIndex: 'operate',
       render: (text: string) => {
         return optObj[text]
       }
     },
     {
-      title: 'Count',
+      title: '操作token数量',
       dataIndex: 'count',
     },
     {
-      title: 'Open Fee',
+      title: '开单消耗',
       dataIndex: 'openFee',
       render: (text: string) => {
         return text ? formatDecimal(text, 3) : '-'
       }
     },
     {
-      title: 'Fund Fee',
+      title: '资金费率',
       dataIndex: 'fundFee',
-      render: (text: string) => {
-        return text ? formatDecimal(text, 3) : '-'
-      }
     },
     {
-      title: 'Short Count',
+      title: '持仓数量',
       dataIndex: 'shortCount',
     },
     {
-      title: 'Token Count',
+      title: '协议中token数量',
       dataIndex: 'tokenCount',
       render: (text: string) => {
         return text ? formatDecimal(text, 3) : '-'
       }
     },
   ];
-  return <Table columns={columns} {...tableProps} />
+  return <Table columns={columns} {...tableProps} pagination={false} />
 }
 
 export default Record;

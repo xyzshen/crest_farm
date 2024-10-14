@@ -38,37 +38,33 @@ export default function Page() {
 
   const columns = [
     {
-      title: 'Account',
-      dataIndex: 'account',
-    },
-    {
-      title: 'Amount',
+      title: '金额',
       dataIndex: 'amount',
     },
     {
-      title: 'Service Fee',
+      title: '服务费',
       dataIndex: 'serviceFee',
     },
     {
-      title: 'CommissionCharge Fee',
+      title: '手续费',
       dataIndex: 'commissionCharge',
     },
     {
-      title: 'Strategy',
+      title: '策略',
       dataIndex: 'strategy',
       render: (text: string) => {
         return text ? EStrategyMap[text] : ''
       }
     },
     {
-      title: 'Instance',
+      title: '实盘',
       dataIndex: 'instanceInfo',
       render: (text: any) => {
         return text ? JSON.parse(text)?.symbol : ''
       }
     },
     {
-      title: 'CreateTime',
+      title: '时间',
       dataIndex: 'createTime',
       render: (text: string) => {
         return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
@@ -76,7 +72,7 @@ export default function Page() {
     },
   ]
   return (
-    <Container title='Dividend Record'>
+    <Container title='分红记录'>
       <div className='p-6'>
         <div>
           <Table columns={columns} rowKey="email" {...tableProps} />

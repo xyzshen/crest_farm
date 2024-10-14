@@ -8,8 +8,8 @@ type MenuItem = Required<MenuProps>['items'][number] & {
 export const Items: MenuItem[] = [
   {
     key: '/overview',
-    title: 'dashboard',
-    label: 'dashboard',
+    title: '数据概览',
+    label: '数据概览',
     isLogin: true,
   },
   // {
@@ -20,26 +20,26 @@ export const Items: MenuItem[] = [
   // },
   {
     key: '/fundFlow',
-    title: 'assets',
-    label: 'assets',
+    title: '资金流水',
+    label: '资金流水',
     isLogin: true,
   },
   {
     key: '/dividendRecord',
-    title: 'dividend',
-    label: 'dividend',
+    title: '分红记录',
+    label: '分红记录',
     isLogin: true,
   },
   {
     key: '/exchange',
-    title: 'exchange',
-    label: 'exchange',
+    title: '交易所管理',
+    label: '交易所管理',
     isLogin: true,
   },
   {
     key: '/realTrading',
-    title: 'realTrading',
-    label: 'realTrading',
+    title: '实盘管理',
+    label: '实盘管理',
     children: [
       {
         key: '/realTrading/gmx',

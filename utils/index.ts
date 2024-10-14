@@ -24,18 +24,18 @@ export function calcDaysFromNow(time: string | number): string {
   const diff = now - target
   // 返回值小于3分钟，则返回秒
   if (diff < 1000 * 60 * 3) {
-    return Math.floor(diff / 1000) + 1 + ' s'
+    return Math.floor(diff / 1000) + 1 + ' 秒'
   }
   // 返回值小于2小时，则返回分钟
   if (diff < 1000 * 60 * 60 * 2) {
-    return Math.floor(diff / (1000 * 60)) + 1 + ' m'
+    return Math.floor(diff / (1000 * 60)) + 1 + ' 分钟'
   }
   // 返回值小于48小时，则返回小时
   if (diff < 1000 * 60 * 60 * 48) {
-    return Math.floor(diff / (1000 * 60 * 60)) + 1 + ' h'
+    return Math.floor(diff / (1000 * 60 * 60)) + 1 + ' 小时'
   }
   // 其余返回天
-  return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1 + ' days'
+  return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1 + ' 天'
 }
 
 // url 参数拼接,需要将参数转义

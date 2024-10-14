@@ -7,7 +7,7 @@ const Position = (props: any) => {
   const { tableProps, data } = props;
   const columns = [
     {
-      title: 'CreateTime',
+      title: '时间',
       dataIndex: 'createTime',
       key: 'createTime',
       render: (text: string) => {
@@ -15,7 +15,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Principal',
+      title: '本金',
       dataIndex: 'principal',
       key: 'principal',
       render: (text: string) => {
@@ -23,7 +23,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Protocol Value',
+      title: '协议价值',
       dataIndex: 'protocolValue',
       key: 'protocolValue',
       render: (text: string) => {
@@ -31,7 +31,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Token Count',
+      title: '协议token数量',
       dataIndex: 'tokenCount',
       key: 'tokenCount',
       render: (text: string) => {
@@ -39,7 +39,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Account Balance',
+      title: '合约账户余额',
       dataIndex: 'accountBalance',
       key: 'accountBalance',
       render: (text: string) => {
@@ -47,7 +47,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Short Token Value',
+      title: '空单token价格',
       dataIndex: 'shortTokenValue',
       key: 'shortTokenValue',
       render: (text: string) => {
@@ -55,15 +55,15 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Token Price',
-      dataIndex: 'tokenPrice',
-      key: 'tokenPrice',
+      title: 'token空单数量',
+      dataIndex: 'shortCount',
+      key: 'shortCount',
       render: (text: string) => {
-        return formatDecimal(text, 6)
+        return formatDecimal(text, 4)
       }
     },
     {
-      title: 'USDT Count',
+      title: 'USDC数量',
       dataIndex: 'usdtCount',
       key: 'usdtCount',
       render: (text: string) => {
@@ -71,7 +71,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Funding Rate',
+      title: '资金费率',
       dataIndex: 'fundFee',
       key: 'fundFee',
       render: (text: any) => {
@@ -79,7 +79,7 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Open fee',
+      title: '开单消耗',
       dataIndex: 'openFee',
       key: 'openFee',
       render: (text: string) => {
@@ -87,7 +87,15 @@ const Position = (props: any) => {
       }
     },
     {
-      title: 'Current Profit',
+      title: '实时收益',
+      dataIndex: 'periodProfit',
+      key: 'periodProfit',
+      render: (text: string) => {
+        return formatDecimal(text, 8)
+      }
+    },
+    {
+      title: '总收益',
       dataIndex: 'currentProfit',
       key: 'currentProfit',
       render: (text: string) => {
@@ -102,7 +110,7 @@ const Position = (props: any) => {
       }
     }
   ]
-  return <Table columns={columns} rowKey="id" {...tableProps} />
+  return <Table columns={columns} rowKey="id" {...tableProps} pagination={false} />
 }
 
 export default Position;

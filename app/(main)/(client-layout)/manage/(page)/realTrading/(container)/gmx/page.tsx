@@ -48,7 +48,7 @@ const CMXPageList = () => {
     getGmxStat()
   }, [getGmxStat])
 
-  return <Container title='GMX Strategy' isCommonBg={true}>
+  return <Container title='GMX策略' isCommonBg={true}>
     <div className="w-full h-full overflow-auto">
       <div className="w-full p-6 bg-white rounded-lg shadow-md">
         <div className="flex justify-between px-6">

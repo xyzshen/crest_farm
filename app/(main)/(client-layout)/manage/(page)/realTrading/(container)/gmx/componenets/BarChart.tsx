@@ -12,11 +12,11 @@ const BarChart = (props: any) => {
   const formatData = type === 'day' ? 'MM-DD' : 'HH:mm'
 
   const xData = data?.map((item: any) => formatTimeToTz(item.createTime, formatData)) || []
-  const yData = data?.map((item: any) => Number(formatDecimal(item.value || item.currentProfit, 2))) || []
+  const yData = data?.map((item: any) => Number(formatDecimal(item.value || item.periodProfit, 2))) || []
   const options = useMemo(() => {
     return {
       title: {
-        text: 'Real-time Profit Trend'
+        text: '实时收益趋势'
       },
       tooltip: {
         trigger: 'axis',
@@ -25,7 +25,7 @@ const BarChart = (props: any) => {
         data: ['Real-time Profit']
       },
       xAxis: {
-        name: 'Time',
+        name: '时间',
         type: 'category',
         data: xData,
         // 刻度线
@@ -39,7 +39,7 @@ const BarChart = (props: any) => {
       },
       barMaxWidth: 40,
       yAxis: [{
-        name: 'Real-time Profit',
+        name: '实时收益',
         type: 'value',
         splitLine: {
           show: false,
@@ -47,7 +47,7 @@ const BarChart = (props: any) => {
         }
       }],
       series: [{
-        name: 'Real-time Profit',
+        name: '实时收益',
         type: 'bar',
         data: yData,
       }],
