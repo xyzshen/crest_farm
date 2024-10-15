@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 import LineChart from "../componenets/LineChart"
 import Position from "../componenets/Position"
 import Record from "../componenets/Record"
-import { Button, message, Segmented, Table } from "antd"
+import { Button, message, Pagination, Segmented, Table } from "antd"
 import RealTimeProfit from "../componenets/RealTimeProfit"
 import { formatDecimal, formatNumber, formatTimeToTz, formatWalletAddress } from "@/utils"
 import EditStrategy from "../modal/EditStrategy"
@@ -14,6 +14,7 @@ import { AddLiveTrading } from "../modal/AddLiveTrading"
 import { TGmxData } from "@/app/service/realTrading-api/type"
 import dayjs from "dayjs"
 import { useParams } from "next/navigation"
+import Short from "../componenets/Short"
 
 export interface TableParams {
   current: number;
@@ -23,9 +24,9 @@ export interface TableParams {
 
 const getPositionData = (props: any) => {
   const { statics } = props
-  return RealTradingApi.queryGmxReportList({ gmxId: statics.id, pageNumber: 1, pageSize: 1, type: 'quarter' }).then((res: any) => {
+  return RealTradingApi.getGmxProfit({ gmxId: statics.id }).then((res: any) => {
     return {
-      list: res.data,
+      list: res?.data ? [res.data] : [],
       total: res.totalCount
     }
   })
@@ -74,13 +75,22 @@ const CMXPageDetail = () => {
   const [segmentedType, setSegmentedType] = useState<string>('day')
 
   const [staticData, setStaticData] = useState<TGmxData | undefined>()
+  const [logPage, setLogPage] = useState<number>(1)
+  const [logPageSize, setLogPageSize] = useState<number>(1000)
+  const [logTotal, setLogTotal] = useState<number>(0)
 
-  const fetchLogData = async () => {
-    const res: any = await RealTradingApi.queryGmxReportList({ gmxId: Number(id), pageNumber: 1, pageSize: 1000, type: 'quarter' }).then((res: any) => {
+  const fetchLogData = useCallback(() => {
+    RealTradingApi.queryGmxReportList({ gmxId: Number(id), pageNumber: logPage, pageSize: logPageSize, type: 'quarter' }).then((res: any) => {
       if (res) {
-        setLogData(res.data)
+        setLogData(res?.data?.reverse() || [])
+        setLogTotal(res.totalCount || 0)
       }
     })
+  }, [logPage, logPageSize, id])
+
+  const onShowSizeChange = (current: number, pageSize: number) => {
+    setLogPageSize(pageSize)
+    setLogPage(1)
   }
 
   const token0 = useMemo(() => {
@@ -155,10 +165,18 @@ const CMXPageDetail = () => {
     refreshDeps: [statics]
   });
 
+  const shortDetail = useMemo(() => {
+    if (statics && statics?.shortInfo) {
+      const obj = JSON.parse(statics?.shortInfo)
+      return obj
+    }
+    return null
+  }, [statics])
+
 
   useEffect(() => {
     fetchLogData()
-  }, [])
+  }, [fetchLogData])
 
   useEffect(() => {
     if (id) {
@@ -209,7 +227,16 @@ const CMXPageDetail = () => {
       </div>
       <div className=" bg-white rounded-md p-6 mb-6">
         <div className="w-full h-[20rem] border-1 rounded-md">
-          <LineChart data={logData.reverse()} />
+          <LineChart data={logData} />
+          <Pagination
+            className="flex justify-end mt-4"
+            showSizeChanger
+            onShowSizeChange={onShowSizeChange}
+            onChange={(page) => setLogPage(page)}
+            current={logPage}
+            pageSize={logPageSize}
+            total={logTotal}
+          />
         </div>
       </div>
       <div className=" bg-white rounded-md p-6 mb-6">
@@ -218,6 +245,7 @@ const CMXPageDetail = () => {
           <Position data={statics} tableProps={positionTableProps} token0={token0} />
         </div>
       </div>
+      <Short data={shortDetail} />
       <RealTimeProfit segmentedType={segmentedType} token0={token0} setSegmentedType={setSegmentedType} data={statics} staticData={staticData} />
       <div className=" bg-white rounded-md p-6 mb-6">
         <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">日志记录</div>

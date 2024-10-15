@@ -86,7 +86,7 @@ export default function LoginComponent(props: ILogin) {
             className="mt-4"
           >
             <Button style={{ width: '100%', height: '46px', backgroundColor: '#1a1a1a', borderRadius: '10px' }} type="primary" htmlType="submit">
-              Log in
+              Login
             </Button>
           </Form.Item>
         </Form>

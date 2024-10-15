@@ -65,7 +65,7 @@ const Position = (props: any) => {
         }
       },
       {
-        title: `空单${token0}价格`,
+        title: `${token0}价格`,
         dataIndex: 'tokenPrice',
         key: 'tokenPrice',
         render: (text: string) => {
@@ -104,14 +104,14 @@ const Position = (props: any) => {
           return formatDecimal(text, 6)
         }
       },
-      {
-        title: '实时收益',
-        dataIndex: 'periodProfit',
-        key: 'periodProfit',
-        render: (text: string) => {
-          return formatDecimal(text, 8)
-        }
-      },
+      // {
+      //   title: '实时收益',
+      //   dataIndex: 'periodProfit',
+      //   key: 'periodProfit',
+      //   render: (text: string) => {
+      //     return formatDecimal(text, 8)
+      //   }
+      // },
       {
         title: '总收益',
         dataIndex: 'currentProfit',

@@ -107,7 +107,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
         }
       },
       {
-        title: `空单${token0}价格`,
+        title: `${token0}价格`,
         dataIndex: 'tokenPrice',
         key: 'tokenPrice',
         render: (text: string) => {
