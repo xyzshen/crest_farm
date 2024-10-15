@@ -15,6 +15,7 @@ import { TGmxData } from "@/app/service/realTrading-api/type"
 import dayjs from "dayjs"
 import { useParams } from "next/navigation"
 import Short from "../componenets/Short"
+import { RedoOutlined } from "@ant-design/icons"
 
 export interface TableParams {
   current: number;
@@ -73,7 +74,7 @@ const CMXPageDetail = () => {
   const [optType, setOptType] = useState<'start' | 'stop' | 'edit' | ''>('')
 
   const [segmentedType, setSegmentedType] = useState<string>('day')
-
+  const [spin, setSpin] = useState<boolean>(false)
   const [staticData, setStaticData] = useState<TGmxData | undefined>()
   const [logPage, setLogPage] = useState<number>(1)
   const [logPageSize, setLogPageSize] = useState<number>(1000)
@@ -149,7 +150,7 @@ const CMXPageDetail = () => {
     })
   }, [])
 
-  const { tableProps: positionTableProps } = useAntdTable(() => {
+  const { tableProps: positionTableProps, search: searchPosition } = useAntdTable(() => {
     if (statics) {
       return getPositionData({ statics })
     } else {
@@ -164,6 +165,14 @@ const CMXPageDetail = () => {
   }, {
     refreshDeps: [statics]
   });
+
+  const handleReset = async () => {
+    setSpin(true);
+    await searchPosition?.reset();
+    setTimeout(() => {
+      setSpin(false);
+    }, 1000)
+  }
 
   const shortDetail = useMemo(() => {
     if (statics && statics?.shortInfo) {
@@ -241,6 +250,9 @@ const CMXPageDetail = () => {
       </div>
       <div className=" bg-white rounded-md p-6 mb-6">
         <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">实时收益</div>
+        <div className="flex justify-end pr-4 pb-4">
+          <RedoOutlined className="cursor-pointer" spin={spin} onClick={handleReset} />
+        </div>
         <div className="w-full h-[10rem] border-1 rounded-md">
           <Position data={statics} tableProps={positionTableProps} token0={token0} />
         </div>
