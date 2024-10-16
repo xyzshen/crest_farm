@@ -23,7 +23,7 @@ export default function LoginComponent(props: ILogin) {
         back
       </div>
       <div className='w-[360px]'>
-        <h6 className='text-[#000000] text-[30px] font-bold mb-8'>Log in to your account</h6>
+        <h6 className='text-[#000000] text-[30px] font-bold mb-8'>{`Welcome to crest, Let's build for the top`}</h6>
         <Form
           requiredMark={false}
           className={'login-form'}

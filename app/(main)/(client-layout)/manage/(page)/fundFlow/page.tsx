@@ -1,12 +1,11 @@
 'use client'
 import React from 'react';
 import Container from '@/app/components/Container';
-import { Button, Input, Table } from 'antd';
+import { Table } from 'antd';
 import { useAntdTable } from 'ahooks';
 import { FundFlowApi } from '@/app/service/fundFlow-api';
-import dayjs from 'dayjs';
 import { AddFundFlow } from './modal/AddFundFlow';
-import { enumToObjectByKey, formatTimeToTz } from '@/utils';
+import { formatTimeToTz } from '@/utils';
 import { EStrategyMap } from '../overview/type';
 
 export default function Page() {
@@ -56,7 +55,7 @@ export default function Page() {
       render: (text: string) => {
         return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
       }
-    },
+    }
   ]
   return (
     <Container title='资金流水'>
