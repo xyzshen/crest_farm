@@ -63,7 +63,7 @@ const RealTimeProfit = (props: IRealTimeProfit) => {
         dataIndex: 'principal',
         key: 'principal',
         render: (text: string) => {
-          return formatDecimal(text || 0, 4)
+          return formatDecimal(data?.principal || 0, 4)
         }
       },
       {

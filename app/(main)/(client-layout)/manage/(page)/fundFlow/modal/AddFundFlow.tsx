@@ -50,7 +50,7 @@ const _AddFundFlow = (props: IAddDividendRecord) => {
   }, [fetchUserList])
 
   return <Modal title="新增资金流水" open={visible} onCancel={handleCancel} onOk={onOk}>
-    <Form form={form}>
+    <Form form={form} >
       <Form.Item label="账号" name="account" rules={[{
         required: true,
         message: '请选择账号'

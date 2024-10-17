@@ -5,7 +5,7 @@ import { Menu } from 'antd';
 import { useState } from 'react';
 import { Items } from '../item';
 import { useRouter } from 'next/navigation';
-import { DesktopOutlined, UserOutlined } from '@ant-design/icons';
+import { DesktopOutlined, DollarOutlined, ShopOutlined, UserOutlined } from '@ant-design/icons';
 import MoneyFunds from '/public/static/icons/moneyFunds.svg'
 import DividendRecord from '/public/static/icons/dividendRecord.svg'
 import Exchange from '/public/static/icons/exchange.svg'
@@ -15,6 +15,8 @@ import RealTrading from '/public/static/icons/realTrading.svg'
 const MenuIconMap: any = {
   overview: <DesktopOutlined />,
   user: <UserOutlined />,
+  assetsManage: <DollarOutlined />,
+  position: <ShopOutlined />,
   fundFlow: <MoneyFunds className='fill-[#858585] hover:fill-[#1a1a1a] w-4' />,
   dividendRecord: <DividendRecord className='fill-[#858585] hover:fill-[#1a1a1a] w-4' />,
   exchange: <Exchange className='fill-[#858585] hover:fill-[#1a1a1a] w-4' />,

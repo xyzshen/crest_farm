@@ -25,6 +25,12 @@ export const Items: MenuItem[] = [
     isLogin: true,
   },
   {
+    key: '/assetsManage',
+    title: '资金分布',
+    label: '资金分布',
+    isLogin: true,
+  },
+  {
     key: '/dividendRecord',
     title: '分红记录',
     label: '分红记录',
@@ -47,6 +53,12 @@ export const Items: MenuItem[] = [
         label: 'GMX',
         isLogin: true,
       }
-    ]
+    ],
+  },
+  {
+    key: '/position',
+    title: '持仓管理',
+    label: '持仓管理',
+    isLogin: true,
   },
 ];

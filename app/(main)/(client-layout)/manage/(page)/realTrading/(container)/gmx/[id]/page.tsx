@@ -137,7 +137,7 @@ const CMXPageDetail = () => {
   const queryGmxProfitList = useCallback(() => {
     RealTradingApi.queryGmxReportList({ gmxId: Number(id), pageNumber: 1, pageSize: 24, type: 'hour' }).then((res: any) => {
       if (res) {
-        setStaticData(res.data)
+        setStaticData(res.data || [])
       }
     })
   }, [])
@@ -145,7 +145,7 @@ const CMXPageDetail = () => {
   const queryGmxReportList = useCallback(() => {
     RealTradingApi.queryGmxReportList({ gmxId: Number(id), pageNumber: 1, pageSize: 30, type: 'day' }).then((res: any) => {
       if (res) {
-        setStaticData(res.data)
+        setStaticData(res.data || [])
       }
     })
   }, [])
@@ -177,9 +177,9 @@ const CMXPageDetail = () => {
   const shortDetail = useMemo(() => {
     if (statics && statics?.shortInfo) {
       const obj = JSON.parse(statics?.shortInfo)
-      return obj
+      return [obj]
     }
-    return null
+    return []
   }, [statics])
 
 
@@ -202,7 +202,7 @@ const CMXPageDetail = () => {
     }
   }, [segmentedType])
 
-  return <Container title={statics?.symbol} isCommonBg={true}>
+  return <Container isBack={true} title={statics?.symbol} isCommonBg={true}>
     <div className="w-full h-full overflow-auto">
       <div className="bg-white rounded-md py-6 px-10 flex flex-wrap justify-between text-base mb-6">
         <div className="flex w-[33%] pb-4">

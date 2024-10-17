@@ -32,6 +32,15 @@ export default <TApi>{
     list: '/cs/userBonus/list',
     add: '/cs/userBonus/add',
   },
+  position: {
+    list: '/cs/user/queryPosition'
+  },
+  fundDistribution: {
+    list: '/cs/fundDistribution/list',
+    add: '/cs/fundDistribution/add',
+    mod: '/cs/fundDistribution/mod',
+    del: '/cs/fundDistribution/del',
+  },
   gmx: {
     list: '/cs/gmx/list',
     add: '/cs/gmx/add',

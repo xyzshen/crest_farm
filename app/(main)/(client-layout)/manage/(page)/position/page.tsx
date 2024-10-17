@@ -1,13 +1,40 @@
-import { Table } from "antd"
-import DetailItem from "./DetailItem"
-import { formatDecimal } from "@/utils"
+'use client'
+import Container from "@/app/components/Container";
+import { PositionApi } from "@/app/service/position-api";
+import { formatDecimal } from "@/utils";
+import { useAntdTable } from "ahooks";
+import { Input, Table } from "antd"
+import { useState } from "react";
 
-interface IShort {
-  data: any
-}
 
-const Short = (props: IShort) => {
-  const { data } = props
+
+const PositionManagement = () => {
+
+  const getTableData = (props: any): Promise<any> => {
+    return PositionApi.getPositionList(props.account ? {
+      account: props.account
+    } : {}).then((res: any) => {
+      return {
+        total: res.totalCount,
+        list: res.data,
+      };
+    })
+  }
+
+  const [searchText, setSearchText] = useState<string>('');
+
+  const { tableProps, search } = useAntdTable((props: any) => getTableData({
+    ...props,
+    account: searchText
+  }), {
+    refreshDeps: [searchText]
+  });
+
+  const onSearch = (value: string) => {
+    setSearchText(value)
+  }
+
+
   const columns = [
     {
       title: '交易对',
@@ -99,12 +126,17 @@ const Short = (props: IShort) => {
       }
     },
   ]
-  return <div className=" bg-white  rounded-md p-6 mb-6">
-    <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">空单信息</div>
-    <div className="w-full py-6  flex flex-wrap items-center justify-between  border-1 rounded-md">
-      <Table columns={columns} dataSource={data} pagination={false} scroll={{ x: 'max-content' }} />
+
+  return <Container title='持仓管理'>
+    <div className='p-6 overflow-auto'>
+      <div className='flex justify-between pb-4'>
+        <Input.Search placeholder='搜索账号' onSearch={onSearch} style={{ width: '20rem' }} />
+      </div>
+      <div>
+        <Table columns={columns} rowKey="id" {...tableProps} scroll={{ x: 'max-content' }} />
+      </div>
     </div>
-  </div>
+  </Container>
 }
 
-export default Short
+export default PositionManagement

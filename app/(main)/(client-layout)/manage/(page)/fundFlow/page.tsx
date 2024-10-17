@@ -51,11 +51,16 @@ export default function Page() {
     },
     {
       title: '时间',
-      dataIndex: 'createTime',
+      dataIndex: 'moneyDate',
       render: (text: string) => {
-        return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
+        return text ? formatTimeToTz(text, 'YYYY-MM-DD') : ''
       }
-    }
+    },
+    {
+      title: '备注',
+      dataIndex: 'description',
+      width: 200,
+    },
   ]
   return (
     <Container title='资金流水'>

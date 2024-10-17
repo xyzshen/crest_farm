@@ -138,7 +138,7 @@ export function getMaxValue(num: number): number {
     max = Math.ceil(newNumber / Math.pow(10, len - 1)) * Math.pow(10, len - 1)
   }
   console.log('max', max, newNumber)
-  return max > 0 && max < 10 ? 10 : max
+  return max > 0 && max < 10 ? 10 : max < 0 ? 0 : max
 }
 
 // 根据key查询树的节点

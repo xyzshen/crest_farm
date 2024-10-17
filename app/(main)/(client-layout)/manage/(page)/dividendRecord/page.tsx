@@ -46,7 +46,7 @@ export default function Page() {
       dataIndex: 'serviceFee',
     },
     {
-      title: '手续费',
+      title: '实际收益',
       dataIndex: 'commissionCharge',
     },
     {
@@ -57,17 +57,10 @@ export default function Page() {
       }
     },
     {
-      title: '实盘',
-      dataIndex: 'instanceInfo',
-      render: (text: any) => {
-        return text ? JSON.parse(text)?.symbol : ''
-      }
-    },
-    {
       title: '时间',
-      dataIndex: 'createTime',
+      dataIndex: 'moneyDate',
       render: (text: string) => {
-        return formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss')
+        return text ? formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss') : ''
       }
     },
   ]

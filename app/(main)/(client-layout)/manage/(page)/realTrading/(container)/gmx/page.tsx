@@ -17,6 +17,7 @@ const CMXPageList = () => {
   const [AddLiveTradingVisible, setAddLiveTradingVisible] = useState<boolean>(false)
   const [statics, setStatics] = useState<any>()
   const [showStopCard, setShowStopCard] = React.useState<boolean>(false);
+  const [gmxTotal, setGmxTotal] = useState<number>(0)
 
   const toDetail = (item: any) => {
     sessionStorage.setItem('gmxData', JSON.stringify(item))
@@ -27,6 +28,14 @@ const CMXPageList = () => {
     setShowStopCard(checked);
   }
 
+  const stopGmxCount = useMemo(() => {
+    if (gmxTotal === 0) return 0
+    if (statics?.count === 0) return 0
+    if (statics && gmxTotal) {
+      return gmxTotal - statics.count
+    }
+  }, [gmxTotal, statics])
+
   const fetchList = useCallback(() => {
     const query = {
       pageNumber: 1,
@@ -35,6 +44,7 @@ const CMXPageList = () => {
     RealTradingApi.getGMXList(query).then((res: any) => {
       if (res) {
         setGmxCardList(res.data)
+        setGmxTotal(res.totalCount || 0)
       }
     })
   }, [])
@@ -78,6 +88,10 @@ const CMXPageList = () => {
           <div className="flex flex-col items-center">
             <div className="text-[#666666] text-[1.25rem]">实盘数量</div>
             <div className="text-[#1a1a1a] text-[1.5rem] font-bold">{statics?.count || 0}</div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="text-[#666666] text-[1.25rem]">已停止实盘</div>
+            <div className="text-[#1a1a1a] text-[1.5rem] font-bold">{stopGmxCount || 0}</div>
           </div>
         </div>
       </div>
