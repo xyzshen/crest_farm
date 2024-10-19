@@ -15,6 +15,10 @@ const Short = (props: IShort) => {
       dataIndex: 'account',
     },
     {
+      title: '交易所别名',
+      dataIndex: 'alias',
+    },
+    {
       title: '交易对',
       dataIndex: 'symbol',
     },

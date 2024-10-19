@@ -1,5 +1,6 @@
 'use client'
 import Container from "@/app/components/Container";
+import { DividendRecordType } from "@/app/service/dividendRecord-api/type";
 import { fundDistributionApi } from "@/app/service/fundDistribution-api";
 import { IFundDistribution } from "@/app/service/fundDistribution-api/type";
 import { enumToObject, enumToObjectByKey, formatTimeToTz, formatWalletAddress } from "@/utils";
@@ -90,6 +91,21 @@ const AssetsManage = () => {
       title: '策略',
       dataIndex: 'strategy',
     },
+    {
+      title: '策略备注',
+      dataIndex: 'strategyDes',
+      width: 180,
+      // 超出隐藏
+      ellipsis: true
+    },
+    {
+      title: '实盘',
+      dataIndex: 'instanceInfo',
+      render: (text: string, record: DividendRecordType) => {
+        return text ? record.account + '-' + JSON.parse(text).symbol : ''
+      }
+    },
+
     {
       title: '本金',
       dataIndex: 'amount',

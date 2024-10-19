@@ -1,20 +1,22 @@
 'use client'
 import React from 'react';
 import Container from '@/app/components/Container';
-import { Table } from 'antd';
+import { Select, Table } from 'antd';
 import { useAntdTable } from 'ahooks';
 import { FundFlowApi } from '@/app/service/fundFlow-api';
 import { AddFundFlow } from './modal/AddFundFlow';
-import { formatTimeToTz } from '@/utils';
+import { enumToArray, formatTimeToTz } from '@/utils';
 import { EStrategyMap } from '../overview/type';
+import { EAssetsType } from '@/app/service/fundFlow-api/type';
 
 export default function Page() {
 
   const getTableData = (props: any): Promise<any> => {
-    const { current, pageSize } = props;
+    const { current, pageSize, type } = props;
     const query = {
       pageNumber: current,
-      pageSize: pageSize
+      pageSize: pageSize,
+      type
     }
     return FundFlowApi.getFundFlowList(query).then((res: any) => {
       return {
@@ -25,12 +27,21 @@ export default function Page() {
   };
 
   const [visible, setVisible] = React.useState<boolean>(false)
-
-  const { tableProps, search } = useAntdTable(getTableData);
+  const [type, setType] = React.useState<string>('');
+  const { tableProps, search } = useAntdTable((props) => getTableData({
+    ...props,
+    type
+  }), {
+    refreshDeps: [type]
+  });
 
   const handleCancel = () => {
     setVisible(false);
     search.reset()
+  }
+
+  const onSelectType = (value: string) => {
+    setType(value)
   }
 
   const columns = [
@@ -66,6 +77,12 @@ export default function Page() {
   return (
     <Container title='资金流水'>
       <div className='p-6'>
+        <div className='flex justify-between pb-4'>
+          <div>
+            <Select allowClear placeholder='选择操作类型' style={{ width: '10rem', marginRight: '1rem' }} options={enumToArray(EAssetsType)} onChange={onSelectType} />
+          </div>
+
+        </div>
         <div>
           <Table columns={columns} rowKey="email" {...tableProps} />
         </div>
