@@ -2,7 +2,7 @@
 import Container from "@/app/components/Container";
 import { fundDistributionApi } from "@/app/service/fundDistribution-api";
 import { IFundDistribution } from "@/app/service/fundDistribution-api/type";
-import { enumToObject, enumToObjectByKey, formatTimeToTz } from "@/utils";
+import { enumToObject, enumToObjectByKey, formatTimeToTz, formatWalletAddress } from "@/utils";
 import { useAntdTable } from "ahooks";
 import { Button, Input, message, Modal, Switch, Table } from "antd"
 import React, { useState } from "react";
@@ -79,7 +79,7 @@ const AssetsManage = () => {
       title: '时间',
       dataIndex: 'moneyDate',
       render: (text: string) => {
-        return text ? formatTimeToTz(text, 'YYYY-MM-DD HH:mm:ss') : ''
+        return text ? formatTimeToTz(text, 'YYYY-MM-DD') : ''
       }
     },
     {
@@ -101,6 +101,9 @@ const AssetsManage = () => {
     {
       title: '地址',
       dataIndex: 'address',
+      render: (text: string) => {
+        return text ? formatWalletAddress(text) : '-'
+      }
     },
     {
       title: '备注',
@@ -111,7 +114,7 @@ const AssetsManage = () => {
       title: '状态',
       dataIndex: 'status',
       render: (text: string, record: any) => {
-        return <Switch checkedChildren="已运行" unCheckedChildren="已停止" onChange={() => onChangeStatus(record, text)} checked={!!text} />
+        return <Switch disabled checkedChildren="已运行" unCheckedChildren="已停止" onChange={() => onChangeStatus(record, text)} checked={!!text} />
       }
     },
   ]

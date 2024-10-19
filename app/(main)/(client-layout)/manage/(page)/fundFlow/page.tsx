@@ -35,14 +35,14 @@ export default function Page() {
 
   const columns = [
     {
-      title: '类型',
-      dataIndex: 'type',
+      title: '账号',
+      dataIndex: 'account',
     },
     {
-      title: '策略',
-      dataIndex: 'strategy',
+      title: '类型',
+      dataIndex: 'type',
       render: (text: string) => {
-        return text ? EStrategyMap[text] : ''
+        return EStrategyMap[text]
       }
     },
     {
@@ -62,6 +62,7 @@ export default function Page() {
       width: 200,
     },
   ]
+
   return (
     <Container title='资金流水'>
       <div className='p-6'>
