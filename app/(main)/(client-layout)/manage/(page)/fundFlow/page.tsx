@@ -5,9 +5,9 @@ import { Select, Table } from 'antd';
 import { useAntdTable } from 'ahooks';
 import { FundFlowApi } from '@/app/service/fundFlow-api';
 import { AddFundFlow } from './modal/AddFundFlow';
-import { enumToArray, formatTimeToTz } from '@/utils';
+import { enumToArray, enumToObject, formatTimeToTz } from '@/utils';
 import { EStrategyMap } from '../overview/type';
-import { EAssetsType } from '@/app/service/fundFlow-api/type';
+import { EAssetsType, EAssetsTypeMap } from '@/app/service/fundFlow-api/type';
 
 export default function Page() {
 
@@ -53,7 +53,7 @@ export default function Page() {
       title: '类型',
       dataIndex: 'type',
       render: (text: string) => {
-        return EStrategyMap[text]
+        return enumToObject(EAssetsType)[text]
       }
     },
     {

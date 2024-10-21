@@ -17,4 +17,10 @@ export enum EAssetsType {
   FEE = '手续费'
 }
 
+export const EAssetsTypeMap: any = {
+  [EAssetsType.DEPOSIT]: '充值',
+  [EAssetsType.WITHDRAW]: '提现',
+  [EAssetsType.FEE]: '手续费'
+}
+
 export type TAddAssetsData = Omit<AssetsData, 'id' | 'createTime'>;
