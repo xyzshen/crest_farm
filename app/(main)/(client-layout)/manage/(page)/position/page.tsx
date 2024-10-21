@@ -55,8 +55,8 @@ const PositionManagement = () => {
     {
       title: '持仓方向',
       dataIndex: 'positionSide',
-      render: (text: string) => {
-        return text === 'BOTH' ? '空' : '多'
+      render: (text: string, record: any) => {
+        return record?.positionAmt < 0 ? '空' : '多'
       }
     },
     {
@@ -75,7 +75,7 @@ const PositionManagement = () => {
     },
     {
       title: '保证金',
-      dataIndex: 'maintMargin',
+      dataIndex: 'margin',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }
@@ -123,7 +123,7 @@ const PositionManagement = () => {
       title: '收益率',
       dataIndex: 'profitRate',
       render: (text: string) => {
-        return formatDecimal(text, 6)
+        return formatDecimal(text, 6) + '%'
       }
     },
 

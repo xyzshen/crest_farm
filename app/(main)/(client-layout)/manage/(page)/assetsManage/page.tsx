@@ -143,10 +143,6 @@ const AssetsManage = () => {
 
   return <Container title='资金分布'>
     <div className='p-6 overflow-auto'>
-      <div className='flex justify-between pb-4'>
-        <Button type="primary" onClick={() => setAssetsManagemModalVisible(true)}>新增</Button>
-        <Input.Search placeholder='搜索账号' onSearch={onSearch} style={{ width: '20rem' }} />
-      </div>
       <div>
         <Table columns={columns} rowKey="email" {...tableProps} />
       </div>

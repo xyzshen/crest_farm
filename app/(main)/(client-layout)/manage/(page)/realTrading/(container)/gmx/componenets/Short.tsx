@@ -29,8 +29,8 @@ const Short = (props: IShort) => {
     {
       title: '持仓方向',
       dataIndex: 'positionSide',
-      render: (text: string) => {
-        return text === 'BOTH' ? '空' : '多'
+      render: (text: string, record: any) => {
+        return record?.positionAmt < 0 ? '空' : '多'
       }
     },
     {
@@ -49,7 +49,7 @@ const Short = (props: IShort) => {
     },
     {
       title: '保证金',
-      dataIndex: 'maintMargin',
+      dataIndex: 'margin',
       render: (text: string) => {
         return formatDecimal(text, 4)
       }
@@ -97,7 +97,7 @@ const Short = (props: IShort) => {
       title: '收益率',
       dataIndex: 'profitRate',
       render: (text: string) => {
-        return formatDecimal(text, 6)
+        return formatDecimal(text, 6) + '%'
       }
     },
 
@@ -157,7 +157,7 @@ const Short = (props: IShort) => {
 
   return <div className=" bg-white  rounded-md p-6 mb-6">
     <div className="text-[1rem] text-[#1a1a1a] font-bold pb-4">空单信息</div>
-    <div className="w-full py-6  flex flex-wrap items-center justify-between  border-1 rounded-md">
+    <div className="w-full py-6   border-1 rounded-md">
       <Table columns={columns} dataSource={data} pagination={false} scroll={{ x: 'max-content' }} />
     </div>
   </div>
