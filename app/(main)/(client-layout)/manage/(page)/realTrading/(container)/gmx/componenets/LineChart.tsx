@@ -18,6 +18,9 @@ const LineChart = (props: any) => {
       console.log('Math.max(...yData) * 1.2', Math.max(...yData) * 1.2)
       minYData = getMinValue(Math.min(...yData) * 1.1);
       maxYData = getMaxValue(Math.max(...yData) * 1.2);
+      if (maxYData > 0 && minYData > 0) {
+        minYData = 0
+      }
       minInterval = Math.ceil((maxYData - minYData) / 5);
     }
     return {

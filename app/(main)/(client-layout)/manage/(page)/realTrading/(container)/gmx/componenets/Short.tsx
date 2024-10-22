@@ -97,7 +97,7 @@ const Short = (props: IShort) => {
       title: '收益率',
       dataIndex: 'profitRate',
       render: (text: string) => {
-        return formatDecimal(text, 6) + '%'
+        return formatDecimal(text, 6, 100) + '%'
       }
     },
 

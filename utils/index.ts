@@ -86,10 +86,9 @@ export function isValidKey(
 }
 
 
-// 保留小数点位，需要四舍五入
-export function formatDecimal(num: number | string | undefined, limt: number): string {
+export function formatDecimalNumber(num: number, limt: number): number {
   if (!num) {
-    return '0'
+    return 0
   }
   let number = num
   if (typeof (num) === 'string') {
@@ -97,7 +96,16 @@ export function formatDecimal(num: number | string | undefined, limt: number): s
   } else {
     number = num
   }
-  return number.toFixed(limt)
+  const result = number.toFixed(limt)
+  return Number(result)
+}
+
+// 保留小数点位，需要四舍五入
+export function formatDecimal(num: number | string | undefined, limt: number, multiple?: number): string {
+  if (!num) return '0'
+  const result = formatDecimalNumber(Number(num), limt) * (multiple ?? 1)
+  // 结果添加千分位分隔
+  return formatNumber(result)
 }
 
 // 对app secipt 加密，仅显示前后6位，中间用*代替

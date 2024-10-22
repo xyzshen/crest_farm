@@ -30,6 +30,11 @@ const defaultAssetsList = [
     label: 'SCM',
     key: 'scm',
     value: 0,
+  },
+  {
+    label: '其他',
+    key: null,
+    value: 0,
   }
 ]
 

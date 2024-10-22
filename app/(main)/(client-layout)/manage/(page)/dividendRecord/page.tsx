@@ -79,6 +79,13 @@ export default function Page() {
       }
     },
     {
+      title: 'APR',
+      dataIndex: 'apr',
+      render: (text: string) => {
+        return text ? Number(text) + '%' : text
+      }
+    },
+    {
       title: '开始时间',
       dataIndex: 'beginTime',
       render: (text: string) => {

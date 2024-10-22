@@ -1,7 +1,7 @@
 export interface IAssets {
   label: string;
   value: number;
-  key?: string;
+  key?: string | null;
 }
 
 export enum EStrategy {
