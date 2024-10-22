@@ -92,20 +92,12 @@ const AssetsManage = () => {
       dataIndex: 'strategy',
     },
     {
-      title: '策略备注',
-      dataIndex: 'strategyDes',
-      width: 180,
-      // 超出隐藏
-      ellipsis: true
-    },
-    {
       title: '实盘',
       dataIndex: 'instanceInfo',
       render: (text: string, record: DividendRecordType) => {
         return text ? record.account + '-' + JSON.parse(text).symbol : ''
       }
     },
-
     {
       title: '本金',
       dataIndex: 'amount',
@@ -122,16 +114,18 @@ const AssetsManage = () => {
       }
     },
     {
-      title: '备注',
-      dataIndex: 'description',
-      width: 180,
-    },
-    {
       title: '状态',
       dataIndex: 'status',
       render: (text: string, record: any) => {
         return <Switch disabled checkedChildren="已运行" unCheckedChildren="已停止" onChange={() => onChangeStatus(record, text)} checked={!!text} />
       }
+    },
+    {
+      title: '策略备注',
+      dataIndex: 'strategyDes',
+      width: 180,
+      // 超出隐藏
+      ellipsis: true
     },
   ]
 

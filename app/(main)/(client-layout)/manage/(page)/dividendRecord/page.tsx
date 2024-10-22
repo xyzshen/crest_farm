@@ -65,13 +65,6 @@ export default function Page() {
       }
     },
     {
-      title: '策略备注',
-      dataIndex: 'strategyDes',
-      width: 180,
-      // 超出隐藏
-      ellipsis: true
-    },
-    {
       title: '实盘',
       dataIndex: 'instanceInfo',
       render: (text: string, record: DividendRecordType) => {
@@ -100,12 +93,12 @@ export default function Page() {
       }
     },
     {
-      title: '备注',
-      dataIndex: 'description',
+      title: '策略备注',
+      dataIndex: 'strategyDes',
       width: 180,
       // 超出隐藏
       ellipsis: true
-    }
+    },
   ]
   return (
     <Container title='分红记录'>
