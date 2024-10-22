@@ -26,52 +26,67 @@ const BarChart = (props: IBarChart) => {
         text: title,
         show: false
       },
+      grid: { // 让图表占满容器
+        top: "40px",
+        left: "50px",
+        right: "10px",
+        bottom: "40px"
+      },
+      color: '#4b5cdf',
       tooltip: {
         trigger: 'axis',
-        axisPointer: {
-          type: 'shadow'
+        backgroundColor: '#1A1A1A',
+        textStyle: {
+          color: '#fff',
+          fontSize: 12
+        },
+        formatter: function (value: any) {
+          const params = value[0]
+          return `<div><span>${params.data}</span>&nbsp&nbsp<span style='color: #B3B3B3'>${params.name}</span></div>`
         }
-      },
-      grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
       },
       xAxis: {
         type: 'category',
         data: xData,
-        axisTick: {
-          show: false
-        },
         axisLine: {
           show: true,
           lineStyle: {
-            color: '#d6d6d6'
+            color: '#ebebeb',
+            shadowBlur: 1,
+            shadowColor: '#fff',
+            shadowOffsetX: 4,
+            shadowOffsetY: 1
           }
+        },
+        axisLabel: {
+          color: '#666'
         }
       },
       yAxis: {
         type: 'value',
-        splitNumber: 1.5,
-        axisLabel: {
-          formatter: '{value}'
+        splitNumber: 2,
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: '#ebebeb',
+            shadowBlur: 1,
+            shadowColor: '#fff',
+            shadowOffsetX: 4,
+            shadowOffsetY: 1
+          }
         }
       },
       series: [
         {
-          name: '2024年',
-          type: 'bar',
-          barWidth: '20px',
-          itemStyle: {
-            color: '#5E9EFF'
-          },
-          data: yData
-        },
+          showSymbol: false,
+          symbolSize: 6,
+          data: yData,
+          type: 'line'
+        }
       ]
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [yData, xData])
+  }, [xData, yData])
+
 
   return <ReactECharts
     option={options}
