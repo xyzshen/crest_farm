@@ -1,4 +1,4 @@
-import { formatDecimal, formatTimeToTz } from '@/utils';
+import { formatDecimal, formatDecimalNumber, formatTimeToTz } from '@/utils';
 import dayjs from 'dayjs';
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
@@ -12,12 +12,13 @@ const LineChart = (props: any) => {
   }, [data])
 
   const yAxis = useMemo(() => {
-    return data.map((item: any) => formatDecimal(item.value, 2))
+    return data.map((item: any) => formatDecimalNumber(item.value, 2))
   }, [data])
 
   const yMax = useMemo(() => {
     return Math.ceil(Math.max(...yAxis) * 1.2)
   }, [yAxis])
+
 
   const options = useMemo(() => {
     return {
